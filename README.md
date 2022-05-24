@@ -5,7 +5,7 @@ Uppgiftsbeskrivning:
 Det ni ska skapa är en e-handel sida som presenterar ett antal olika produkter. Vilka typer av produkter som säljs är valfritt men det ska vara seriöst och välgjort. Det ska vara möjligt att klicka på en produkt för att kunna läsa mer om den. Från både startsidan och produktsidan ska det vara möjligt att lägga till produkter i en kundvagn och det ska tydlig framgå för användaren när produkten läggs till i kundvagnen.Utcheckningsflödet skall ligga på en egen sida och innehålla delarna Kundvagn, Dina uppgifter, Fraktsätt & Betalsätt.1
 
 
-Hur projektet startas och körs:
+Hur projektet startas och körs:https://vitejs.dev/guide/
 Kör Vite
 Npm install
 npm run dev
