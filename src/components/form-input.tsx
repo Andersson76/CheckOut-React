@@ -6,7 +6,12 @@ import {FC} from 'react'
 
 
 interface Props {
-
+    firstname: string,
+    lastname: string,
+    address: string,
+    zipcode: number,
+    phone: number,
+    email: string
 }
 
 const Forminput: FC<Props> = (props) => {

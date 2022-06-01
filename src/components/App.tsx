@@ -1,17 +1,22 @@
-/* import React from 'react' */
-import { productList } from '../data/productlist' 
-import { FC } from "react"
-import ProductItem from "./productItem"
-//import { Container } from '@mui/material'
-/* import { Container, Grid } from '@mui/material' */
+import {FC} from "react"
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-const App: FC = (props) => {
+
+const App: FC = () => {
 
   return (
-    <div>
-        {productList.map((products) => <ProductItem key={products.id} product={products} /> )}
-    </div>
+    <Router>
+
+    </Router>
   )
 }
 
-export default App 
+
+
+export default App

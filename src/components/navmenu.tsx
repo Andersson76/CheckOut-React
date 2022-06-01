@@ -1,8 +1,10 @@
+/* Navigation https://v5.reactrouter.com/web/guides/quick-start
+https://v5.reactrouter.com/web/guides/philosophy */
 
 import {FC} from 'react'
 
 interface Props {
-
+    links: string
 }
 
 const Navmenu: FC<Props> = (props) => {

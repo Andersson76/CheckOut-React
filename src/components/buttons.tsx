@@ -1,5 +1,10 @@
 import { FC } from "react"
-export interface Props {
+
+interface Props {
+/*     submit: 
+    addProduct: 
+    deleteProduct:
+    cart: */
     
 }
 
@@ -11,5 +16,11 @@ const Buttons: FC<Props> = (props) => {
         </div>
     )
 }
+
+// Button-hanterare 
+
+{/* <button onClick={}>
+    Lägg till i varukorgen
+</button> */}
 
 export default Buttons
