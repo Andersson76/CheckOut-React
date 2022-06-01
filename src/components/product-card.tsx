@@ -1,7 +1,8 @@
+import { Product } from '../data/productlist' 
 import {FC} from 'react'
 
 interface Props {
-
+    product: Product
 }
 
 const Productcard: FC<Props> = (props) => {

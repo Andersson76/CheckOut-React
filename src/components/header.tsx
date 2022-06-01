@@ -1,13 +1,9 @@
 import {FC} from 'react'
 
 
-
-
-
 interface Props {
     logo: string,
     cartIcon: string
-
 }
 
 

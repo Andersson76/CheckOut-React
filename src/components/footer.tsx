@@ -5,10 +5,10 @@ interface Props {
     socialMediaIcon: string,
     email: string,
     phone: number,
-    address: string 
+    address: string,
+    copyright: string
+    /* Behövs ej? Räcker med divar & styling?? */
 }
-
-
 
 
 const Footer: FC<Props> = (props) => {
