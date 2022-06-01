@@ -1,15 +1,10 @@
 import {FC} from 'react'
 
-
-
-
-
 interface Props {
 
 }
 
-
-const Header: FC<Props> = (props) => {
+const Shoppingcart: FC<Props> = (props) => {
     return (
         <div>
         <h1>information</h1>
@@ -18,4 +13,4 @@ const Header: FC<Props> = (props) => {
 }
 
 
-export default Header
+export default Shoppingcart

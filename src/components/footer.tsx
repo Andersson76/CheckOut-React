@@ -1,4 +1,14 @@
-const Footer = (props) => {
+import React from "react"
+import {FC} from "react"
+
+interface Props {
+
+}
+
+
+
+
+const Footer: FC<Props> = (props) => {
 
     return (
         <div>
@@ -6,3 +16,5 @@ const Footer = (props) => {
         </div>
     )
 }
+
+export default Footer
