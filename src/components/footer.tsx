@@ -2,7 +2,10 @@ import React from "react"
 import {FC} from "react"
 
 interface Props {
-
+    socialMediaIcon: string,
+    email: string,
+    phone: number,
+    address: string 
 }
 
 
