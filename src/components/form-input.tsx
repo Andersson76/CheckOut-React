@@ -2,11 +2,19 @@
 /* import { Formik } from 'formik'; 
 https://formik.org/docs/overview*/
 
-const Forms = (props) => {
+import {FC} from 'react'
 
+
+interface Props {
+
+}
+
+const Forminput: FC<Props> = (props) => {
     return (
         <div>
         <h1>information</h1>
         </div>
     )
 }
+
+export default Forminput 

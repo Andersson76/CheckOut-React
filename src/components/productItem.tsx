@@ -1,19 +1,19 @@
-import { Products } from '../data/productlist' 
+import { Product } from '../data/productlist' 
 import { FC } from "react"
-import { Container } from '@mui/material'
+//import { Container } from '@mui/material'
 
 interface Props {
-    product: Products
+    product: Product
 }
 
 const ProductItem: FC<Props> = (props) => {
 
     return (
-        <Container>
+        <div>
             <img src={props.product.image}/>
             <h1>{props.product.title}</h1>
             <p>{props.product.price + " " + "kr"}</p>
-        </Container>
+        </div>
     )
 
 }

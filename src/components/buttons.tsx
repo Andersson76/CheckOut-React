@@ -1,4 +1,9 @@
-const Buttons = (props) => {
+import { FC } from "react"
+export interface Props {
+    
+}
+
+const Buttons: FC<Props> = (props) => {
 
     return (
         <div>
@@ -6,3 +11,5 @@ const Buttons = (props) => {
         </div>
     )
 }
+
+export default Buttons

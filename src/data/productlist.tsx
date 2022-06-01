@@ -10,7 +10,7 @@ import acetennisbag from "/src/assets/acetennisbag.jpg"
 import aceracketcase from "/src/assets/aceracketcase.jpg"
 
 
-export interface Products {
+export interface Product {
     id: number,
     title: string,
     desctiption: string,
@@ -20,7 +20,7 @@ export interface Products {
 }
 
 
-export const productList: Products [] = [
+export const productList: Product[] = [
     {
         id: 1,
         title: "Ace dress",
