@@ -10,8 +10,8 @@ interface Props {}
 
 const Navmenu: FC<Props> = (props) => {
     return (
-        <div>
-            
+        <div style={styleHeader}>
+
             <Link to={"/"}>Björn Borg</Link> {/* Representerar loggan */}
             <Link to={"/"}>Hem</Link>
 
@@ -23,6 +23,12 @@ const Navmenu: FC<Props> = (props) => {
 
 export default Navmenu
 
-const item: CSSProperties = {
+const styleHeader: CSSProperties = {
+    width: "100%",
+    height: "140px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "20px"
 
 }
