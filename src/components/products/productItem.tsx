@@ -12,7 +12,7 @@ const ProductItem: FC<Props> = (props) => {
 
     return (
         <div> 
-            <img style={imageSize} src={props.product.image}/>
+            <img style={imgStyle} src={props.product.image}/>
             <h1>{props.product.title}</h1>
             <p>{props.product.price + " " + "kr"}</p>
         </div>
@@ -22,10 +22,17 @@ const ProductItem: FC<Props> = (props) => {
 
 export default ProductItem
 
-const imageSize: CSSProperties = {
-    width: "300px",
-    height: "400px"
-}
+const imgStyle: CSSProperties = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  
+    width: "400px",
+    height: "500px",
+    objectFit: "cover",
+    
+  }
+
 
 
 {/* <Link to={`/${props.product.id}`} >
