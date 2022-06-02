@@ -2,7 +2,7 @@
 /* import { Formik } from 'formik'; 
 https://formik.org/docs/overview*/
 
-import {FC} from 'react'
+import { CSSProperties, FC } from 'react'
 
 
 interface Props {
@@ -17,9 +17,14 @@ interface Props {
 const Forminput: FC<Props> = (props) => {
     return (
         <div>
-        <h1>information</h1>
+        
         </div>
     )
 }
 
 export default Forminput 
+
+
+const item: CSSProperties = { 
+
+}
