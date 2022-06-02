@@ -1,22 +1,23 @@
-import {FC} from "react"
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { CSSProperties, FC} from "react"
+import Layout from "./layout"
+import { BrowserRouter } from "react-router-dom"
+// Efter vi installerade route-dom så imorterar vi BrowserRouter . Efter det går vi vidare till viewContainer(Content??)
 
+/* BrowserRouter - En kompoent som startar igång Router Processen */
 
 const App: FC = () => {
 
-  return (
-    <Router>
-
-    </Router>
-  )
+    return (
+      <BrowserRouter>
+        <Layout/>
+      </BrowserRouter>   
+    )
 }
 
-
-
 export default App
+
+
+const item: CSSProperties = {
+
+} 
+
