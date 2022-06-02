@@ -1,18 +1,29 @@
-/* Navigation https://v5.reactrouter.com/web/guides/quick-start
-https://v5.reactrouter.com/web/guides/philosophy */
+import { CSSProperties, FC} from 'react'
+import { Link } from "react-router-dom"
+import Productpage from "../pages/product-page"
+import Startpage from "../pages/startpage"
+import CheckOut from "../pages/checkout-page"
 
-import {FC} from 'react'
+/* Tips: Anänd callback props i Navbar och NavigationItem för att uppdatera statet i layouten */
 
-interface Props {
-    links: string
-}
+// Fixa länkarna 
+
+interface Props {}
 
 const Navmenu: FC<Props> = (props) => {
     return (
         <div>
-        <h1>information</h1>
+            
+            <Link to={"/"}>Björn Borg</Link> {/* Representerar loggan */}
+            <Link to={"/"}>Hem</Link>
+            <Link to={"/"}>Produkt</Link>
+            <Link to={"/"}>Varukorgen</Link>
         </div>
     )
 }
 
 export default Navmenu
+
+const item: CSSProperties = {
+
+}
