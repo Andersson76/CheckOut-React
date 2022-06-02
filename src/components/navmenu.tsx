@@ -6,8 +6,6 @@ import CheckOut from "../pages/checkout-page"
 
 /* Tips: Anänd callback props i Navbar och NavigationItem för att uppdatera statet i layouten */
 
-// Fixa länkarna 
-
 interface Props {}
 
 const Navmenu: FC<Props> = (props) => {
@@ -16,8 +14,9 @@ const Navmenu: FC<Props> = (props) => {
             
             <Link to={"/"}>Björn Borg</Link> {/* Representerar loggan */}
             <Link to={"/"}>Hem</Link>
-            <Link to={"/"}>Produkt</Link>
-            <Link to={"/"}>Varukorgen</Link>
+
+            <Link to={"/:productId"}>Produkt</Link>
+            <Link to={"/checkout-page"}>Varukorg</Link>
         </div>
     )
 }

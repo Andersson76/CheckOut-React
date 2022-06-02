@@ -1,23 +1,21 @@
 import React from "react"
-import {FC} from "react"
+import { CSSProperties, FC} from "react"
 
-interface Props {
-    socialMediaIcon: string,
-    email: string,
-    phone: number,
-    address: string,
-    copyright: string
-    /* Behövs ej? Räcker med divar & styling?? */
-}
-
+interface Props {}
+   
 
 const Footer: FC<Props> = (props) => {
 
     return (
         <div>
-        <h1>information</h1>
+            <h1>Test</h1>
         </div>
     )
 }
 
 export default Footer
+
+
+const item: CSSProperties = {
+
+}

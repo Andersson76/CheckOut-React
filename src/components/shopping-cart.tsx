@@ -1,4 +1,5 @@
-import {FC} from 'react'
+import { CSSProperties, FC } from 'react'
+import { colors } from "../data/colors"
 
 interface Props {
 
@@ -7,10 +8,15 @@ interface Props {
 const Shoppingcart: FC<Props> = (props) => {
     return (
         <div>
-        <h1>information</h1>
+        
         </div>
     )
 }
 
 
 export default Shoppingcart
+
+const background: CSSProperties = {
+    backgroundColor: colors.primary
+
+}
