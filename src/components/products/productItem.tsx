@@ -1,6 +1,12 @@
 import { Product } from '../../data/productlist' 
 import { CSSProperties, FC } from "react"
 import { Link } from 'react-router-dom';
+import AddToCart from "../buttons/addToCart"
+import react, {useState} from "react"
+import {Button} from '@mui/material'
+import {colors} from '../../data/colors'
+
+
 
 interface Props {
     product: Product
@@ -10,6 +16,10 @@ interface Props {
 
 const ProductItem: FC<Props> = (props) => {
 
+    //Ska ligga i contextmappen
+  //  const[count, setCart] = useState(0)
+
+  //  const handleAddToCart = () => {(props.product.id, 1);}
     return (
         <div>
             <Link to={`/${props.product.id}`}>
@@ -17,7 +27,9 @@ const ProductItem: FC<Props> = (props) => {
             </Link>
             <h4 style={{display: "flex", justifyContent: "center"}}>{props.product.title}</h4>
             <p style={{display: "flex", justifyContent: "center"}}>{props.product.price + " " + "kr"}</p> 
-            {/* Lägg till button */}
+            <Button style={{backgroundColor: colors.third, color: colors.secondary}}variant="contained" onClick={() => console.log(props.product.title)}>
+            Lägg i varukorgen
+            </Button>
         </div>
     ) 
 }

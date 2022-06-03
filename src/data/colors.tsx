@@ -7,6 +7,6 @@ export interface Colors {
 
 export const colors: Colors = {
     primary: "#EEEEEE",
-    secondary: "#D0D0D",
+    secondary: "#D0D0D0",
     third: " #232323"
 }
