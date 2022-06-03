@@ -1,4 +1,5 @@
 import { FC } from "react"
+import StartPage from "./startpage"
 
 interface Props{}
 
