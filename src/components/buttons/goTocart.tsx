@@ -2,21 +2,15 @@ import { CSSProperties, FC } from "react"
 
 interface Props {}
 
-const Buttons: FC<Props> = (props) => {
+const GoToCart: FC<Props> = (props) => {
 
     return (
         <div>
+           {/*<Link to={`/checkout`}></Link> */}
         
         </div>
     )
 }
-
-
-/* 
-AddToCartBtn (Lägg till i varukorgen)
-CartIconBtn (Ikon) 
-Avlutaköp
-*/
 
 // Button-hanterare 
 
@@ -24,7 +18,7 @@ Avlutaköp
     Lägg till i varukorgen
 </button> */}
 
-export default Buttons
+export default GoToCart
 
 const item: CSSProperties = {
 
