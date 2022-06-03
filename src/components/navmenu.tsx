@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import Productpage from "../pages/product-page"
 import Startpage from "../pages/startpage"
 import CheckOut from "../pages/checkout-page"
+import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 
 
 interface Props {}
@@ -14,9 +15,10 @@ const Navmenu: FC<Props> = (props) => {
             <Link /* style={styleLogo} */ to={"/"}>Björn Borg</Link> {/* Representerar loggan */}
 
             <Link to={"/"}>Hem</Link>
-
             {/* <Link to={"/:productId"}>Produkt</Link> */}
-            <Link to={"/checkout-page"}>Varukorg</Link> {/* Ikon?? */}
+            <Link to={"/checkout-page"}><ShoppingCartSharpIcon/></Link>
+            
+
         </div>
     )
 }
