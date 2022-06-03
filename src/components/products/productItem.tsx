@@ -11,31 +11,30 @@ interface Props {
 const ProductItem: FC<Props> = (props) => {
 
     return (
-        <div> 
+        <div>
+            <Link to={`/${props.product.id}`}>
             <img style={imgStyle} src={props.product.image}/>
-            <h1>{props.product.title}</h1>
-            <p>{props.product.price + " " + "kr"}</p>
+            </Link>
+            <h4 style={{display: "flex", justifyContent: "center"}}>{props.product.title}</h4>
+            <p style={{display: "flex", justifyContent: "center"}}>{props.product.price + " " + "kr"}</p> 
+            {/* Lägg till button */}
         </div>
-    )
-
+    ) 
 }
 
 export default ProductItem
+
+
 
 const imgStyle: CSSProperties = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   
-    width: "400px",
-    height: "500px",
+    width: "250px",
+    height: "350px",
     objectFit: "cover",
     
   }
 
 
-
-{/* <Link to={`/${props.product.id}`} >
-<img style={imageSize} src={props.product.image}/>
-<h1>{props.product.title}</h1>
-</Link> */}

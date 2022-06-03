@@ -1,22 +1,29 @@
 import { CSSProperties, FC } from "react"
-import { Product } from '../data/productlist' 
+import { useParams, Navigate } from "react-router-dom";
+import { Product, productList } from '../data/productlist' 
 
-/* Productsidan När vi klickar på en produkt kommer vi till detta elementet... 
-Victors Detailview*/ 
+interface Props{}
 
-interface Props {
-    product: Product
-}
 
-const ProductPage: FC<Props> = (props) => {
+const ProductPage : FC<Props> = (props) => {
+
+    /* Find i productList */
+    const { productId } = useParams()
+
+    const foundProduct = productList.find((product) => Number(productId) == product.id)
+
+    if(!foundProduct) {
+        return <Navigate to ="/" />
+    }
 
     return (
         <div style={container}>
-            <img style={imageSize} src={props.product.image} alt=""/>
+            <img src={foundProduct!.image} alt="" />
         </div>
-    )
+        )
 
 }
+
 
 export default ProductPage
 
@@ -31,6 +38,6 @@ const imageSize: CSSProperties = {
 }
 
 
-/* const element: CSSProperties = {
-    zIndex: 1 = h1 ligger över bilden..
-} */
+
+
+   

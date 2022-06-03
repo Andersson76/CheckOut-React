@@ -3,19 +3,21 @@ import { colors } from "../data/colors"
 import { productList } from '../data/productlist' 
 import ProductItem from "../components/products/productItem"
 
+
 interface Props {}
 
 const Startpage: FC = (props) => {
 
   return ( 
     <div style={{...background, ...imgContainer}}>
-        {productList.map((products) => <ProductItem key={products.id} product={products} /> )}
+        {productList.map((product) => <ProductItem key={product.id} product={product} /> )}
     </div>
-    
   )
 }
 
+
 export default Startpage
+
 
 
 const background: CSSProperties = {
@@ -24,7 +26,6 @@ const background: CSSProperties = {
 }
 const imgContainer: CSSProperties = {
   display: "flex",
-  //flexDirection: "column",
   justifyContent: "center",
   flexWrap: "wrap",
   gap: "3em",
