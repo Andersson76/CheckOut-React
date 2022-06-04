@@ -16,26 +16,9 @@ const AddToCart: FC<Props> = (props) => {
         <button onClick={() => setCount(count + 1)}>
             Lägg till i varukorgen
         </button>
-
-       /* <button onClick={() => console.log("clicked")}>
-           Lägg till i varukorgen
-        </button>  */
-
-        //<Button onClick={() => console.log("clicked")} variant="outline-primary">Lägg till i varukorgen</Button>
     )
 }
 
-
-
-/* 
- (Lägg till i varukorgen)
-*/
-
-// Button-hanterare 
-
-{/* <button onClick={}>
-    Lägg till i varukorgen
-</button> */}
 
 export default AddToCart
 

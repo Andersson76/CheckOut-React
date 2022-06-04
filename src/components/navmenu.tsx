@@ -1,40 +1,23 @@
-import { CSSProperties, FC} from 'react'
-import { Link } from "react-router-dom"
-import Productpage from "../pages/product-page"
-import Startpage from "../pages/startpage"
-import CheckOut from "../pages/checkout-page"
-import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
+/* import { CSSProperties, FC} from 'react'
+import { NavLink, Route }  from "react-router-dom"
+/* import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp' */
 
 
+/*
 interface Props {}
 
 const Navmenu: FC<Props> = (props) => {
     return (
-        <div style={styleHeader}>
-
-            <Link /* style={styleLogo} */ to={"/"}>Björn Borg</Link> {/* Representerar loggan */}
-
-            <Link to={"/"}>Hem</Link>
-            {/* <Link to={"/:productId"}>Produkt</Link> */}
-            <Link to={"/checkout-page"}><ShoppingCartSharpIcon/></Link>
-            
-
+        <div className="App">
+            <NavLink style={{color: "black"}} to={"/"}>Björn Borg</NavLink> 
+            <NavLink style={{color: "black"}} to={"/"}>Hem</NavLink>
+            <NavLink style={{color: "black"}} to={"/checkout"}>{}Varukorg</NavLink>
+            <NavLink style={{color: "black"}} to={"/product"}>{}Product</NavLink>
         </div>
     )
 }
 
-
-
-/* import { NavLink } from "react-router-dom" 
-
-<NavLink to="./pages/startpage">Home</NavLink>  */
-
 export default Navmenu
-
-
-const styleLogo: CSSProperties = {
-
-}
 
 const styleHeader: CSSProperties = {
     width: "100%",
@@ -44,4 +27,4 @@ const styleHeader: CSSProperties = {
     alignItems: "center",
     gap: "20px"
 
-}
+} */

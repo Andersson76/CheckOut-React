@@ -1,5 +1,5 @@
 import { CSSProperties, FC } from 'react'
-import { colors } from "../data/colors"
+import { colors } from "../../data/colors"
 
 interface Props {
 
