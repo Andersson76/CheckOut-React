@@ -1,5 +1,6 @@
 import { CSSProperties, FC } from 'react'
 import { colors } from "../../data/colors"
+/* import DeleteIcon from '@mui/icons-material/Delete'; */
 
 interface Props {
 

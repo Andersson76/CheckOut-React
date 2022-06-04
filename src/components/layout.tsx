@@ -1,8 +1,9 @@
+import React from 'react'
 import { CSSProperties, FC } from 'react'
 import { colors } from "../data/colors"
-import Navmenu from "./navmenu"
+/* import Navmenu from "./navmenu" */
 import Footer from "./footer"
-import Startpage from "../pages/startpage"
+import Home from "./pages/home"
 
 /* Layout.tsx - representerar hela vår applikation - grund komponent till allt inkl header/navbar.   */
 
@@ -11,8 +12,8 @@ interface Props {}
 const Layout: FC<Props> = (props) => {
     return (
         <div>
-            <Navmenu/>
-            <Startpage/>
+   {/*          <Navmenu/> */}
+            <Home/>
             <Footer/>
         </div>
     )
