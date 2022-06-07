@@ -2,9 +2,9 @@ import React, { } from "react"
 import { FC, CSSProperties } from "react"
 import { Product, productList } from "../../data/productlist"
 import { useParams, Navigate, NavLink } from "react-router-dom"
-import {Button} from '@mui/material'
-import {colors} from '../../data/colors'
-import { fontFamily } from "../../css/common"
+import { Button } from '@mui/material'
+import { colors } from '../../data/colors'
+import { fontFamily, styleBtn } from "../../css/common"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 interface Props{
@@ -22,8 +22,7 @@ const ProductDetail: FC<Props> = (props) => {
         }
     
         return (
-    <>
-
+        <>
            <NavLink style={{...navigationBack, ...fontFamily}} to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>Fortsätt handla</NavLink>
             <div style={{...floatcontainer, ...fontFamily}}>
                 
@@ -37,17 +36,18 @@ const ProductDetail: FC<Props> = (props) => {
                     <p>Färg: {foundProduct!.color}</p>
                     <p>{foundProduct!.price + " " + "kr"}</p> 
 
-                    <Button style={btn} variant="contained" 
+                    <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
                         onClick={() => console.log("clicked")}>Lägg i varukorgen
                     </Button>
-                    {/* Här tänker jag att slutför köp kommer upp när man lagt till i varukorgen  */}
-                    <Button style={btn} variant="contained" 
+
+
+                    {/* Här tänker jag att slutför köp kommer upp när man lagt till i varukorgen - remove doc som i js */}
+                    <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
                         onClick={() => console.log("clicked")}>Slutför köp
                     </Button>
                 </div>
-
-            </div>
-        </>
+                </div>
+            </>
     
             ) 
         }  
@@ -61,12 +61,6 @@ const navigationBack: CSSProperties = {
     textDecoration: "none",
     margin: "90px",
     fontSize: "12px"
-}
-
-const btn: CSSProperties = {
-    backgroundColor: colors.third, 
-    color: colors.secondary,
-    marginTop: "50px"
 }
 
 const floatcontainer: CSSProperties = {
