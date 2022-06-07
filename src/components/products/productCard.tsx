@@ -11,12 +11,9 @@ import { useCart} from "react-use-cart"
 
 interface Props {
   product: Product
-  addItems: Product 
 }
 
 const ProductCard: FC<Props> = (props) => {
-
-  const {addItems} = useCart()
 
     return (
         <div style={{...fontFamily}}>
@@ -34,7 +31,7 @@ const ProductCard: FC<Props> = (props) => {
             
           <div style={{display: "flex", justifyContent: "center"}}>
             <Button style={{...styleBtn, marginTop: "20px"}} variant="contained" 
-                onClick={() => addItems(props.product)}>Lägg i varukorgen
+                onClick={() => console.log(props.product)}>Lägg i varukorgen
             </Button>
             </div>
         </div>

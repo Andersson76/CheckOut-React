@@ -1,5 +1,5 @@
 
-import { useState, useEffect, FC } from 'react'
+import { useState, useEffect, FC, PropsWithChildren } from 'react'
 import { Product } from '../../data/productlist'
 
 
@@ -7,7 +7,7 @@ interface Props {
     product: Product
 }
 
-const cartLogic: FC<Props> = (props) => {
+const cartLogic: FC<PropsWithChildren<Props>> = (props) => {
     
 
     return (
