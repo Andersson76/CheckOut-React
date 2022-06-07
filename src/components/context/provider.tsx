@@ -1,42 +1,42 @@
 import React from 'react'
-import  { useState, useEffect, FC, PropsWithChildren, createContext } from 'react'
-import { Product } from '../../data/productlist'
-import Products from '../pages/product'
-import CartItems from './test'
+import  { useState, useEffect, useCallback, useRef, FC, PropsWithChildren, createContext } from 'react'
+import { Product, productList } from '../../data/productlist'
 
-
+// Hur ska vi tänka här!!
 interface ContextData {
-    productList: Product[],
-    cartItems: Product,
-    quantity: number,
+    item: Product[]
 }
 
-const CartContext = React.createContext<ContextData>({}) 
+interface Props {}
+
+// Fråga Victor vad DefaultContect är!! 
+
+/* const DefaultContext: ContextData = {
+} */
 
 
-interface Props {
-    product: Product
-}
-/*
-const defaultContext: ContextData = {
-    productList: [],
-    addProductToCart: () => {},
-    removeProductFromCart: () => {}
-  }
-*/
+/* const CartContext = React.createContext<ContextData>({
+    item: productList 
+})  */
 
-export const addToCart = createContext(()=> {})
-export const removeCart = createContext(() => {})
+
+export const CartContext = createContext([]);
+/* export const AddCartContext = createContext(item => {});
+export const RemoveCartContent = createContext((item) => {}) */
 
 
 const CartProvide: FC<PropsWithChildren<Props>> = (props) => {
-    
-    const [cartItems, setCartItems] = useState([]) // State, funktion, Hook = empty array // Contex? 
+
+
+  /*   const [cartItems, setCartItems] = useState()  */ //  State, funktion, Hook = empty array // Contex? 
+
+    const [items, setItems] = useState([]);
 
     return (
         <div>
-            
-
+            <CartContext.Provider value={items} > {/* tar in värderna från interfacen*/}
+              {props.children}
+            </CartContext.Provider>    
         </div>
     )
 }

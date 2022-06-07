@@ -1,19 +1,38 @@
 import { createContext, CSSProperties, FC, useContext } from 'react'
 import { colors } from "../../data/colors"
-import { CartContext } from '../context/provider'
-/* import DeleteIcon from '@mui/icons-material/Delete'; */
+import CartProvide from "../context/provider" 
+import { Product, productList } from "../../data/productlist"
+import {Button, ButtonGroup} from '@mui/material'
 
-interface Props {}
 
-/* Logiken för add to cart - importera i App.. */
+ interface Props {
+     item: Product
+ }
+
+ /* item in cart & total price - props?? */
 
 const Cart: FC<Props> = (props) => {
 
-    const items = useContext(CartContext)
+ /*    const items = useContext(CartProvide); */
+
+    const addItem = () => {
+        console.log(props.item)
+    }
+
+
+    const cartItems = productList.map((item) =>
+  
+    
+            <div>
+            <Button onClick={addItem}>Lägg i varukorgen</Button>
+            </div>
+
+            )
 
     return (
         <div>
-         Cart
+             <h2>Cart</h2>
+             {cartItems}
         </div>
     )
 }
