@@ -4,7 +4,7 @@ import { Product, productList } from "../../data/productlist"
 import { useParams, Navigate, NavLink } from "react-router-dom"
 import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
-import { fontFamily, styleBtn } from "../../css/common"
+import { fontFamily, styleBtn, textStyle } from "../../css/common"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 interface Props{
@@ -26,15 +26,15 @@ const ProductDetail: FC<Props> = (props) => {
            <NavLink style={{...navigationBack, ...fontFamily}} to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>Fortsätt handla</NavLink>
             <div style={{...floatcontainer, ...fontFamily}}>
                 
-                <div style={floatchild}>
+                <div style={imgBox}>
                     <img style={imgStyle} src={foundProduct!.image} alt="" />
                 </div>
 
-                <div style={floatchild2}>
-                    <h3>{foundProduct!.title}</h3>
-                    <p style={{fontSize: "14px"}}>{foundProduct!.desctiption}</p>
-                    <p>Färg: {foundProduct!.color}</p>
-                    <p>{foundProduct!.price + " " + "kr"}</p> 
+                <div style={textBox}>
+                    <h3 style={{fontSize: "14px"}}>{foundProduct!.title}</h3>
+                    <p style={{...textStyle, paddingRight: "100px"}}>{foundProduct!.desctiption}</p>
+                    <p style={{fontSize: "12px"}}>Färg: {foundProduct!.color}</p>
+                    <p style={{fontSize: "12px"}}>{foundProduct!.price + " " + "kr"}</p> 
 
                     <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
                         onClick={() => console.log("clicked")}>Lägg i varukorgen
@@ -69,15 +69,15 @@ const floatcontainer: CSSProperties = {
     marginBottom: "30px"
 }
 
-const floatchild: CSSProperties = {
+const imgBox: CSSProperties = {
     flex: "1",
-    paddingLeft: "80px" 
+    marginLeft: "80px" 
 }  
 
-const floatchild2: CSSProperties = {
+const textBox: CSSProperties = {
     flex: "1",
-    paddingRight: "80px", 
-    paddingTop: "30px"
+    marginRight: "50px", 
+    marginTop: "30px" 
 }  
 
 const imgStyle: CSSProperties = {

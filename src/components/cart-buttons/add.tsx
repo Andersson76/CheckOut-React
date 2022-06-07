@@ -6,7 +6,6 @@ interface Props {}
 // Kopplas ihop med context? 
 
 // Logiken nedan ska ligga här för att hitta rätt Id till produkt
-
 /* const foundProduct = productList.find((product) => Number(productId) == product.id) */
 
 

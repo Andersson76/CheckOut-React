@@ -7,7 +7,6 @@ import Content from "./content"
 import CartProvider from "../components/cart-context" 
 
 
-
 const Layout: FC = () => {
     return (
         <CartProvider>
