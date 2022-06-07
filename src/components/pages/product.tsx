@@ -1,35 +1,33 @@
 import React from "react"
 import { CSSProperties, FC } from "react"
-import { useParams, Navigate } from "react-router-dom";
 import { productList } from '../../data/productlist' 
+import ProductCard from "../products/productCard"
+import { imgContainer} from "../../css/common"
+import { fontFamily, styleHeader } from "../../css/common"
+import { colors } from "../../data/colors";
 
 interface Props {}
+ 
+ const Products : FC<Props> = (props) => {
 
- const Product : FC<Props> = (props) => {
-
-    const { productId } = useParams()
-
-    const foundProduct = productList.find((product) => Number(productId) == product.id)
-
-    if(!foundProduct) {
-        return <Navigate to ="/" />
-    }
-
-    return (
-
-        <div>
-            <img src={foundProduct!.image} alt="" />
-         </div>
+        return (
+         <>
+            <div>
+                <h2 style={{...fontFamily, ...styleHeader, padding: "20px"}}>Alla Produkter</h2>
+            </div>
     
-
-        ) 
-
+            <div style={{...imgContainer}}>
+                  {
+                       productList.map((product) => 
+                            <ProductCard key={product.id} product={product} /> /* Tar in Componenten ProductCard */
+                       ) 
+                    }
+            </div>
+        </>
+      )
 } 
 
-export default Product
+export default Products
 
 
 
-
-
-   

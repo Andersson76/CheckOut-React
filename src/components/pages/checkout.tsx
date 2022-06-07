@@ -1,17 +1,25 @@
-import React, { } from "react"
-import { FC } from "react"
+import { CSSProperties, FC } from 'react'
+import { useState } from "react"
+import { productList, Product } from "../../data/productlist"
+import {Button, ButtonGroup} from '@mui/material'
 
-interface Props{}
+interface Props {}
+
+const CheckOut: FC<Props> = (props) => {
 
 
-const Checkout: FC<Props> = (props) => {
-    
     return (
         <div>
-            <p>Kundvagn ska lista tillagda produkte, bild, title, antal, pris och kundvagnens totalpris
-                - Betalsätt, fraktsätt, formulär
-            </p>
+            <p>Kundvagn ska lista tillagda produkter. bild, title, antal, pris och kundvagnens totalpris</p>
         </div>
+       
+    )
+}
+
+export default CheckOut
+
+
+
 
 /* <>
  <NavLink style={{...navigationBack, ...fontFamily}} to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>Fortsätt handla</NavLink>
@@ -35,9 +43,3 @@ const Checkout: FC<Props> = (props) => {
 
 </div>
 </> */
-
-    )
-}
-
-
-export default Checkout

@@ -2,22 +2,17 @@ import { CSSProperties, FC } from 'react'
 import { colors } from "../../data/colors"
 /* import DeleteIcon from '@mui/icons-material/Delete'; */
 
-interface Props {
+interface Props {}
 
-}
+/* Logiken för add to cart - importera i App.. */
 
-const cart: FC<Props> = (props) => {
+const Cart: FC<Props> = (props) => {
     return (
         <div>
-        
+         Cart
         </div>
     )
 }
 
-export default cart
+export default Cart
 
-
-const background: CSSProperties = {
-    backgroundColor: colors.primary
-    
-}

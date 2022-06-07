@@ -4,40 +4,44 @@ import { NavLink } from 'react-router-dom'
 import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
 import { Product, productList } from '../../data/productlist' 
-import { fontFamily } from "../../css/common"
+import { fontFamily, styleBtn } from "../../css/common"
 import { fontSize } from "@mui/system"
+import { useCart} from "react-use-cart"
 
 
 interface Props {
-    product: Product
+  product: Product
+  addItems: Product 
 }
 
 const ProductCard: FC<Props> = (props) => {
 
+  const {addItems} = useCart()
+
     return (
-        <div style={{...fontFamily, paddingBottom: "2.5em"}}>
+        <div style={{...fontFamily}}>
             <NavLink to={`/${props.product.id}`}>
                 <img style={imgStyle} src={props.product.image}/>
             </NavLink>
                 <div style={textBox}>
-                  <h2 style={titleStyle}>{props.product.title}</h2><span style={priceStyle}>{props.product.price + " " + "kr"}</span>
+                  <h2 style={{...titleStyle, fontSize: "14px"}}>{props.product.title}</h2>
+                  <p style={{...priceStyle, fontSize: "12px"}}>{props.product.price + " " + "kr"}</p>
+                </div>
+                <div style={textBox}>
+                  <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>{props.product.shortDesc}</p>
+                  <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>Färg: {props.product.color}</p>
                 </div>
             
-           
-            <Button style={{backgroundColor: colors.third, color: colors.secondary}}variant="contained" 
-                onClick={() => console.log(props.product.title)}>Lägg i varukorgen
+          <div style={{display: "flex", justifyContent: "center"}}>
+            <Button style={{...styleBtn, marginTop: "20px"}} variant="contained" 
+                onClick={() => addItems(props.product)}>Lägg i varukorgen
             </Button>
+            </div>
         </div>
     ) 
 }
 
 export default ProductCard 
-
-/* const btnStyle: CSSProperties = {
-    backgroundColor: colors.third, 
-    color: colors.secondary,
-Fixa hover på knapparna samt centrera knapparna
-} */
 
 
 const imgStyle: CSSProperties = {
@@ -45,16 +49,19 @@ const imgStyle: CSSProperties = {
     justifyContent: "center",
     alignItems: "center",
   
-    width: "300px",
-    height: "400px",
+    width: "280px",
+    height: "380px",
     objectFit: "cover",
   }
 
   const textBox: CSSProperties = {
-      display: "flex",
-      justifyContent: "space-between",
-      textAlign: "center"
+    display: "flex",
+    justifyContent: "space-between",
+    textAlign: "center",
+    paddingLeft: "10px",
+    paddingRight: "10px"
   }
+
 
   const titleStyle: CSSProperties = {
     display: "inline-block", 
