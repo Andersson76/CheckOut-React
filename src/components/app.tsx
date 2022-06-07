@@ -12,10 +12,8 @@ import Category2 from "./categories/category2"
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
-import Footer from "./footer"
 import { fontFamily } from "../css/common"
 import { colors } from "../data/colors"
-import Cart from "./context/cart"
 
 
 class App extends Component {
@@ -53,7 +51,6 @@ class App extends Component {
             <Route path='/category2' element={<Category2/>}></Route> 
           </Routes>
         </Router>         
-        </Cart> 
     );  
   }
 }
