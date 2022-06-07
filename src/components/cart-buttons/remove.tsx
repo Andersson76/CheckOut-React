@@ -15,9 +15,9 @@ const RemoveProduct: FC<Props> = (props) => {
 
 // Button-hanterare 
 
-{/* <button onClick={}>
-    Lägg till i varukorgen
-</button> */}
+{/* <Button onClick={}>
+    Remove
+</Button> */}
 
 export default RemoveProduct
 

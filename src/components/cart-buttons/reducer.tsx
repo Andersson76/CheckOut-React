@@ -13,10 +13,6 @@ const CartReducer: FC<Props> = (props) => {
 
 
 
-// Button-hanterare 
-
-
-
 export default CartReducer
 
 const item: CSSProperties = {

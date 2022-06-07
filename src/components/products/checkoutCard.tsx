@@ -14,14 +14,14 @@ interface Props {
   product: Product
 }
 
-const ProductCard: FC<Props> = (props) => {
+const CheckoutCard: FC<Props> = (props) => {
 
-  const [cart, setCart] = useState([])
+    const [cart, setCart] = useState([])
 
-  const addItem = () => {
-   cart.push()
-   console.log(props.product)
-}
+    const addItem = () => {
+     cart.push()
+     console.log(props.product)
+  }
 
 
     return (
@@ -47,7 +47,7 @@ const ProductCard: FC<Props> = (props) => {
     ) 
 }
 
-export default ProductCard 
+export default CheckoutCard 
 
 
 const imgStyle: CSSProperties = {

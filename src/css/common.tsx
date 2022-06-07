@@ -6,6 +6,11 @@ export const fontFamily: CSSProperties = {
     fontFamily: "Aktiv Grotesk Extended,sans-serif"
 }
 
+export const textStyle: CSSProperties = {
+  fontSize: "12px",
+  lineHeight: "1.5",
+  color: colors.third
+}
 
 export const styleBtn: CSSProperties = {
     backgroundColor: colors.third, 

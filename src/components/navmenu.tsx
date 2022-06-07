@@ -1,5 +1,5 @@
 
-import { CSSProperties, FC } from 'react';
+import { CSSProperties, FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { colors } from '../data/colors';
 import { Product} from '../data/productlist';
@@ -10,11 +10,16 @@ import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined
 import { fontFamily } from "../css/common"
 import logo from "../assets/logo.jpg"
 
-import CartContext from "../components/cart-context" 
+import CartContext from "../components/cart-context" // Flytta logiken till Cart-komponent (egen fil...)
 
 interface Props {}
 
 const Navmenu: FC<Props> = (props) => {
+
+  // Flytta logiken till Cart-komponent?
+/*   const contextValue = useContext(CartContext) */
+
+
     return (
         <div>
              <div style={{...styleNavmenu, ...fontFamily}}>
@@ -29,10 +34,10 @@ const Navmenu: FC<Props> = (props) => {
               <Link style={navLinks} to={"/category2"}>{}ASSEC</Link>
            </div>
          
-           <div>
-             <Link style={navLinks} to={"/checkout"}>{<ShoppingBagOutlinedIcon/>}Varukorg</Link>
+           <div> 
+             <Link style={navLinks} to={"/checkout"}>{<ShoppingBagOutlinedIcon/>}</Link> {/* Flytta logiken till Cart-komponent?  */}
              <span>Item in cart:0</span>
-              <span>Total price:0</span>
+              <span>Total price:0</span> 
              <Link style={navLinks} to={"/checkout"}>{<FacebookOutlinedIcon/>}</Link>
              <Link style={navLinks} to={"/checkout"}>{<SubscriptionsOutlinedIcon/>}</Link>
            </div>
