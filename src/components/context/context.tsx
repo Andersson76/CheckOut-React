@@ -2,22 +2,15 @@ import { CSSProperties, FC } from 'react'
 import { colors } from "../../data/colors"
 /* import DeleteIcon from '@mui/icons-material/Delete'; */
 
-interface Props {
+interface Props {}
 
-}
 
-const cart: FC<Props> = (props) => {
+const Cart: FC<Props> = (props) => {
     return (
         <div>
-        
         </div>
     )
 }
 
-export default cart
+export default Cart
 
-
-const background: CSSProperties = {
-    backgroundColor: colors.primary
-    
-}

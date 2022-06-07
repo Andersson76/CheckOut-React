@@ -9,7 +9,7 @@ import { fontSize } from "@mui/system"
 
 
 interface Props {
-    product: Product
+  product: Product
 }
 
 const ProductCard: FC<Props> = (props) => {
@@ -23,9 +23,9 @@ const ProductCard: FC<Props> = (props) => {
                   <h2 style={titleStyle}>{props.product.title}</h2><span style={priceStyle}>{props.product.price + " " + "kr"}</span>
                 </div>
             
-           
-            <Button style={{backgroundColor: colors.third, color: colors.secondary}}variant="contained" 
-                onClick={() => console.log(props.product.title)}>Lägg i varukorgen
+          <div style={{display: "flex", justifyContent: "center"}}>
+            <Button style={{...styleBtn, marginTop: "20px"}} variant="contained" 
+                onClick={() => console.log(props.product)}>Lägg i varukorgen
             </Button>
         </div>
     ) 

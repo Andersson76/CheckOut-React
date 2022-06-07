@@ -1,5 +1,5 @@
 
-import { useState, useEffect, FC } from 'react'
+import { useState, useEffect, FC, PropsWithChildren, PropsWithoutRef } from 'react'
 import { Product } from '../../data/productlist'
 import cartContext from './cartContext'
 
@@ -7,7 +7,10 @@ interface Props {
     product: Product
 }
 
-const cartLogic: FC<Props> = (props) => {
+
+/* Se exemplet från föreläsningen "Exempel-Provider" */
+
+const Provider: FC<PropsWithChildren<Props>> = (props) => {
     
     const[cart, setCart] = useState();
 
@@ -24,5 +27,5 @@ const cartLogic: FC<Props> = (props) => {
     )
 }
 
-export default cartLogic
+export default Provider
     
