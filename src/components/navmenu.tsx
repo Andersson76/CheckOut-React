@@ -10,7 +10,7 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
 
-import { CartContext } from "./cart-context" // Flytta logiken till Cart-komponent (egen fil...)
+import { CartContext } from "./context/cart-context" // Flytta logiken till Cart-komponent (egen fil...)
 
 interface Props {}
 
@@ -19,8 +19,7 @@ const Navmenu: FC<Props> = (props) => {
   // Flytta logiken till Cart-komponent?
  /*  const [cart, setcart] = useContext(CartContext) */
 
- const { cart } = useContext(CartContext)
- console.log(cart)
+// const { itemInCart, addProductToCart, removeProductFromCart } = useContext(CartContext)
 
     return (
         <div>
