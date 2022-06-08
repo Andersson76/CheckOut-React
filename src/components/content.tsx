@@ -13,6 +13,7 @@ import Category2 from "./categories/category2"
 interface Props {}
 
 const Content: FC<Props> = (props) => {
+    
     return (
         <>
             <Routes>

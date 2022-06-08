@@ -3,28 +3,30 @@ import { CSSProperties, FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { colors } from '../data/colors';
 import { Product} from '../data/productlist';
+import { fontLogo, fontFamily } from "../css/common"
+import logo from "../assets/logo.jpg"
 
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
-import { fontFamily } from "../css/common"
-import logo from "../assets/logo.jpg"
 
-import CartContext from "../components/cart-context" // Flytta logiken till Cart-komponent (egen fil...)
+import { CartContext } from "./cart-context" // Flytta logiken till Cart-komponent (egen fil...)
 
 interface Props {}
 
 const Navmenu: FC<Props> = (props) => {
 
   // Flytta logiken till Cart-komponent?
-/*   const contextValue = useContext(CartContext) */
+ /*  const [cart, setcart] = useContext(CartContext) */
 
+ const { cart } = useContext(CartContext)
+ console.log(cart)
 
     return (
         <div>
              <div style={{...styleNavmenu, ...fontFamily}}>
            <div>
-           <Link style={{color: "black", textDecoration: "none"}} to={"/"}><img src={logo} width="40" height="30"></img></Link>
+           <Link style={{color: "black", textDecoration: "none", ...fontLogo}} to={"/"}><img src={logo} width="40" height="30"></img></Link>
            </div> 
            <div>
               <Link style={navLinks} to={"/"}>HEM</Link>
@@ -36,8 +38,8 @@ const Navmenu: FC<Props> = (props) => {
          
            <div> 
              <Link style={navLinks} to={"/checkout"}>{<ShoppingBagOutlinedIcon/>}</Link> {/* Flytta logiken till Cart-komponent?  */}
-             <span>Item in cart:0</span>
-              <span>Total price:0</span> 
+           {/*   <span>Item in cart: {cart.length}</span>
+              <span>Total price:0</span>  */}
              <Link style={navLinks} to={"/checkout"}>{<FacebookOutlinedIcon/>}</Link>
              <Link style={navLinks} to={"/checkout"}>{<SubscriptionsOutlinedIcon/>}</Link>
            </div>
@@ -47,6 +49,9 @@ const Navmenu: FC<Props> = (props) => {
     );
 }
 
+
+export default Navmenu
+
 const navLinks: CSSProperties = {
     textDecoration: "none",
     margin: "8px",
@@ -54,11 +59,9 @@ const navLinks: CSSProperties = {
     color: colors.third
   }
   
-  
   const styleLogo: CSSProperties = {
     fontSize: "22px"
   }
-  
   
   const styleNavmenu: CSSProperties = {
     width: "100%",
@@ -70,7 +73,3 @@ const navLinks: CSSProperties = {
     marginBottom: "20px"
   }
 
-
-
-
-export default Navmenu

@@ -16,13 +16,6 @@ interface Props {
 
 const ProductCard: FC<Props> = (props) => {
 
-  const [cart, setCart] = useState([])
-
-  const addItem = () => {
-   cart.push()
-   console.log(props.product)
-}
-
 
     return (
         <div style={{...fontFamily}}>
@@ -40,7 +33,7 @@ const ProductCard: FC<Props> = (props) => {
             
           <div style={{display: "flex", justifyContent: "center"}}>
             <Button style={{...styleBtn, marginTop: "20px"}} variant="contained" 
-                onClick={addItem}>Lägg i varukorgen
+                onClick={() => console.log(props.product)}>Lägg i varukorgen
             </Button>
             </div>
         </div>

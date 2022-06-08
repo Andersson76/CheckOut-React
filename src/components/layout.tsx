@@ -4,7 +4,7 @@ import Navmenu from "./navmenu"
 import Home from "./pages/home"
 import Footer from "./footer"
 import Content from "./content"
-import CartProvider from "../components/cart-context" 
+import CartProvider from "./cart-context" 
 
 
 const Layout: FC = () => {
