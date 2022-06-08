@@ -20,7 +20,7 @@ Reduce Product
 
 export interface ContextData { 
     itemInCart: CartItem[],
-    addProductToCart: () => void,
+    addProductToCart: (product: Product) => void,
     removeProductFromCart: () => void
 }
 
@@ -48,9 +48,9 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
            let cartListCopy = [...itemInCart]
 
-            const foundProduct = productList.find((product) => Number(product) == product.id)
+            const foundProduct = productList.find((item) => product.id == item.id)
     
-            if(!foundProduct) {
+            if(foundProduct) {
             return
         }
 
