@@ -7,21 +7,10 @@ import Products from "../pages/product"
 
 interface Props {}
 
-/* Props/Funktioner vi vill ha:
-productList
-Items in Cart/Quantty
-Total Price
-Empty Cart
-
-Add Product
-Remove Product
-Reduce Product
- */
-
 export interface ContextData { 
     itemInCart: CartItem[],
     addProductToCart: (product: Product) => void,
-    removeProductFromCart: () => void
+    removeProductFromCart: () => void /* typa up med id... */
 }
 
 const DefaultContextData: ContextData = { 
@@ -36,49 +25,54 @@ export interface CartItem {
 }
 
 
-export const CartContext = React.createContext<ContextData>(DefaultContextData)  /* Typen vi tar in är ContexData */ // Logiken ska ligga i egen fil?
+export const CartContext = React.createContext<ContextData>(DefaultContextData)  
+
 
 const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
-/* const { värde, värde } = useContext(importerar i Context) = som exporterar från Provider-filen vi skapat  */
-
-    const [itemInCart, setCart] = useState<CartItem[]>([]) // State, funktion & hook useState med tom array
+    const [itemInCart, setCart] = useState<CartItem[]>([])
     
+
     const addProductToCart = (product: Product) => {
 
-           let cartListCopy = [...itemInCart]
+           let cartList = [...itemInCart]
 
             const foundProduct = productList.find((item) => product.id == item.id)
     
-            if(foundProduct) {
-            return
+             if(foundProduct) {
+                cartList.push({
+                    product: product,
+                    qty: 1
+                })
+        
+  /*       } else {
+            cartList[].qty++ 
         }
+ */
+        setCart(cartList)
 
-
-
-           cartListCopy.push()
-           setCart
-
-         
-       //  setCart(cartItem)
     }
-    const removeProductFromCart = () => {
+
+}
+
+                const removeProductFromCart = () => {
       
-    }
+                }
 
-    /* I useEffect om vi vill göra en funktion inom useEffecten gör vi det i useEffekt */
-   /* useEffect(() => { /* Körs en gång (2 ggr med StrickMode i main) 
 
-    }, [])
-*/
-
-    return(
-        <CartContext.Provider value={{itemInCart, addProductToCart, removeProductFromCart }}> {/* Allt från cart-objektet... Value kommer vara tillgängligt i alla komponenter*/}
-          {props.children} {/* props.children är det vi renderar ut i Layouten */}
-        </CartContext.Provider>
+            return(
+                <CartContext.Provider value={{itemInCart, addProductToCart, removeProductFromCart }}> 
+                    {props.children} 
+                </CartContext.Provider>
     )
 
 }
 
 export default CartProvider
 
+
+   /* I useEffect om vi vill göra en funktion inom useEffecten gör vi det i useEffekt */
+   /* useEffect(() => { /* Körs en gång (2 ggr med StrickMode i main) 
+
+    }, [])
+*/

@@ -2,7 +2,7 @@ import { CSSProperties, FC, useContext } from "react"
 import React from "react"
 import { useState } from "react"
 import { NavLink } from 'react-router-dom'
-import { Button } from '@mui/material'
+import { Button, ListItemSecondaryAction } from '@mui/material'
 import { colors } from '../../data/colors'
 import { Product, productList } from '../../data/productlist' 
 import { fontFamily, styleBtn } from "../../css/common"
@@ -18,7 +18,8 @@ interface Props {
 const ProductCard: FC<Props> = (props) => {
 
   const { itemInCart, addProductToCart, removeProductFromCart } = useContext(CartContext)
-  console.log(itemInCart, addProductToCart, removeProductFromCart)
+  console.log(itemInCart)
+  
 
     return (
         <div style={{...fontFamily}}>
@@ -36,7 +37,7 @@ const ProductCard: FC<Props> = (props) => {
             
           <div style={{display: "flex", justifyContent: "center"}}>
             <Button style={{...styleBtn, marginTop: "20px"}} variant="contained" 
-                onClick={() => addProductToCart()}>Lägg i varukorgen
+                onClick={() => addProductToCart(props.product)}>Lägg i varukorgen
             </Button>
             </div>
         </div>
