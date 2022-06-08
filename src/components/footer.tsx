@@ -6,7 +6,7 @@ import { fontFamily } from "../css/common"
 interface Props {}
    
 
-/* Betalningsmedlerna? */
+/* Betalningsmedlerna i footern? */
 
 const Footer: FC<Props> = (props) => {
 
