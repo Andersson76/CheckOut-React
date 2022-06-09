@@ -6,24 +6,16 @@ import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
 import { fontFamily, styleBtn, textStyle } from "../../css/common"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { CartItem } from "../context/cart-context"
 /* Delet och reducerknapp */
 
 interface Props{
+    cartItem: CartItem
 }
 
-// Samma logik med addProductToCart...
-/*  const { itemInCart, addProductToCart, removeProductFromCart } = useContext(CartContext)
-    console.log(itemInCart) */
 
 const CheckoutCard: FC<Props> = (props) => {
 
-
-       /*  const { productId } = useParams()
-
-        const foundProduct = productList.find((product) => Number(productId) == product.id)
-    
-        if(!foundProduct) {
-          /*   return <Navigate to ="/" /> */
     
         return (
             <>
@@ -34,13 +26,15 @@ const CheckoutCard: FC<Props> = (props) => {
             <div style={{...floatcontainer, ...fontFamily}}>
                 
                 <div style={textBox1}>
+                    <div>
                     <h2 style={{fontSize:"18px"}}>Produkter</h2>
-                  {/*  <img style={imgStyle} src={foundProduct!.image} alt="" /> */}
+                    <img style={imgStyle} src={props.cartItem.product.image} alt="" />
+                    </div>
                    <div style={{...textStyle, ...fontFamily}}>
-                        <p>Title: </p>
-                        <p>Färg: </p>
-                        <p>Pris: </p>
-                        <p>Antal: </p>
+                        <h3>{props.cartItem.product.title} </h3>
+                        <p>Färg: {props.cartItem.product.color} </p>
+                        <p>Pris: {props.cartItem.product.price} kr</p>
+                        <p>Antal: {props.cartItem.qty} </p>
                     </div>
                 </div>
 
@@ -51,11 +45,6 @@ const CheckoutCard: FC<Props> = (props) => {
                        <p>Leverans:</p>
                        <h4>Totalt: </h4>
                     </div>
-                    
-                {/*     <h3 style={{fontSize: "14px"}}>{foundProduct!.title}</h3>
-                    <p style={{...textStyle, paddingRight: "100px"}}>{foundProduct!.desctiption}</p>
-                    <p style={{fontSize: "12px"}}>Färg: {foundProduct!.color}</p>
-                    <p style={{fontSize: "12px"}}>{foundProduct!.price + " " + "kr"}</p>  */}
 
                     <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
                         onClick={() => console.log("clicked")}>Slutför köp
@@ -88,6 +77,7 @@ const floatcontainer: CSSProperties = {
 }
 
 const textBox1: CSSProperties = {
+    display: "flex",
     flex: "1",
     marginLeft: "160px",
     borderBottom: "1px solid #D0D0D0",
@@ -103,8 +93,8 @@ const textBox: CSSProperties = {
 }  
 
 const imgStyle: CSSProperties = {
-    width: "300px",
-    height: "400px",
+    width: "150px",
+    height: "200px",
     objectFit: "cover",
 
 }

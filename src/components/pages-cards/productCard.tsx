@@ -16,7 +16,7 @@ interface Props {
 const ProductCard: FC<Props> = (props) => {
 
   const { itemInCart, addProductToCart, removeProductFromCart } = useContext(CartContext)
-  console.log(itemInCart)
+
   
 
     return (
