@@ -1,8 +1,6 @@
 import React from "react"
 import { FC, PropsWithChildren, useState, useEffect } from "react"
 import { Product, productList } from "../../data/productlist"
-import CartItems from "./test"
-import Products from "../pages/product"
 
 
 interface Props {}
@@ -10,18 +8,19 @@ interface Props {}
 export interface ContextData { 
     itemInCart: CartItem[],
     addProductToCart: (product: Product) => void,
-    removeProductFromCart: () => void /* typa up med id... */
+    removeProductFromCart: (/* id: number */) => void 
+    getTotalPrice: (/* id: number */) => void
 }
 
 const DefaultContextData: ContextData = { 
     itemInCart: [],
     addProductToCart: () => {},
-    removeProductFromCart: () => {}
-    
+    removeProductFromCart: () => {},
+    getTotalPrice: () => {}
 }
 export interface CartItem {
     product: Product,
-    qty: number
+    qty: number,
 }
 
 
@@ -31,37 +30,52 @@ export const CartContext = React.createContext<ContextData>(DefaultContextData)
 const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
-    
 
     const addProductToCart = (product: Product) => {
 
-           let cartList = [...itemInCart]
-
-            const foundProduct = productList.find((item) => product.id == item.id)
+        let cartList = [...itemInCart]
     
-             if(foundProduct) {
-                cartList.push({
-                    product: product,
-                    qty: 1
-                })
-        
-  /*       } else {
-            cartList[].qty++ 
+         const isItemInCart = productList.find((item) => product.id == item.id)
+    
+          if(isItemInCart/* isItemInCart == -1 */) {
+             cartList.push({
+                 product: product,
+                 qty: 1,
+             })
+     /* 
+            } else {
+             cartList[isItemInCart].qty++ 
+            }
+         */
+            setCart(cartList)
         }
- */
-        setCart(cartList)
-
     }
+    
 
-}
 
-                const removeProductFromCart = () => {
-      
+            const removeProductFromCart = () => {
+
+                
+                /*setCart
+                 Reducer function (ack, item) => {??  */
+
+                /* if(item.id === id) {
+                    if(item.amount === 1) return ack
+                    return [...ack, {}...item, amount: item -1}]
+
                 }
 
+            }), [] as Product[]
+                    */
+        }
+
+            const getTotalPrice = () => {
+
+            
+            }
 
             return(
-                <CartContext.Provider value={{itemInCart, addProductToCart, removeProductFromCart }}> 
+                <CartContext.Provider value={{itemInCart, addProductToCart, removeProductFromCart, getTotalPrice}}> 
                     {props.children} 
                 </CartContext.Provider>
     )

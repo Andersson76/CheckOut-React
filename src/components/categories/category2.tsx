@@ -1,7 +1,7 @@
 import React, { } from "react"
 import { FC, CSSProperties } from "react"
 import { Product, productList } from '../../data/productlist' 
-import CategoryCard from "../products/categoryCard"
+import CategoryCard from "../pages-cards/categoryCard"
 import { imgCategory } from "../../css/common"
 import { NavLink } from "react-router-dom"
 import { fontFamily, styleHeader } from "../../css/common"

@@ -5,6 +5,8 @@ import {Button, ButtonGroup} from '@mui/material'
 
 interface Props {}
 
+/* Detta ska ligga i CheckoutCard?? */
+
 const CartItems: FC<Props> = (props) => {
 
     const [cartItems, setCartItems] = useState([]) // State, funktion, Hook = empty array // Contex? 

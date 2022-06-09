@@ -5,14 +5,16 @@ import Home from "./pages/home"
 import Footer from "./footer"
 import Content from "./content"
 import CartProvider from "./context/cart-context" 
+import Banner from "./banner"
 
 
 const Layout: FC = () => {
     return (
         <CartProvider>
             <div>
+                <Banner/>
                 <Navmenu/>
-                    <Content/>
+                <Content/>
                 <Footer/>
             </div>
         </CartProvider>

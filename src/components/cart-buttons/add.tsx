@@ -1,19 +1,31 @@
 import { CSSProperties, FC } from "react"
+import { Product, productList } from "../../data/productlist"
+import CartProvider from "../context/cart-context"
 
 interface Props {}
 
 
-// Kopplas ihop med context? 
+/* const addProductToCart = (product: Product) => {
 
-const AddProduct: FC<Props> = (props) => {
+    let cartList = [...itemInCart]
 
-    return (
-        <div>
-        
-        </div>
-    )
-}
+     const isItemInCart = productList.find((item) => product.id == item.id)
 
+      if(isItemInCart) {
+         cartList.push({
+             product: product,
+             qty: 1,
+            price:
+         })
+ 
+     } else {
+             cartList[].qty++ 
+          }
+     
+     setCart(cartList)
+ }
+
+} */
 
 
 // Button-hanterare 
@@ -22,7 +34,7 @@ const AddProduct: FC<Props> = (props) => {
     Lägg till i varukorgen
 </button> */}
 
-export default AddProduct
+/* export default AddProduct */
 
 const item: CSSProperties = {
 
