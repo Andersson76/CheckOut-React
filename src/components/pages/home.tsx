@@ -1,11 +1,11 @@
 import React from "react"
 import { CSSProperties, FC } from "react"
 import { productList } from '../../data/productlist' 
-import ProductCard from "../pages-cards/productCard"
 import { imgContainer} from "../../css/common"
 import { fontFamily, styleHeader } from "../../css/common"
 import { colors } from "../../data/colors";
-import AutoPlaySwipeableViews from "../heroslider"
+/* import AutoPlaySwipeableViews from "../heroslider" */
+import ProductCard from "../pages-cards/productCard"
 
 interface Props {}
  

@@ -27,10 +27,10 @@ const CheckoutCard: FC<Props> = (props) => {
                 
                 <div style={textBox1}>
                     <div>
-                    <h2 style={{fontSize:"18px"}}>Produkter</h2>
-                    <img style={imgStyle} src={props.cartItem.product.image} alt="" />
-                    </div>
-                   <div style={{...textStyle, ...fontFamily}}>
+                        <h2 style={{fontSize:"16px"}}>Produkter</h2>
+                        <img style={imgStyle} src={props.cartItem.product.image} alt="" />
+                    </div> 
+                   <div style={{...textStyle, ...fontFamily, paddingTop: "40px", paddingLeft: "15px"}}>
                         <h3>{props.cartItem.product.title} </h3>
                         <p>Färg: {props.cartItem.product.color} </p>
                         <p>Pris: {props.cartItem.product.price} kr</p>
@@ -39,7 +39,7 @@ const CheckoutCard: FC<Props> = (props) => {
                 </div>
 
                 <div style={textBox}>
-                    <h2 style={{fontSize:"18px"}}>Totalsumma Order</h2>
+                    <h2 style={{fontSize:"16px"}}>Totalsumma Order</h2>
                     <div style={{...textStyle, ...fontFamily}}>
                        <p>Produkter:</p>
                        <p>Leverans:</p>
