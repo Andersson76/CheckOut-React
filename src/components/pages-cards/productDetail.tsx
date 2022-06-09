@@ -9,12 +9,13 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { CartContext/* , addProductToCart */ } from "../context/cart-context"
 
 interface Props{
-    product: Product 
 }
 
 const ProductDetail: FC<Props> = (props) => {
 
         const { productId } = useParams()
+        const { addProductToCart } = useContext(CartContext)
+
 
         const foundProduct = productList.find((product) => Number(productId) == product.id)
     
@@ -41,7 +42,7 @@ const ProductDetail: FC<Props> = (props) => {
                     <p style={{fontSize: "12px"}}>{foundProduct!.price + " " + "kr"}</p> 
 
                     <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
-                        onClick={() => console.log("clicked")}>Lägg i varukorgen
+                        onClick={() => addProductToCart(foundProduct)}>Lägg i varukorgen
                     </Button>   
 
 
