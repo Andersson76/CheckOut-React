@@ -6,16 +6,11 @@ import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
 import { fontFamily, styleBtn, textStyle } from "../../css/common"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { CartContext } from "../context/cart-context"
+import { CartContext/* , addProductToCart */ } from "../context/cart-context"
 
 interface Props{
- /*    product: Product */
+    product: Product 
 }
-
-// Samma logik med addProductToCart???
-
-/* const { itemInCart, addProductToCart, removeProductFromCart } = useContext(CartContext)
-console.log(itemInCart)  */
 
 const ProductDetail: FC<Props> = (props) => {
 
@@ -45,9 +40,9 @@ const ProductDetail: FC<Props> = (props) => {
                     <p style={{fontSize: "12px"}}>Färg: {foundProduct!.color}</p>
                     <p style={{fontSize: "12px"}}>{foundProduct!.price + " " + "kr"}</p> 
 
-                    {/* <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
-                        onClick={() => {addProductToCart()}}>Lägg i varukorgen
-                    </Button>  */}
+                    <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
+                        onClick={() => console.log("clicked")}>Lägg i varukorgen
+                    </Button>   
 
 
                     {/* Här tänker jag att slutför köp kommer upp när man lagt till i varukorgen - remove doc som i js */}
