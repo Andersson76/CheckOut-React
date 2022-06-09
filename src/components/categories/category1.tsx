@@ -2,7 +2,7 @@ import React from "react"
 import { CSSProperties, FC } from "react"
 import { colors } from "../../data/colors"
 import { Product, productList } from '../../data/productlist' 
-import ProductCard from "../products/productCard"
+import ProductCard from "../pages-cards/productCard"
 import { imgContainer, fontFamily, imgCategory, styleHeader  } from "../../css/common"
 import { NavLink } from "react-router-dom"
 

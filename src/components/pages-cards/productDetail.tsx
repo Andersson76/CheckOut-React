@@ -1,15 +1,21 @@
 import React, { } from "react"
-import { FC, CSSProperties } from "react"
+import { FC, CSSProperties, useContext } from "react"
 import { Product, productList } from "../../data/productlist"
 import { useParams, Navigate, NavLink } from "react-router-dom"
 import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
 import { fontFamily, styleBtn, textStyle } from "../../css/common"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { CartContext } from "../context/cart-context"
 
 interface Props{
+ /*    product: Product */
 }
 
+// Samma logik med addProductToCart???
+
+/* const { itemInCart, addProductToCart, removeProductFromCart } = useContext(CartContext)
+console.log(itemInCart)  */
 
 const ProductDetail: FC<Props> = (props) => {
 
@@ -22,8 +28,11 @@ const ProductDetail: FC<Props> = (props) => {
         }
     
         return (
-        <>
-           <NavLink style={{...navigationBack, ...fontFamily}} to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>Fortsätt handla</NavLink>
+            <>
+            <NavLink style={{...navigationBack, ...fontFamily}} to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>
+                Fortsätt  handla
+            </NavLink>
+            
             <div style={{...floatcontainer, ...fontFamily}}>
                 
                 <div style={imgBox}>
@@ -36,19 +45,20 @@ const ProductDetail: FC<Props> = (props) => {
                     <p style={{fontSize: "12px"}}>Färg: {foundProduct!.color}</p>
                     <p style={{fontSize: "12px"}}>{foundProduct!.price + " " + "kr"}</p> 
 
-                    <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
-                        onClick={() => console.log("clicked")}>Lägg i varukorgen
-                    </Button>
+                    {/* <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
+                        onClick={() => {addProductToCart()}}>Lägg i varukorgen
+                    </Button>  */}
 
 
                     {/* Här tänker jag att slutför köp kommer upp när man lagt till i varukorgen - remove doc som i js */}
-                    <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
+                   
+                   <Button style={{...styleBtn, marginTop: "10px"}} variant="contained" 
                         onClick={() => console.log("clicked")}>Slutför köp
                     </Button>
+                   
                 </div>
                 </div>
-            </>
-    
+                </>
             ) 
         }  
 
@@ -59,7 +69,7 @@ export default ProductDetail
 const navigationBack: CSSProperties = {
     color: "black", 
     textDecoration: "none",
-    margin: "90px",
+    margin: "160px",
     fontSize: "12px"
 }
 
@@ -71,7 +81,7 @@ const floatcontainer: CSSProperties = {
 
 const imgBox: CSSProperties = {
     flex: "1",
-    marginLeft: "80px" 
+    marginLeft: "160px" 
 }  
 
 const textBox: CSSProperties = {

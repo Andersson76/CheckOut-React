@@ -20,7 +20,8 @@ export const styleBtn: CSSProperties = {
     backgroundColor: colors.third, 
     color: colors.secondary,
     fontSize: "12px",
-    
+    display: "flex"
+
    /*  Fixa hover på knapparna samt centrera knapparna */
 }
 

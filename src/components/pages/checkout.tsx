@@ -3,18 +3,23 @@ import { useState } from "react"
 import { productList, Product } from "../../data/productlist"
 import {Button, ButtonGroup} from '@mui/material'
 import { textStyle, fontFamily, styleBtn } from "../../css/common"
-import CheckoutCard from "../products/checkoutCard"
+import CheckoutCard from "../pages-cards/checkoutCard"
 
 interface Props {}
 
 const CheckOut: FC<Props> = (props) => {
 
-  
+
+      /*  {cartList.map(item => <li key={item}>{item} */
 
     return (
+        
         <div>
-            <p style={{...textStyle, ...fontFamily}}>Kundvagn ska lista tillagda produkter. bild, title, antal, pris och kundvagnens totalpris</p>
-
+            <CheckoutCard/>
+                <div>
+                
+                </div>
+           
         </div>
        
     )
