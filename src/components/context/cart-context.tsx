@@ -8,15 +8,15 @@ interface Props { }
 export interface ContextData {
     itemInCart: CartItem[],
     addProductToCart: (product: Product) => void,
-    removeProductFromCart: (/* id: number */) => void
-    getTotalPrice: (/* id: number */) => void
+    removeProductFromCart: (id: number) => void,
+    getTotalItems: ( item: CartItem[]) => void
 }
 
 const DefaultContextData: ContextData = {
     itemInCart: [],
     addProductToCart: () => { },
     removeProductFromCart: () => { },
-    getTotalPrice: () => { }
+    getTotalItems: () => { }
 }
 export interface CartItem {
     product: Product,
@@ -35,11 +35,7 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
         let cartList = [...itemInCart]
 
-        console.log(product)
-
         const isItemInCart = itemInCart.findIndex((item) => product.id == item.product.id)
-
-        console.log(isItemInCart)
 
         if (isItemInCart == -1) {
             cartList.push({
@@ -56,29 +52,33 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
 
 
-    const removeProductFromCart = () => {
+    const removeProductFromCart = (id: Number) => {
 
 
-        /*setCart
-         Reducer function (ack, item) => {??  */
-
-        /* if(item.id === id) {
-            if(item.amount === 1) return ack
-            return [...ack, {}...item, amount: item -1}]
-    
-        }
-    
-    }), [] as Product[]
-            */
+        setCart((itemInCart) => itemInCart.filter((item) => id !== item.product.id))
+        setCart(prev =>
+            prev.reduce((ack, item) => {
+              if (item.product.id === id) {
+                if (item.qty === 1) return ack;
+                return [...ack, { ...item, qty: item.qty - 1 }];
+              } else {
+                return [...ack, item];
+              }
+            }, [] as CartItem[])
+          );
+         
     }
 
-    const getTotalPrice = () => {
-
-
+    const getTotalItems = (items: CartItem[]) => {
+        
+        items.reduce((ack: number, item) => ack + item.qty, 0);
+    
     }
+
+    
 
     return (
-        <CartContext.Provider value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice }}>
+        <CartContext.Provider value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalItems }}>
             {props.children}
         </CartContext.Provider>
     )
