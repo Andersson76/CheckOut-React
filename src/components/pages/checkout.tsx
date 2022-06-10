@@ -20,7 +20,11 @@ const CheckOut: FC<Props> = (props) => {
         
         <div>
                 <div>
+                    
+                {itemInCart.length === 0 ? <p>Varukorgen är tom</p> : null}
+
                 {
+
                     itemInCart.map((cartItem) => 
                         <CheckoutCard cartItem={cartItem} />
 

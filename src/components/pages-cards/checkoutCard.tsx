@@ -1,13 +1,17 @@
 import React, { } from "react"
-import { FC, CSSProperties } from "react"
+import { FC, CSSProperties, useContext, useState } from "react"
 import { Product, productList } from "../../data/productlist"
 import { useParams, Navigate, NavLink } from "react-router-dom"
-import { Button } from '@mui/material'
+import { Button, ButtonGroup } from '@mui/material'
 import { colors } from '../../data/colors'
 import { fontFamily, styleBtn, textStyle } from "../../css/common"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { CartItem } from "../context/cart-context"
-/* Delet och reducerknapp */
+import ClearIcon from '@mui/icons-material/Clear';
+import {CartContext} from "../context/cart-context"
+import CartItems from "../context/test"
+
+
 
 interface Props{
     cartItem: CartItem
@@ -15,6 +19,8 @@ interface Props{
 
 
 const CheckoutCard: FC<Props> = (props) => {
+    const { removeProductFromCart, addProductToCart } = useContext(CartContext)
+    const [itemInCart, setCart] = useState<CartItem[]>([])
 
     
         return (
@@ -35,6 +41,18 @@ const CheckoutCard: FC<Props> = (props) => {
                         <p>Färg: {props.cartItem.product.color} </p>
                         <p>Pris: {props.cartItem.product.price} kr</p>
                         <p>Antal: {props.cartItem.qty} </p>
+                        <button onClick={() => removeProductFromCart(props.cartItem.product.id)}><ClearIcon/></button>
+                        <ButtonGroup>
+                            <Button onClick={() => addProductToCart(props.cartItem.product) }>
+                                +
+                            </Button>
+
+   
+                            <Button onClick={() => removeProductFromCart(props.cartItem.product.id)}>
+                                -
+
+                             </Button>
+                        </ButtonGroup> 
                     </div>
                 </div>
 
