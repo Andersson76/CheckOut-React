@@ -1,12 +1,9 @@
 import { CSSProperties, FC, useContext } from "react"
-import React from "react"
-import { useState } from "react"
 import { NavLink } from 'react-router-dom'
-import { Button, ListItemSecondaryAction } from '@mui/material'
+import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
-import { Product, productList } from '../../data/productlist' 
+import { Product } from '../../data/productlist' 
 import { fontFamily, styleBtn } from "../../css/common"
-import { fontSize } from "@mui/system"
 import { CartContext } from "../context/cart-context"
 
 interface Props {
@@ -16,8 +13,6 @@ interface Props {
 const ProductCard: FC<Props> = (props) => {
 
   const { addProductToCart } = useContext(CartContext)
-
-  
 
     return (
         <div style={{...fontFamily}}>
@@ -29,8 +24,10 @@ const ProductCard: FC<Props> = (props) => {
                   <p style={{...priceStyle, fontSize: "12px"}}>{props.product.price + " " + "kr"}</p>
                 </div>
                 <div style={textBox}>
-                  <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>{props.product.shortDesc}</p>
-                  <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>Färg: {props.product.color}</p>
+                  <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>
+                    {props.product.shortDesc}</p>
+                  <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>
+                    Färg: {props.product.color}</p>
                 </div>
             
           <div style={{display: "flex", justifyContent: "center"}}>

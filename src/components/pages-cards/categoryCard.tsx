@@ -21,7 +21,8 @@ const CategoryCard: FC<Props> = (props) => {
             </NavLink>
 
             <div style={textBox}>
-                  <h2 style={{...titleStyle, fontSize: "14px"}}>{props.product.title}</h2><p style={{...priceStyle, fontSize: "12px"}}>{props.product.price + " " + "kr"}</p>
+                  <h2 style={{...titleStyle, fontSize: "14px"}}>{props.product.title}</h2>
+                  <p style={{...priceStyle, fontSize: "12px"}}>{props.product.price + " " + "kr"}</p>
                 </div>
         </div>
     ) 

@@ -9,18 +9,26 @@ export interface ContextData {
     itemInCart: CartItem[],
     addProductToCart: (product: Product) => void,
     removeProductFromCart: (id: number) => void,
+    reduceProductInCart: (id: number) => void,
     getTotalItems: ( item: CartItem[]) => void
 }
 
 const DefaultContextData: ContextData = {
     itemInCart: [],
-    addProductToCart: () => { },
-    removeProductFromCart: () => { },
-    getTotalItems: () => { }
+    addProductToCart: () => {},
+    removeProductFromCart: () => {},
+    reduceProductInCart: () => {},
+    getTotalItems: () => {}
 }
+
 export interface CartItem {
     product: Product,
     qty: number,
+}
+
+
+interface TotalItems {
+    /* Interface för totalPrice */
 }
 
 
@@ -51,34 +59,51 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
 
 
-
     const removeProductFromCart = (id: Number) => {
 
-
         setCart((itemInCart) => itemInCart.filter((item) => id !== item.product.id))
-        setCart(prev =>
-            prev.reduce((ack, item) => {
-              if (item.product.id === id) {
-                if (item.qty === 1) return ack;
-                return [...ack, { ...item, qty: item.qty - 1 }];
-              } else {
-                return [...ack, item];
-              }
-            }, [] as CartItem[])
-          );
          
     }
+
+    const reduceProductInCart = (id: Number) => {
+      
+         setCart(prev => // Prev reprecenterar CartItem[]
+         prev.reduce((itemInCart, item) => { // itemInCart representerar CartItem[], och item CartItem
+           if (item.product.id === id) {
+             if (item.qty === 1) return itemInCart;
+             return [...itemInCart, { ...item, qty: item.qty-1}];
+           } else {
+             return [...itemInCart, item];
+           }
+         }, [] as CartItem[])
+       );
+    }
+
+
 
     const getTotalItems = (items: CartItem[]) => {
         
         items.reduce((ack: number, item) => ack + item.qty, 0);
+
+
+    /*     let cart = localStorage.getItem("cart")
+
+        if(cart) {
+            cart = JSON.parse(cart)
+        } else { 
+            cart = []
+        }
+    
+        let totalSum = cart.reduce((sum,item) => sum + item.quantity, 0); */
+        
+
     
     }
 
     
 
     return (
-        <CartContext.Provider value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalItems }}>
+        <CartContext.Provider value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalItems, reduceProductInCart }}>
             {props.children}
         </CartContext.Provider>
     )

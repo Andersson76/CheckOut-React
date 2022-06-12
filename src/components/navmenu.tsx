@@ -2,20 +2,21 @@
 import { CSSProperties, FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { colors } from '../data/colors';
-import { Product, productList} from '../data/productlist';
+import { Product } from '../data/productlist';
 import { fontLogo, fontFamily } from "../css/common"
 import logotext from "../assets/logotext.jpg"
-
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
 import { CartContext } from "./context/cart-context" 
 
-interface Props {}
+interface Props {
+  product: Product
+}
 
 const Navmenu: FC<Props> = (props) => {
 
-  const { itemInCart } = useContext(CartContext)
+  const { itemInCart, addProductToCart } = useContext(CartContext)
   /* const totalPrice = itemInCart.reduce((acc,item) => acc + item.price, 0); */
 
     return (
@@ -34,8 +35,14 @@ const Navmenu: FC<Props> = (props) => {
               </div>
          
               <div> 
-                <Link style={navLinks} to={"/checkout"}>{<ShoppingBagOutlinedIcon/>}</Link> 
-                <span style={qtyStyle}>{itemInCart.length}</span>
+                <Link style={navLinks} to={"/checkout"} >{<ShoppingBagOutlinedIcon/>}</Link> 
+               
+                <span style={qtyStyle}>{itemInCart.length}</span> {/* Detta ska vi ändra & göra en funktion istället som gör att varukorgen uppdateras vaje gång vi lägger till en produkt, + 1.. */}
+
+                 {/* onClick={() => 
+                            addProductToCart(props.product)} */}
+
+
                 {/*   <span>Total price: {totalPrice}</span>  */}
                 <Link style={navLinks} to={"/checkout"}>{<FacebookOutlinedIcon/>}</Link>
                 <Link style={navLinks} to={"/checkout"}>{<SubscriptionsOutlinedIcon/>}</Link>
@@ -57,7 +64,7 @@ export default Navmenu
 const qtyStyle: CSSProperties = {
   fontSize: "8px",
   transform: "translate(150%, -220%)",
-  backgroundColor: "black",
+  backgroundColor: "#044778",
   color: "white",
   borderRadius: "50%",
   zIndex: "1",
