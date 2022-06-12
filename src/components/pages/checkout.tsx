@@ -1,38 +1,47 @@
 import { CSSProperties, FC } from 'react'
-import { useState, useContext} from "react"
+import { useContext } from "react"
 import { productList, Product } from "../../data/productlist"
 import {Button, ButtonGroup} from '@mui/material'
 import { textStyle, fontFamily, styleBtn } from "../../css/common"
-import  CartProvider, { CartItem } from "../context/cart-context" 
 import {CartContext} from "../context/cart-context" 
-
 import CheckoutCard from "../pages-cards/checkoutCard"
+import { NavLink } from "react-router-dom"
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import CartBox from "../pages-cards/cartBoxCard"
 
-interface Props {
-}
+interface Props {}
 
 const CheckOut: FC<Props> = (props) => {
 
-    const { itemInCart, removeProductFromCart } = useContext(CartContext)
-
+    const { itemInCart } = useContext(CartContext)
 
     return (
         
-        <div>
-                <div>
-                    
-                {itemInCart.length === 0 ? <p>Varukorgen är tom</p> : null}
+        <div> {/* height: "100vh", */}
 
-                {
+            <NavLink style={{...navigationBack, ...fontFamily}} to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>
+                Fortsätt  handla
+            </NavLink>
 
+            <div>
+                {itemInCart.length == 0 ? null : 
+                    <h2 style={{fontSize:"16px",  marginLeft: "160px", marginTop: "40px", ...fontFamily}}>
+                        Produkter</h2> 
+                }
+
+            <div style={{display: "flex", justifyContent: "center", ...fontFamily}}>
+                {itemInCart.length === 0 ? <h2>Varukorgen är tom</h2> : null}
+            </div>
+
+            </div>
+                <div /* style={{borderBottom: "1px solid #D0D0D0", borderTop: "1px solid #D0D0D0"}} */> {/* Bara runt produkterna?? */}
+                    {
                     itemInCart.map((cartItem) => 
                         <CheckoutCard cartItem={cartItem} />
-
-                       )
+                        )
                     }
                 </div>
-           
-        </div>
+            </div>
        
     )
 }
@@ -40,3 +49,10 @@ const CheckOut: FC<Props> = (props) => {
 export default CheckOut
 
 
+
+const navigationBack: CSSProperties = {
+    color: "black", 
+    textDecoration: "none",
+    margin: "160px",
+    fontSize: "12px"
+}

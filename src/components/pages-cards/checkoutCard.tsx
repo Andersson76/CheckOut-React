@@ -1,17 +1,9 @@
-import React, { } from "react"
+import React from "react"
 import { FC, CSSProperties, useContext, useState } from "react"
-import { Product, productList } from "../../data/productlist"
-import { useParams, Navigate, NavLink } from "react-router-dom"
 import { Button, ButtonGroup } from '@mui/material'
-import { colors } from '../../data/colors'
 import { fontFamily, styleBtn, textStyle } from "../../css/common"
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { CartItem } from "../context/cart-context"
-import ClearIcon from '@mui/icons-material/Clear';
-import {CartContext} from "../context/cart-context"
-import CartItems from "../context/test"
-
-
+import { CartItem, CartContext } from "../context/cart-context"
+import ClearIcon from '@mui/icons-material/Clear'
 
 interface Props{
     cartItem: CartItem
@@ -19,40 +11,45 @@ interface Props{
 
 
 const CheckoutCard: FC<Props> = (props) => {
-    const { removeProductFromCart, addProductToCart } = useContext(CartContext)
-    const [itemInCart, setCart] = useState<CartItem[]>([])
 
-    
+    const { removeProductFromCart, addProductToCart, reduceProductInCart } = useContext(CartContext)
+
+      function changeBackground(e) { // Typa upp e?
+            e.target.style.background = "#044778";
+            /* onMouseLeave */
+  }
+  
         return (
             <>
-            <NavLink style={{...navigationBack, ...fontFamily}} to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>
-                Fortsätt  handla
-            </NavLink>
-            
             <div style={{...floatcontainer, ...fontFamily}}>
                 
-                <div style={textBox1}>
+                <div style={textBoxItems}>
                     <div>
-                        <h2 style={{fontSize:"16px"}}>Produkter</h2>
                         <img style={imgStyle} src={props.cartItem.product.image} alt="" />
                     </div> 
-                   <div style={{...textStyle, ...fontFamily, paddingTop: "40px", paddingLeft: "15px"}}>
+                   <div style={{...textStyle, ...fontFamily, paddingLeft: "25px"}}>
                         <h3>{props.cartItem.product.title} </h3>
                         <p>Färg: {props.cartItem.product.color} </p>
                         <p>Pris: {props.cartItem.product.price} kr</p>
                         <p>Antal: {props.cartItem.qty} </p>
-                        <button onClick={() => removeProductFromCart(props.cartItem.product.id)}><ClearIcon/></button>
-                        <ButtonGroup>
-                            <Button onClick={() => addProductToCart(props.cartItem.product) }>
-                                +
-                            </Button>
+                    <div  style={{display: "flex", justifyContent: "space-between"}}>
 
-   
-                            <Button onClick={() => removeProductFromCart(props.cartItem.product.id)}>
+                    <ButtonGroup>
+                        <Button style={{color: "black", border: "1px solid black"}} onClick={() => 
+                            addProductToCart(props.cartItem.product)}>
+                            +
+                        </Button>
+
+                        <Button style={{color: "black", border: "1px solid black"}} onClick={() => 
+                            reduceProductInCart(props.cartItem.product.id)}>
                                 -
+                         </Button>
+                    </ButtonGroup> 
 
-                             </Button>
-                        </ButtonGroup> 
+                        <ClearIcon style={{cursor: "pointer"}} onClick={() => 
+                            removeProductFromCart(props.cartItem.product.id)}>
+                        </ClearIcon>
+                    </div>
                     </div>
                 </div>
 
@@ -60,15 +57,40 @@ const CheckoutCard: FC<Props> = (props) => {
                     <h2 style={{fontSize:"16px"}}>Totalsumma Order</h2>
                     <div style={{...textStyle, ...fontFamily}}>
                        <p>Produkter:</p>
-                       <p>Leverans:</p>
                        <h4>Totalt: </h4>
                     </div>
 
-                    <Button style={{...styleBtn, marginTop: "50px"}} variant="contained" 
+
+                    <Button style={{...styleBtn, marginTop: "40px"}} onMouseOver={changeBackground} variant="contained" 
                         onClick={() => console.log("clicked")}>Slutför köp
                     </Button>
                 </div>
             </div>
+
+
+        {/* Denna delen ska ploppa upp när man lägger till i varukorgen - logiken är inte klar */}
+            <div style={cartCardStyle}>
+                <div>
+                    <h4 style={{fontSize:"12px", ...fontFamily}}>Lagt i varukorgen</h4>
+                </div>
+                <div style={textBoxCart}>
+                    <div>
+                        <img style={imgCartBox} src={props.cartItem.product.image} alt="" />
+                    </div> 
+            
+                <div style={{fontSize: "10px", ...fontFamily, paddingLeft: "25px"}}>
+                    <h3>{props.cartItem.product.title} </h3>
+                    <p>Färg: {props.cartItem.product.color} </p>
+                    <p>Pris: {props.cartItem.product.price} kr</p>
+                   
+                    <Button style={styleBtn} onMouseOver={changeBackground} variant="contained" 
+                        onClick={() => console.log("clicked")}>Gå till kassan
+                    </Button>
+                </div>
+                </div>
+            </div>
+
+
            {/*  <div style={textBox}>
                 <p style={{...textStyle, ...fontFamily}}>
                         Inputformulär</p>
@@ -81,47 +103,49 @@ const CheckoutCard: FC<Props> = (props) => {
 export default CheckoutCard
 
 
-const navigationBack: CSSProperties = {
-    color: "black", 
-    textDecoration: "none",
-    margin: "160px",
-    fontSize: "12px"
-}
-
 const floatcontainer: CSSProperties = {
     display: "flex",
-    marginTop: "30px",
     marginBottom: "30px"
 }
 
-const textBox1: CSSProperties = {
+const textBoxItems: CSSProperties = {
     display: "flex",
     flex: "1",
     marginLeft: "160px",
-    borderBottom: "1px solid #D0D0D0",
-    borderTop: "1px solid #D0D0D0",
 }  
 
 const textBox: CSSProperties = {
     flex: "1",
     marginRight: "50px", 
     marginLeft: "50px",
-    borderBottom: "1px solid #D0D0D0",
-    borderTop: "1px solid #D0D0D0",
 }  
 
 const imgStyle: CSSProperties = {
     width: "150px",
     height: "200px",
     objectFit: "cover",
-
 }
 
-const imgContainer: CSSProperties = {
+
+/* Tillhör cartbox */
+
+const imgCartBox: CSSProperties = {
+    width: "80px",
+    height: "120px",
+    objectFit: "cover",
+}
+
+const cartCardStyle: CSSProperties = {
+    width: "30%",
+    boxSizing: "border-box", 
+    borderBottom: "1px solid #D0D0D0", 
+    borderTop: "1px solid #D0D0D0",
+    paddingLeft: "50px",
+    backgroundColor: "white"
+}
+
+const textBoxCart: CSSProperties = {
     display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: "3em",
-    paddingTop: "3em",
-    paddingBottom: "3em"
+    flex: "1",
+    marginBottom: "10px"
 }
