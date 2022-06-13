@@ -1,16 +1,16 @@
 import React from "react"
 import { FC, PropsWithChildren, useState, useEffect } from "react"
-import { Product, productList } from "../../data/productlist"
+import { Product } from "../../data/productlist"
 
 
-interface Props { }
+interface Props {}
 
 export interface ContextData {
-    itemInCart: CartItem[],
+    itemInCart: CartItem[], 
     addProductToCart: (product: Product) => void,
     removeProductFromCart: (id: number) => void,
     reduceProductInCart: (id: number) => void,
-    getTotalItems: ( item: CartItem[]) => void
+    getTotalPrice: (totalPrice: number) => void,
 }
 
 const DefaultContextData: ContextData = {
@@ -18,7 +18,7 @@ const DefaultContextData: ContextData = {
     addProductToCart: () => {},
     removeProductFromCart: () => {},
     reduceProductInCart: () => {},
-    getTotalItems: () => {}
+    getTotalPrice: () => {},
 }
 
 export interface CartItem {
@@ -26,9 +26,8 @@ export interface CartItem {
     qty: number,
 }
 
-
-interface TotalItems {
-    /* Interface för totalPrice */
+export interface Totarice {
+    totalPrice: number
 }
 
 
@@ -39,11 +38,13 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
 
+
     const addProductToCart = (product: Product) => {
 
         let cartList = [...itemInCart]
 
-        const isItemInCart = itemInCart.findIndex((item) => product.id == item.product.id)
+        const isItemInCart = itemInCart.findIndex((item) => 
+            product.id == item.product.id)
 
         if (isItemInCart == -1) {
             cartList.push({
@@ -53,57 +54,48 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
         } else {
             cartList[isItemInCart].qty++
         }
-
         setCart(cartList)
     }
 
 
 
-    const removeProductFromCart = (id: Number) => {
+    const removeProductFromCart = (id: number) => {
 
-        setCart((itemInCart) => itemInCart.filter((item) => id !== item.product.id))
+        setCart((itemInCart) => itemInCart.filter((item) => 
+            id !== item.product.id))
          
     }
 
-    const reduceProductInCart = (id: Number) => {
+    const reduceProductInCart = (id: number) => {
       
          setCart(prev => // Prev reprecenterar CartItem[]
-         prev.reduce((itemInCart, item) => { // itemInCart representerar CartItem[], och item CartItem
-           if (item.product.id === id) {
-             if (item.qty === 1) return itemInCart;
-             return [...itemInCart, { ...item, qty: item.qty-1}];
-           } else {
-             return [...itemInCart, item];
-           }
-         }, [] as CartItem[])
-       );
+
+            prev.reduce((itemInCart, item) => { // itemInCart representerar CartItem[], och item CartItem
+             if (item.product.id === id) {
+                if (item.qty === 1) 
+                    return itemInCart
+                    return [...itemInCart, { ...item, qty: item.qty - 1}]
+            } else {
+                     return [...itemInCart, item]
+            }
+                
+        }, [] as CartItem[])
+    )
     }
 
-
-
-    const getTotalItems = (items: CartItem[]) => {
-        
-        items.reduce((ack: number, item) => ack + item.qty, 0);
-
-
-    /*     let cart = localStorage.getItem("cart")
-
-        if(cart) {
-            cart = JSON.parse(cart)
-        } else { 
-            cart = []
-        }
     
-        let totalSum = cart.reduce((sum,item) => sum + item.quantity, 0); */
-        
 
-    
-    }
+    const getTotalPrice = (totalPrice: number) => { 
 
+        totalPrice = itemInCart.reduce((itemInCart, item) => 
+            (item.product.price * item.qty) , 0)
+
+    } 
     
 
     return (
-        <CartContext.Provider value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalItems, reduceProductInCart }}>
+        <CartContext.Provider 
+        value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, reduceProductInCart }}>
             {props.children}
         </CartContext.Provider>
     )

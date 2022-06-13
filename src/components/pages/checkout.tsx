@@ -7,9 +7,12 @@ import {CartContext} from "../context/cart-context"
 import CheckoutCard from "../pages-cards/checkoutCard"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import CartBox from "../pages-cards/cartBoxCard"
+/* import CartBox from "../pages-cards/cartBoxCard" */
 
 interface Props {}
+
+/* Sidan som renderar ut kassasidan  */
+
 
 const CheckOut: FC<Props> = (props) => {
 
