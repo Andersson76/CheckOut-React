@@ -18,6 +18,11 @@ const CheckOut: FC<Props> = (props) => {
 
     const { itemInCart, getTotalPrice } = useContext(CartContext)
 
+    function changeBackground(e) { // Typa upp e?
+        e.target.style.background = "#044778";
+        /* onMouseLeave */
+}
+
     return (
         
         <div> {/* height: "100vh", */}
@@ -37,14 +42,19 @@ const CheckOut: FC<Props> = (props) => {
             </div>
 
             </div>
-                <div  style={{borderBottom: "1px solid #D0D0D0", borderTop: "1px solid #D0D0D0"}} > {/* Bara runt produkterna?? */}
+                <div>
                     {
                     itemInCart.map((cartItem) => 
                         <CheckoutCard cartItem={cartItem} />
                         )
                     }
                     <div>
-                        <h2>Grand Total: {getTotalPrice()}</h2>
+                    
+                    <h2>Totalsumma order: {getTotalPrice()}</h2>
+                    
+                    <Button style={{...styleBtn, marginTop: "40px"}} onMouseOver={changeBackground} variant="contained" 
+                        onClick={() => console.log("clicked")}>Slutför köp
+                    </Button>
                     </div>
                 </div>
 

@@ -81,11 +81,16 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
     }
    
     
+    // Foreach 
+
+
 
     const getTotalPrice = () => { 
 
+        /* variabler */
+
         return itemInCart.map((item) => 
-            (item.product.price + item.qty) , 0)
+            (item.product.price*item.qty), 0) // Bli nr
 
     } 
     
