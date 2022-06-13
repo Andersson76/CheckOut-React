@@ -9,10 +9,11 @@ interface Props{
     cartItem: CartItem
 }
 
+/* Komponent/logik för det som visas på kassasidan */
 
 const CheckoutCard: FC<Props> = (props) => {
 
-    const { removeProductFromCart, addProductToCart, reduceProductInCart } = useContext(CartContext)
+    const { removeProductFromCart, addProductToCart, reduceProductInCart, getTotalPrice } = useContext(CartContext)
 
       function changeBackground(e) { // Typa upp e?
             e.target.style.background = "#044778";
@@ -31,33 +32,35 @@ const CheckoutCard: FC<Props> = (props) => {
                         <h3>{props.cartItem.product.title} </h3>
                         <p>Färg: {props.cartItem.product.color} </p>
                         <p>Pris: {props.cartItem.product.price} kr</p>
-                        <p>Antal: {props.cartItem.qty} </p>
-                    <div  style={{display: "flex", justifyContent: "space-between"}}>
 
-                    <ButtonGroup>
-                        <Button style={{color: "black", border: "1px solid black"}} onClick={() => 
-                            addProductToCart(props.cartItem.product)}>
-                            +
-                        </Button>
+                    <div style={{display: "flex", justifyContent: "space-between", marginTop: "40px"}}>
+                        <ButtonGroup>
+                            <Button style={{color: "black", border: "1px solid black"}} onClick={() => 
+                                addProductToCart(props.cartItem.product)}>
+                                +
+                            </Button>
 
-                        <Button style={{color: "black", border: "1px solid black"}} onClick={() => 
-                            reduceProductInCart(props.cartItem.product.id)}>
+                            <p style={{paddingLeft: "10px", paddingRight: "10px"}}> {props.cartItem.qty} </p>
+                        
+                            <Button style={{color: "black", border: "1px solid black"}} onClick={() => 
+                                reduceProductInCart(props.cartItem.product.id)}>
                                 -
-                         </Button>
-                    </ButtonGroup> 
+                            </Button>
+                        </ButtonGroup> 
 
-                        <ClearIcon style={{cursor: "pointer"}} onClick={() => 
+                        <ClearIcon style={{cursor: "pointer", paddingLeft: "100px", paddingTop: "10px"}} onClick={() => 
                             removeProductFromCart(props.cartItem.product.id)}>
                         </ClearIcon>
                     </div>
                     </div>
                 </div>
 
+{/* Detta skall ligga någon annan stans och inte påverkas/visas i varje produktkomponent (pga map-funktionen så renderas den ut varje gång... */}
                 <div style={textBox}>
                     <h2 style={{fontSize:"16px"}}>Totalsumma Order</h2>
                     <div style={{...textStyle, ...fontFamily}}>
-                       <p>Produkter:</p>
-                       <h4>Totalt: </h4>
+                       <p>Produkter: {props.cartItem.qty}</p>
+                       <h4>Totalt: {props.cartItem.product.price*props.cartItem.qty}</h4>
                     </div>
 
 
@@ -67,28 +70,6 @@ const CheckoutCard: FC<Props> = (props) => {
                 </div>
             </div>
 
-
-        {/* Denna delen ska ploppa upp när man lägger till i varukorgen - logiken är inte klar */}
-            <div style={cartCardStyle}>
-                <div>
-                    <h4 style={{fontSize:"12px", ...fontFamily}}>Lagt i varukorgen</h4>
-                </div>
-                <div style={textBoxCart}>
-                    <div>
-                        <img style={imgCartBox} src={props.cartItem.product.image} alt="" />
-                    </div> 
-            
-                <div style={{fontSize: "10px", ...fontFamily, paddingLeft: "25px"}}>
-                    <h3>{props.cartItem.product.title} </h3>
-                    <p>Färg: {props.cartItem.product.color} </p>
-                    <p>Pris: {props.cartItem.product.price} kr</p>
-                   
-                    <Button style={styleBtn} onMouseOver={changeBackground} variant="contained" 
-                        onClick={() => console.log("clicked")}>Gå till kassan
-                    </Button>
-                </div>
-                </div>
-            </div>
 
 
            {/*  <div style={textBox}>

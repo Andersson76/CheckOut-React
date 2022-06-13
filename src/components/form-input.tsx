@@ -5,6 +5,8 @@ https://formik.org/docs/overview*/
 import { CSSProperties, FC } from 'react'
 
 
+/* Här ska vi ha formuläret som man fyller i på kassasidan */
+
 interface Props {
     firstname: string,
     lastname: string,

@@ -10,6 +10,8 @@ interface Props {
   product: Product
 }
 
+/* Komponent/logik för det som visas på startsidan (produkterna) */
+
 const ProductCard: FC<Props> = (props) => {
 
   const { addProductToCart } = useContext(CartContext)

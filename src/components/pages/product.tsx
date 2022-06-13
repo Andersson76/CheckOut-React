@@ -8,6 +8,8 @@ import { colors } from "../../data/colors";
 
 interface Props {}
  
+/* Produktsidan */
+
  const Products : FC<Props> = (props) => {
 
         return (

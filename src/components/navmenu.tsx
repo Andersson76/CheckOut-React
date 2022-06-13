@@ -11,13 +11,14 @@ import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined
 import { CartContext } from "./context/cart-context" 
 
 interface Props {
-  product: Product
+/*   product: Product */
 }
+
+/* Vår Meny */
 
 const Navmenu: FC<Props> = (props) => {
 
   const { itemInCart, addProductToCart } = useContext(CartContext)
-  /* const totalPrice = itemInCart.reduce((acc,item) => acc + item.price, 0); */
 
     return (
         <div style={{position: "sticky"}}>
@@ -37,13 +38,12 @@ const Navmenu: FC<Props> = (props) => {
               <div> 
                 <Link style={navLinks} to={"/checkout"} >{<ShoppingBagOutlinedIcon/>}</Link> 
                
-                <span style={qtyStyle}>{itemInCart.length}</span> {/* Detta ska vi ändra & göra en funktion istället som gör att varukorgen uppdateras vaje gång vi lägger till en produkt, + 1.. */}
+                <span style={qtyStyle}>{itemInCart.length}</span> 
+                {/* Detta ska vi ändra & göra en funktion istället som gör att varukorgen uppdateras vaje gång vi lägger till en produkt, + 1.. */}
 
                  {/* onClick={() => 
                             addProductToCart(props.product)} */}
 
-
-                {/*   <span>Total price: {totalPrice}</span>  */}
                 <Link style={navLinks} to={"/checkout"}>{<FacebookOutlinedIcon/>}</Link>
                 <Link style={navLinks} to={"/checkout"}>{<SubscriptionsOutlinedIcon/>}</Link>
               </div>
@@ -55,11 +55,6 @@ const Navmenu: FC<Props> = (props) => {
 
 export default Navmenu
 
-
-/* const header: CSSProperties = {
-  position: "absolute"
-}
- */
 
 const qtyStyle: CSSProperties = {
   fontSize: "8px",
@@ -75,8 +70,6 @@ const qtyStyle: CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
   cursor: "pointer"
-  /* Fixa hover */
-
 }
 
 const navLinks: CSSProperties = {

@@ -6,10 +6,12 @@ import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
 import { fontFamily, styleBtn, textStyle } from "../../css/common"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { CartContext/* , addProductToCart */ } from "../context/cart-context"
+import { CartContext } from "../context/cart-context"
 
 interface Props{
 }
+
+/* Komponent/logiken för det som är på singelsidan */
 
 const ProductDetail: FC<Props> = (props) => {
 
@@ -26,7 +28,7 @@ const ProductDetail: FC<Props> = (props) => {
         return (
             <>
             <NavLink style={{...navigationBack, ...fontFamily}} to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>
-                Fortsätt  handla
+                Fortsätt handla
             </NavLink>
             
             <div style={{...floatcontainer, ...fontFamily}}>
@@ -46,10 +48,10 @@ const ProductDetail: FC<Props> = (props) => {
                     </Button>   
 
 
-                    {/* Här tänker jag att slutför köp kommer upp när man lagt till i varukorgen - remove doc som i js */}
+                    {/*Knappen ska endast visas när man lagt i varukorgen - remove doc som i js */}
                    
                    <Button style={{...styleBtn, marginTop: "10px"}} variant="contained" 
-                        onClick={() => console.log("clicked")}>Slutför köp
+                        onClick={() => console.log("clicked")}>Gå till kassan
                     </Button>
                    
                 </div>
