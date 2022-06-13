@@ -14,11 +14,6 @@ interface Props{
 const CheckoutCard: FC<Props> = (props) => {
 
     const { removeProductFromCart, addProductToCart, reduceProductInCart, getTotalPrice } = useContext(CartContext)
-
-       function changeBackground(e) {
-            e.target.style.background = "#044778";
-             //onMouseLeave 
-        }
   
         return (
             <>
@@ -55,26 +50,19 @@ const CheckoutCard: FC<Props> = (props) => {
                     </div>
                 </div>
 
-{/* Detta skall ligga någon annan stans och inte påverkas/visas i varje produktkomponent (pga map-funktionen så renderas den ut varje gång... */}
                 <div style={textBox}>
-                    <h2 style={{fontSize:"14px"}}>Totalsumma: </h2>
                     <div style={{...textStyle, ...fontFamily}}>
-                       <p>Produkter: {props.cartItem.qty}</p>
-                       <h4>Totalt: {props.cartItem.product.price*props.cartItem.qty} kr</h4>
+                       {/* <p>Produkter: {props.cartItem.qty}</p> */}
+                       <h4>Totaltsumma: {props.cartItem.product.price*props.cartItem.qty}</h4>
                     </div>
-
-
-                    <Button style={{...styleBtn, marginTop: "40px"}} onMouseOver={changeBackground} variant="contained" 
-                        onClick={() => console.log("clicked")}>Slutför köp
-                    </Button>
                 </div>
             </div>
 
-                    
+
 
            {/*  <div style={textBox}>
                 <p style={{...textStyle, ...fontFamily}}>
-                Inputformulär</p>
+                        Inputformulär</p>
             </div> */}
             </>
             ) 
