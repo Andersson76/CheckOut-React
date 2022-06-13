@@ -16,7 +16,7 @@ interface Props {}
 
 const CheckOut: FC<Props> = (props) => {
 
-    const { itemInCart } = useContext(CartContext)
+    const { itemInCart, getTotalPrice } = useContext(CartContext)
 
     return (
         
@@ -37,13 +37,17 @@ const CheckOut: FC<Props> = (props) => {
             </div>
 
             </div>
-                <div /* style={{borderBottom: "1px solid #D0D0D0", borderTop: "1px solid #D0D0D0"}} */> {/* Bara runt produkterna?? */}
+                <div  style={{borderBottom: "1px solid #D0D0D0", borderTop: "1px solid #D0D0D0"}} > {/* Bara runt produkterna?? */}
                     {
                     itemInCart.map((cartItem) => 
                         <CheckoutCard cartItem={cartItem} />
                         )
                     }
+                    <div>
+                        <h2>Grand Total: {getTotalPrice()}</h2>
+                    </div>
                 </div>
+
             </div>
        
     )

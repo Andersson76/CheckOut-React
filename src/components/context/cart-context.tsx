@@ -10,7 +10,7 @@ export interface ContextData {
     addProductToCart: (product: Product) => void,
     removeProductFromCart: (id: number) => void,
     reduceProductInCart: (id: number) => void,
-    getTotalPrice: (totalPrice: number) => void,
+    getTotalPrice: () => number,
 }
 
 const DefaultContextData: ContextData = {
@@ -18,7 +18,7 @@ const DefaultContextData: ContextData = {
     addProductToCart: () => {},
     removeProductFromCart: () => {},
     reduceProductInCart: () => {},
-    getTotalPrice: () => {},
+    getTotalPrice: () => 0,
 }
 
 export interface CartItem {
@@ -26,9 +26,6 @@ export interface CartItem {
     qty: number,
 }
 
-export interface Totarice {
-    totalPrice: number
-}
 
 
 export const CartContext = React.createContext<ContextData>(DefaultContextData)
@@ -82,13 +79,13 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
         }, [] as CartItem[])
     )
     }
-
+   
     
 
-    const getTotalPrice = (totalPrice: number) => { 
+    const getTotalPrice = () => { 
 
-        totalPrice = itemInCart.reduce((itemInCart, item) => 
-            (item.product.price * item.qty) , 0)
+        return itemInCart.map((item) => 
+            (item.product.price + item.qty) , 0)
 
     } 
     
@@ -102,7 +99,10 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
 }
 
+
 export default CartProvider
+
+
 
 
 /* I useEffect om vi vill göra en funktion inom useEffecten gör vi det i useEffekt */
