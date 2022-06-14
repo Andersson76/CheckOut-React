@@ -8,8 +8,6 @@ interface Props{
     cartItem: CartItem
 }
 
-/* Komponent/logik för det som visas på kassasidan */
-
 const CheckoutCard: FC<Props> = (props) => {
 
     const { removeProductFromCart,

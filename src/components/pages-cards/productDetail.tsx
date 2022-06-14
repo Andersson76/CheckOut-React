@@ -11,9 +11,8 @@ interface Props{}
 
 const ProductDetail: FC<Props> = (props) => {
 
-    function changeBackground(e) { // importera?
+    function changeBackground(e) { 
         e.target.style.background = "#044778";
-        /* onMouseLeave */
     }
 
     const { productId } = useParams()
@@ -57,12 +56,7 @@ const ProductDetail: FC<Props> = (props) => {
                     onMouseOver={changeBackground} 
                         onClick={() => 
                             addProductToCart(foundProduct)}>Lägg i varukorgen
-                    </Button>   
-                    {/*Knappen ska endast visas när man lagt i varukorgen - remove doc som i js */}
-                   
-                   {/* <Button style={{...styleBtn, marginTop: "10px"}} variant="contained" 
-                        onClick={() => console.log("clicked")}>Gå till kassan
-                    </Button> */}           
+                    </Button>            
                 </div>
             </div>
              </>

@@ -9,6 +9,8 @@ export interface Payment {
     image: string
 }
 
+/* Varje betalsätt ska innehålla ett formulär för nödvändig information. Fälten i formuläret ska gå att automatisk fyllas i. */
+
 export const payments: Payment[] = [
     {
         id: 1,

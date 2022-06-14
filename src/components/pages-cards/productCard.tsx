@@ -12,19 +12,17 @@ interface Props {
 
 const ProductCard: FC<Props> = (props) => {
 
-  // Popup state
-/*   const [countPopUp, setPopUp] = useState(0)
+  // Popup state - cart
+/* const [countPopUp, setPopUp] = useState(0)
   const PopUp = () => {
     setPopUp(
       countPopUp+1
     )
-  }
- */
+  } */
 
-  function changeBackground(e) { // importer
+  function changeBackground(e) { 
     e.target.style.background = "#044778";
-    /* onMouseLeave */
-}
+  }
 
   const { addProductToCart } = useContext(CartContext)
 
@@ -86,7 +84,6 @@ const imgStyle: CSSProperties = {
     paddingLeft: "10px",
     paddingRight: "10px"
   }
-
 
   const titleStyle: CSSProperties = {
     display: "inline-block", 

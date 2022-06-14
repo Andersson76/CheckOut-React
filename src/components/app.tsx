@@ -4,8 +4,6 @@ import Layout from './layout'
 
 const App: FC =() => {
 
-  /* Renderar ut de som ligger i layouten */
-
   return (
     <BrowserRouter>
       <Layout />

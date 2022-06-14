@@ -7,7 +7,6 @@ import Content from "./content"
 import CartProvider from "./context/cart-context" 
 import Banner from "./banner"
 
-/* Visar sidans komponenter */
 
 const Layout: FC = () => {
     return (

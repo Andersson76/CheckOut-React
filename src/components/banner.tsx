@@ -2,8 +2,6 @@ import { CSSProperties, FC } from 'react';
 import { colors } from '../data/colors';
 import { fontFamily } from "../css/common"
 
-/* Banner längst upp på sidan */
-
 const Banner: FC = () => {
     return (
         <div style={{...bannerStyle, ...fontFamily}}>
