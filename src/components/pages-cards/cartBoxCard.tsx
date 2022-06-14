@@ -43,6 +43,23 @@ const CartBox: FC<Props> = (props) => {
 
 export default CartBox */
 
-const cartBoxStyle: CSSProperties = {
+const imgCartBox: CSSProperties = {
+    width: "80px",
+    height: "120px",
+    objectFit: "cover",
+}
 
+const cartCardStyle: CSSProperties = {
+    width: "30%",
+    boxSizing: "border-box", 
+    borderBottom: "1px solid #D0D0D0", 
+    borderTop: "1px solid #D0D0D0",
+    paddingLeft: "50px",
+    backgroundColor: "white"
+}
+
+const textBoxCart: CSSProperties = {
+    display: "flex",
+    flex: "1",
+    marginBottom: "10px"
 }

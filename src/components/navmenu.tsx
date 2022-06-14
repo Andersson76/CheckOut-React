@@ -2,29 +2,26 @@
 import { CSSProperties, FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { colors } from '../data/colors';
-import { Product } from '../data/productlist';
 import { fontLogo, fontFamily } from "../css/common"
 import logotext from "../assets/logotext.jpg"
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
-import { CartContext } from "./context/cart-context" 
+import { CartContext, CartItem } from "./context/cart-context" 
 
-interface Props {
-/*   product: Product */
-}
-
-/* Vår Meny */
+interface Props {}
 
 const Navmenu: FC<Props> = (props) => {
 
-  const { itemInCart, addProductToCart } = useContext(CartContext)
+  const { getTotalQty } = useContext(CartContext)
 
     return (
         <div style={{position: "sticky"}}>
           <div style={{...styleNavmenu, ...fontFamily, paddingBottom: "30px"}}>
               <div>
-                <Link style={{color: "black", textDecoration: "none", ...fontLogo}} to={"/"}><img src={logotext} width="40" height="25"></img></Link>
+                <Link style={{color: "black", textDecoration: "none", ...fontLogo}} to={"/"}>
+                  <img src={logotext} width="40" height="25"></img>
+                </Link>
               </div> 
               
               <div>
@@ -36,16 +33,25 @@ const Navmenu: FC<Props> = (props) => {
               </div>
          
               <div> 
-                <Link style={navLinks} to={"/checkout"} >{<ShoppingBagOutlinedIcon/>}</Link> 
+                <Link style={navLinks} to={"/checkout"}>
+                  {<ShoppingBagOutlinedIcon/>}
+                </Link> 
                
-                <span style={qtyStyle}>{itemInCart.length}</span> 
-                {/* Detta ska vi ändra & göra en funktion istället som gör att varukorgen uppdateras vaje gång vi lägger till en produkt, + 1.. */}
+                <span style={qtyStyle}>
+                  {getTotalQty()}
+                </span> 
 
-                 {/* onClick={() => 
-                            addProductToCart(props.product)} */}
+               {/* {addProductToCart(props.product)} */}
 
-                <Link style={navLinks} to={"/checkout"}>{<FacebookOutlinedIcon/>}</Link>
-                <Link style={navLinks} to={"/checkout"}>{<SubscriptionsOutlinedIcon/>}</Link>
+               {/*  onClick={() => 
+                                updateProductInCart(props.cartItem.product.id)}> */}
+
+                <Link style={navLinks} to={"/checkout"}>
+                  {<FacebookOutlinedIcon/>}
+                </Link>
+                <Link style={navLinks} to={"/checkout"}>
+                  {<SubscriptionsOutlinedIcon/>}
+                  </Link>
               </div>
           </div>
         </div>

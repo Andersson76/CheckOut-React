@@ -10,6 +10,21 @@ export const fontLogo: CSSProperties = {
   fontFamily: "Poppins, sans-serif"
 }
 
+export const floatcontainer: CSSProperties = {
+  display: "flex",
+  marginBottom: "30px",
+}
+
+export const floatDiv: CSSProperties = {
+  display: "flex",
+  marginBottom: "30px",
+  width: "60%",
+  marginLeft: "auto",
+  marginRight: "auto",
+  justifyContent: "space-between"
+}
+
+
 export const textStyle: CSSProperties = {
   fontSize: "12px",
   lineHeight: "1.5",

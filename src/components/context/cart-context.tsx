@@ -9,23 +9,24 @@ export interface ContextData {
     itemInCart: CartItem[], 
     addProductToCart: (product: Product) => void,
     removeProductFromCart: (id: number) => void,
-    reduceProductInCart: (id: number) => void,
+    updateProductInCart: (id: number) => void,
     getTotalPrice: () => number,
+    getTotalQty: () => number,
 }
 
 const DefaultContextData: ContextData = {
     itemInCart: [],
     addProductToCart: () => {},
     removeProductFromCart: () => {},
-    reduceProductInCart: () => {},
+    updateProductInCart: () => {},
     getTotalPrice: () => 0,
+    getTotalQty: () => 0
 }
 
 export interface CartItem {
     product: Product,
-    qty: number,
+    qty: number
 }
-
 
 
 export const CartContext = React.createContext<ContextData>(DefaultContextData)
@@ -60,14 +61,12 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
         setCart((itemInCart) => itemInCart.filter((item) => 
             id !== item.product.id))
-         
     }
 
-    const reduceProductInCart = (id: number) => {
+    const updateProductInCart = (id: number) => {
       
-         setCart(prev => // Prev reprecenterar CartItem[]
-
-            prev.reduce((itemInCart, item) => { // itemInCart representerar CartItem[], och item CartItem
+         setCart(prev => 
+            prev.reduce((itemInCart, item) => { 
              if (item.product.id === id) {
                 if (item.qty === 1) 
                     return itemInCart
@@ -80,24 +79,37 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
     )
     }
    
-    
-    // Foreach 
-
-
 
     const getTotalPrice = () => { 
 
-        /* variabler */
+        let totalPrice = 0;
 
-        return itemInCart.map((item) => 
-            (item.product.price*item.qty), 0) // Bli nr
+        itemInCart.forEach(item => {
+          totalPrice += item.product.price*item.qty
+        })
 
-    } 
-    
+        return totalPrice
+    }
+
+
+    const getTotalQty = () => { 
+        let totalQty= 0;
+
+        itemInCart.forEach(item => {
+          totalQty += item.product.id*item.qty /* Här ska det ej vara id utan plussar med produkt */
+        })
+
+        return totalQty
+
+    }
+
+    const checkOutOrder = () => { 
+
+    }
 
     return (
         <CartContext.Provider 
-        value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, reduceProductInCart }}>
+        value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty }}>
             {props.children}
         </CartContext.Provider>
     )
@@ -113,5 +125,4 @@ export default CartProvider
 /* I useEffect om vi vill göra en funktion inom useEffecten gör vi det i useEffekt */
 /* useEffect(() => { /* Körs en gång (2 ggr med StrickMode i main)
 
- }, [])
-*/
+ }, []*/

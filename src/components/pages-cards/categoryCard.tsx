@@ -1,8 +1,6 @@
-import { CSSProperties, FC, useState } from "react"
-import React from "react"
+import { CSSProperties, FC } from "react"
 import { NavLink } from 'react-router-dom'
-import { colors } from '../../data/colors'
-import { Product, productList } from '../../data/productlist' 
+import { Product } from '../../data/productlist' 
 import { fontFamily } from "../../css/common"
 
 
