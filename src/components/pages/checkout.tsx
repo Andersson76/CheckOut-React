@@ -32,7 +32,7 @@ const CheckOut: FC<Props> = (props) => {
                     <h2 style={{fontSize:"16px",  marginLeft: "230px", marginTop: "40px", ...fontFamily}}>
                         Produkter</h2> 
                 }
-                <div style={{display: "flex", justifyContent: "center", ...fontFamily}}>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", ...fontFamily}}>
                     {itemInCart.length === 0 ? 
                         <h2>Din varukorg är tom</h2> 
                         : null}
@@ -54,17 +54,23 @@ const CheckOut: FC<Props> = (props) => {
                 <div style={textBox}> 
                     <div style={{...textStyle, ...fontFamily}}>
                         {itemInCart.length == 0 ? null : 
+                        <>
                             <h3 style={{fontSize: "16px"}}>
                                 Totalsumma order:  
                                      {getTotalPrice()} kr
-                                    {/* Frakt & betalsätt */}
                             </h3>
-                        }
-
-                        <Button style={{...styleBtn, marginTop: "40px"}} 
+                            <h4>
+                                Frakt: 
+                            </h4>
+                            <h4>
+                                Betalsätt:
+                            </h4>
+                            <Button style={{...styleBtn, marginTop: "40px"}} 
                             onMouseOver={changeBackground} variant="contained" 
                                 onClick={() => console.log("clicked")}>Slutför köp
-                        </Button> 
+                            </Button> 
+                        </>
+                        }
                     </div>
                 </div>
             </div>

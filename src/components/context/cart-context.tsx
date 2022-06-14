@@ -11,7 +11,7 @@ export interface ContextData {
     removeProductFromCart: (id: number) => void,
     updateProductInCart: (id: number) => void,
     getTotalPrice: () => number,
-    getTotalQty: () => number,
+    getTotalQty: () => number
 }
 
 const DefaultContextData: ContextData = {
@@ -56,7 +56,6 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
     }
 
 
-
     const removeProductFromCart = (id: number) => {
 
         setCart((itemInCart) => itemInCart.filter((item) => 
@@ -84,7 +83,7 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
         let totalPrice = 0;
 
-        itemInCart.forEach(item => {
+        itemInCart.forEach(item  => {
           totalPrice += item.product.price*item.qty
         })
 
@@ -93,19 +92,21 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
 
     const getTotalQty = () => { 
+        
         let totalQty= 0;
 
         itemInCart.forEach(item => {
-          totalQty += item.product.id*item.qty /* Här ska det ej vara id utan plussar med produkt */
+          totalQty += item.qty
         })
 
         return totalQty
 
     }
 
-    const checkOutOrder = () => { 
+    const placeOrder = () => { 
 
     }
+
 
     return (
         <CartContext.Provider 

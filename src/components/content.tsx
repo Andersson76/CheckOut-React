@@ -10,8 +10,6 @@ import ProductDetail from "../components/pages-cards/productDetail"
 
 interface Props {}
 
-/* Logiken för Route, länkarna mellan sidorna */
-
 const Content: FC<Props> = (props) => {
     
     return (

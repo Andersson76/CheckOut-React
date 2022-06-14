@@ -13,10 +13,12 @@
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.1",
     "formik": "^2.2.9",
+    "formik-mui": "^4.0.0-alpha.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
-    "react-use-cart": "^1.13.0"
+    "react-use-cart": "^1.13.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

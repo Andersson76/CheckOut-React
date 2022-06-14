@@ -41,11 +41,6 @@ const Navmenu: FC<Props> = (props) => {
                   {getTotalQty()}
                 </span> 
 
-               {/* {addProductToCart(props.product)} */}
-
-               {/*  onClick={() => 
-                                updateProductInCart(props.cartItem.product.id)}> */}
-
                 <Link style={navLinks} to={"/checkout"}>
                   {<FacebookOutlinedIcon/>}
                 </Link>

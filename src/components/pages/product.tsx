@@ -6,8 +6,7 @@ import { fontFamily, styleHeader } from "../../css/common"
 
 
 interface Props {}
- 
-/* Produktsidan */
+
 
  const Products : FC<Props> = (props) => {
 
