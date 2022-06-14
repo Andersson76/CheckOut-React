@@ -1,4 +1,4 @@
-import { CSSProperties, FC, useContext } from "react"
+import { CSSProperties, FC, useContext, useState } from "react"
 import { NavLink } from 'react-router-dom'
 import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
@@ -10,32 +10,57 @@ interface Props {
   product: Product
 }
 
-/* Komponent/logik för det som visas på startsidan (produkterna) */
-
 const ProductCard: FC<Props> = (props) => {
+
+  // Popup state
+/*   const [countPopUp, setPopUp] = useState(0)
+  const PopUp = () => {
+    setPopUp(
+      countPopUp+1
+    )
+  }
+ */
+
+  function changeBackground(e) { // importer
+    e.target.style.background = "#044778";
+    /* onMouseLeave */
+}
 
   const { addProductToCart } = useContext(CartContext)
 
     return (
         <div style={{...fontFamily}}>
-            <NavLink to={`/${props.product.id}`}>
-                <img style={imgStyle} src={props.product.image}/>
+            <NavLink 
+              to={`/${props.product.id}`}>
+              <img style={imgStyle} src={props.product.image}/>
             </NavLink>
-                <div style={textBox}>
-                  <h2 style={{...titleStyle, fontSize: "14px"}}>{props.product.title}</h2>
-                  <p style={{...priceStyle, fontSize: "12px"}}>{props.product.price + " " + "kr"}</p>
-                </div>
-                <div style={textBox}>
-                  <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>
+              
+            <div style={textBox}>
+                <h2 style={{...titleStyle, fontSize: "14px"}}>
+                  {props.product.title}
+                </h2>
+                <p style={{...priceStyle, fontSize: "12px"}}>
+                    {props.product.price + " " + "kr"}
+                </p>
+            </div>
+            <div style={textBox}>
+                <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>
                     {props.product.shortDesc}</p>
-                  <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>
+                <p style={{marginTop: "0px", color: colors.secondary, fontSize: "12px"}}>
                     Färg: {props.product.color}</p>
-                </div>
+            </div>
             
-          <div style={{display: "flex", justifyContent: "center"}}>
-            <Button style={{...styleBtn, marginTop: "20px"}} variant="contained" 
-                onClick={() => addProductToCart(props.product)}>Lägg i varukorgen
-            </Button>
+            <div style={{display: "flex", justifyContent: "center"}}>
+
+              <Button style={{...styleBtn, marginTop: "20px"}} variant="contained" 
+                  onMouseOver={changeBackground}
+                  onClick={() => 
+                    addProductToCart(props.product)}>Lägg i varukorgen
+              </Button>
+
+{/* Logiken för popup */}
+ 
+
             </div>
         </div>
     ) 

@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Product } from "../data/productlist";
 import Home from "./pages/home"
 import Products from "./pages/product"
 import CheckOut from "./pages/checkout"
