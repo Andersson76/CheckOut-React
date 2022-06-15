@@ -9,26 +9,22 @@ export interface Payment {
     image: string
 }
 
-// Ska ligga i egen komponent - 
-// sparar state i context för alla 3 valen och sen ett state för varje betalsätt 
-/* Varje betalsätt ska innehålla ett formulär för nödvändig information. Fälten i formuläret ska gå att automatisk fyllas i. */
-
 export const payments: Payment[] = [
     {
         id: 1,
         title: "Swish",
         desctiption: "",
-        image: swish // Telefonnummer
+        image: swish 
     }, 
     {
         id: 2,
         title: "Kort",
         desctiption: "",
-        image: kort // Kortnummer, Giltighetsdatum, kortinnehavare, CVV2-Säkerhetskod
+        image: kort 
     }, 
     {
         id: 3,
-        title: "Resurs Bank", // Faktura - legitemera sig med BankId
+        title: "Resurs Bank", 
         desctiption: "Faktura",
         image: resurs 
     }

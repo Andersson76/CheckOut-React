@@ -7,10 +7,11 @@ import CheckoutCard from "../pages-cards/checkoutCard"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import DefaultFormList from "../context/checkout-context/form"
+import DefaultPaymentCard from "../context/checkout-context/paymentCard"
 
-interface Props {
+import DefaultOptionPaymentData from "../context/checkout-context/option"
 
-}
+interface Props {}
 
 const CheckOut: FC<Props> = (props) => {
 
@@ -72,7 +73,9 @@ const CheckOut: FC<Props> = (props) => {
                                 Frakt:
                             </h4>
                             <h4>
-                                Betalsätt:
+                                <h3>Betalsätt:</h3>
+                               {/*  <DefaultOptionPaymentData/> */}
+                                <DefaultPaymentCard/>
                             </h4>
                             <Button style={{...styleBtn, marginTop: "40px"}} 
                             onMouseOver={changeBackground} variant="contained" 

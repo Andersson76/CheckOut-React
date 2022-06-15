@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Grid, Button } from '@mui/material';
 import { TextField } from 'formik-mui';
-import { Formik, Field, FormikErrors, FormikTouched, FormikProps, Form} from 'formik';
+import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
 import {styleBtn} from "../../../css/common"
 
@@ -74,7 +74,7 @@ const FormSchema = Yup.object().shape({
    });
 
 
-export const FormB = () => {
+export const FormCard = () => {
   
   return (
     <Formik
@@ -89,10 +89,10 @@ export const FormB = () => {
        phone: '',
      }}
 
+
     validationSchema={FormSchema}
   //  initialValues={initialValues}
     onSubmit={(values, actions) => {
-      console.log({ values, actions })
       alert(JSON.stringify(values, null, 2))
       actions.setSubmitting(false)
     }}
@@ -122,6 +122,9 @@ export const FormB = () => {
           name="lastname"
           variant="outlined"
           fullWidth
+          {...errors.lastname && touched.lastname ? (
+            <div>{errors.lastname}</div>
+            ) : null}
         />
       </Grid>
       <Grid item xs={12}>
@@ -131,6 +134,9 @@ export const FormB = () => {
           name="address"
           variant="outlined"
           fullWidth
+          {...errors.address && touched.address ? (
+            <div>{errors.address}</div>
+            ) : null}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -140,6 +146,9 @@ export const FormB = () => {
           name="zipcode"
           variant="outlined"
           fullWidth
+          {...errors.zipcode && touched.zipcode ? (
+            <div>{errors.zipcode}</div>
+            ) : null}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -149,6 +158,9 @@ export const FormB = () => {
           name="city"
           variant="outlined"
           fullWidth
+          {...errors.city && touched.city ? (
+            <div>{errors.city}</div>
+            ) : null}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -158,6 +170,9 @@ export const FormB = () => {
           name="country"
           variant="outlined"
           fullWidth
+          {...errors.country && touched.country ? (
+            <div>{errors.country}</div>
+            ) : null}
         />
       </Grid>
       <Grid item xs={12}>
@@ -167,6 +182,9 @@ export const FormB = () => {
           name="email"
           variant="outlined"
           fullWidth
+          {...errors.email && touched.email? (
+            <div>{errors.email}</div>
+            ) : null}
         />
       </Grid> 
       <Grid item xs={12}>
@@ -176,6 +194,9 @@ export const FormB = () => {
              name="phone"
              variant="outlined"
              fullWidth
+             {...errors.phone && touched.phone ? (
+              <div>{errors.phone}</div>
+              ) : null}
            />
          </Grid> 
     </Grid>
@@ -189,4 +210,4 @@ export const FormB = () => {
 
 
 
-export default FormB
+export default FormCard
