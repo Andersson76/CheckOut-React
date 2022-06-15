@@ -1,6 +1,6 @@
 import kort from "/src/assets/kort.jpg"
 import swish from "/src/assets/swish.png"
-import bankid from "/src/assets/bankid.png"
+import resurs from "/src/assets/resurs.png"
 
 export interface Payment {
     id: number,
@@ -9,6 +9,8 @@ export interface Payment {
     image: string
 }
 
+// Ska ligga i egen komponent - 
+// sparar state i context för alla 3 valen och sen ett state för varje betalsätt 
 /* Varje betalsätt ska innehålla ett formulär för nödvändig information. Fälten i formuläret ska gå att automatisk fyllas i. */
 
 export const payments: Payment[] = [
@@ -27,7 +29,7 @@ export const payments: Payment[] = [
     {
         id: 3,
         title: "Resurs Bank", // Faktura - legitemera sig med BankId
-        desctiption: "",
-        image: bankid // Byt bild
+        desctiption: "Faktura",
+        image: resurs 
     }
 ]
