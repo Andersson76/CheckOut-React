@@ -1,11 +1,12 @@
 import { CSSProperties, FC } from 'react'
 import { useContext } from "react"
-import {Button } from '@mui/material'
+import { Button } from '@mui/material'
 import { textStyle, fontFamily, styleBtn, floatcontainer } from "../../css/common"
 import {CartContext} from "../context/cart-context" 
 import CheckoutCard from "../pages-cards/checkoutCard"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import Form from "../context/checkout-context/form"
 
 interface Props {}
 
@@ -47,7 +48,8 @@ const CheckOut: FC<Props> = (props) => {
                  <div style={textBoxItems}> 
                         <div style={{...textStyle, ...fontFamily, paddingLeft: "25px"}}>
                             <div style={{display: "flex", justifyContent: "space-between", marginTop: "40px"}}>
-                                {/* Formlär */}
+                                {/* Rendera ut <Form/> */}
+                                
                         </div>
                     </div>
                 </div>
@@ -60,7 +62,7 @@ const CheckOut: FC<Props> = (props) => {
                                      {getTotalPrice()} kr
                             </h3>
                             <h4>
-                                Frakt: 
+                                Frakt:
                             </h4>
                             <h4>
                                 Betalsätt:

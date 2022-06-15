@@ -29,7 +29,7 @@ const Navmenu: FC<Props> = (props) => {
                 <Link style={navLinks} to={"/product"}>{}PRODUKTER</Link>
                 <Link style={navLinks} to={"/category"}>{}HERR</Link>
                 <Link style={navLinks} to={"/category1"}>{}DAM</Link>
-                <Link style={navLinks} to={"/category2"}>{}ASSEC</Link>
+                <Link style={navLinks} to={"/category2"}>{}ACCESSOARER</Link>
               </div>
          
               <div> 

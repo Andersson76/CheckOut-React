@@ -2,14 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { CSSProperties, FC } from 'react'
 
 
-interface Props {
-    firstname: string,
-    lastname: string,
-    address: string,
-    zipcode: number,
-    phone: number,
-    email: string
-}
+interface Props {}
 
 const FormInput: FC<Props> = (props) => {
 
@@ -58,8 +51,4 @@ const FormInput: FC<Props> = (props) => {
 
 export default FormInput 
 
-
-const item: CSSProperties = { 
-
-}
 
