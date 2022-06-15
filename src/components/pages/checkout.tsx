@@ -6,10 +6,10 @@ import {CartContext} from "../context/cart-context"
 import CheckoutCard from "../pages-cards/checkoutCard"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import DefaultFormList from "../context/checkout-context/form"
-import DefaultPaymentCard from "../context/checkout-context/paymentCard"
+import DefaultFormList from "../../data/form"
+import DefaultPaymentCard from "../pages-cards/paymentCards/paymentCard"
 
-import DefaultOptionPaymentData from "../context/checkout-context/option"
+import DefaultOptionPaymentData from "../context/checkout-context/optionPayments"
 
 interface Props {}
 

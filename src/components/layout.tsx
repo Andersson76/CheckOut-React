@@ -6,7 +6,7 @@ import Footer from "./footer"
 import Content from "./content"
 import CartProvider from "./context/cart-context" 
 import Banner from "./banner"
-import Form from "../components/context/checkout-context/form"
+import Form from "../data/form"
 
 
 const Layout: FC = () => {

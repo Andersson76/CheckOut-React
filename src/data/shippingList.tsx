@@ -13,7 +13,7 @@ export interface Shipping {
 
 // Ska kunna räkna ut total med fraktkostnaden
 
-export const shippings: Shipping[] = [
+export const shippingList: Shipping[] = [
     {
         id: 1,
         title: "Postnord",
