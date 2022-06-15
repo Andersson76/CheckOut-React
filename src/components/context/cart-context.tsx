@@ -103,7 +103,7 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     }
 
-    const placeOrder = () => { 
+    const confirmeOrder = () => { 
 
     }
 

@@ -6,6 +6,7 @@ import Footer from "./footer"
 import Content from "./content"
 import CartProvider from "./context/cart-context" 
 import Banner from "./banner"
+import Form from "../components/context/checkout-context/form"
 
 
 const Layout: FC = () => {
@@ -21,5 +22,9 @@ const Layout: FC = () => {
     )
 }
 
+{/* <Form></Form> 
+<ShippingCard></ShippingCard>
+<PaymentCard></PaymentCard>*/}
+            
 
 export default Layout

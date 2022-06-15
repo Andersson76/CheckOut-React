@@ -16,18 +16,18 @@ export const payments: Payment[] = [
         id: 1,
         title: "Swish",
         desctiption: "",
-        image: swish
+        image: swish // Telefonnummer
     }, 
     {
         id: 2,
         title: "Kort",
         desctiption: "",
-        image: kort
+        image: kort // Kortnummer, Giltighetsdatum, kortinnehavare, CVV2-Säkerhetskod
     }, 
     {
         id: 3,
-        title: "BankId",
+        title: "Resurs Bank", // Faktura - legitemera sig med BankId
         desctiption: "",
-        image: bankid
+        image: bankid // Byt bild
     }
 ]

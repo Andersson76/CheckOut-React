@@ -1,23 +1,21 @@
 import { FC, CSSProperties, useContext, useState } from "react" 
-import { Shipping } from "../../data/shipping"
+import { Shipping } from "../../../data/shippingList"
 
 interface Props {
-    shipping: Shipping[]
+ /*    shipping: Shipping[] */
 }
 
-const PaymentCard: FC<Props> = (props) => {
+const ShippingCard: FC<Props> = (props) => {
 
 const [shippingState, setShippingState] = useState()
 
-
-
     return (
         <div>
-            
+            <ShippingCard></ShippingCard>
             
         </div>
 
     )
 }
 
-export default PaymentCard
+export default ShippingCard
