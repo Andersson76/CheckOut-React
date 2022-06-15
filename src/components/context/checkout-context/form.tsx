@@ -1,10 +1,8 @@
 import { FC } from 'react';
 import { Grid } from '@mui/material';
 import { TextField } from 'formik-mui';
-import { Field, FormikErrors, FormikTouched} from 'formik';
-/* import { FormData } from "../../../data/formList" */
+import { Formik, Field, FormikErrors, FormikTouched} from 'formik';
 
-/* Rendedra ut i checkout?? */
 
 interface Props {}
 
@@ -30,14 +28,26 @@ export const DefaultFormList: FormData = {
   phone: 0
 }
 
-/* export interface FormProps  {
+export interface FormProps  {
   formName: string
 }
- */
-const Form: FC<Props> = (props) => {
 
+
+const Form: React.FC<{}> = () => {
+
+  const initialValues: FormProps = { formName: '' };
 
   return (
+    <Formik
+    initialValues={initialValues}
+    onSubmit={(values, actions) => {
+      console.log({ values, actions });
+      alert(JSON.stringify(values, null, 2));
+      actions.setSubmitting(false);
+    }}
+  >
+
+<>
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
         <Field
@@ -113,6 +123,8 @@ const Form: FC<Props> = (props) => {
            />
          </Grid> 
     </Grid>
+    </>
+    </Formik>
   );
 };
 

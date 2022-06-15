@@ -6,9 +6,11 @@ import {CartContext} from "../context/cart-context"
 import CheckoutCard from "../pages-cards/checkoutCard"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import Form from "../context/checkout-context/form"
+import DefaultFormList from "../context/checkout-context/form"
 
-interface Props {}
+interface Props {
+
+}
 
 const CheckOut: FC<Props> = (props) => {
 
@@ -17,7 +19,6 @@ const CheckOut: FC<Props> = (props) => {
 
     function changeBackground(e) { // Typa upp e?
         e.target.style.background = "#044778";
-        /* onMouseLeave */
     }
 
     return (
@@ -48,7 +49,13 @@ const CheckOut: FC<Props> = (props) => {
                  <div style={textBoxItems}> 
                         <div style={{...textStyle, ...fontFamily, paddingLeft: "25px"}}>
                             <div style={{display: "flex", justifyContent: "space-between", marginTop: "40px"}}>
-                                {/* Rendera ut <Form/> */}
+                            
+                            {itemInCart.length === 0 ? null :
+                            <div>
+                                <h3>Kunduppgifter</h3>
+                                    <DefaultFormList/>
+                            </div>
+                            }
                                 
                         </div>
                     </div>
