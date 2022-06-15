@@ -9,7 +9,7 @@ export interface Payment {
     image: string
 }
 
-export const payments: Payment[] = [
+export const paymentList: Payment[] = [
     {
         id: 1,
         title: "Swish",
