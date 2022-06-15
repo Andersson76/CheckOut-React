@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Button } from '@mui/material';
 import { TextField } from 'formik-mui';
 import { Formik, Field, FormikErrors, FormikTouched, FormikProps, Form} from 'formik';
 import * as Yup from 'yup';
-
+import {styleBtn} from "../../../css/common"
 
 
 interface Props {}
@@ -75,10 +75,6 @@ const FormSchema = Yup.object().shape({
 
 
 export const FormB = () => {
-
-  
-  
-  
   
   return (
     <Formik
@@ -106,8 +102,8 @@ export const FormB = () => {
 {({ errors, touched }) => (
   <>
     <Form>
-    {/* <Grid container spacing={2}>
-      <Grid item xs={12} sm={6}> */}
+    <Grid container spacing={2}>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           label="Förnamn"
@@ -118,8 +114,8 @@ export const FormB = () => {
           <div>{errors.firstname}</div>
           ) : null}
         />
-      {/* </Grid>
-      <Grid item xs={12} sm={6}> */}
+      </Grid>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           label="Efternamn"
@@ -127,8 +123,8 @@ export const FormB = () => {
           variant="outlined"
           fullWidth
         />
-      {/* </Grid>
-      <Grid item xs={12}> */}
+      </Grid>
+      <Grid item xs={12}>
         <Field
           component={TextField}
           label="Adress"
@@ -136,8 +132,8 @@ export const FormB = () => {
           variant="outlined"
           fullWidth
         />
-      {/* </Grid>
-      <Grid item xs={12} sm={6}> */}
+      </Grid>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           label="Postnummer"
@@ -145,8 +141,8 @@ export const FormB = () => {
           variant="outlined"
           fullWidth
         />
-      {/* </Grid>
-      <Grid item xs={12} sm={6}> */}
+      </Grid>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           label="Stad"
@@ -154,8 +150,8 @@ export const FormB = () => {
           variant="outlined"
           fullWidth
         />
-      {/* </Grid>
-      <Grid item xs={12} sm={6}> */}
+      </Grid>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           label="Land"
@@ -163,8 +159,8 @@ export const FormB = () => {
           variant="outlined"
           fullWidth
         />
-      {/* </Grid>
-      <Grid item xs={12}> */}
+      </Grid>
+      <Grid item xs={12}>
         <Field
           component={TextField}
           label="Mejl"
@@ -172,8 +168,8 @@ export const FormB = () => {
           variant="outlined"
           fullWidth
         />
-      {/* </Grid> 
-      <Grid item xs={12}> */}
+      </Grid> 
+      <Grid item xs={12}>
            <Field
              component={TextField}
              label="Telefonnummer"
@@ -181,13 +177,16 @@ export const FormB = () => {
              variant="outlined"
              fullWidth
            />
-         {/* </Grid> 
-    </Grid> */}
+         </Grid> 
+    </Grid>
+      <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">Fortsätt</Button>
     </Form> 
     </>
   )}
     </Formik>
   );
 }
+
+
 
 export default FormB
