@@ -3,13 +3,47 @@ import { productList } from "../../data/productlist"
 import { useParams, Navigate, NavLink } from "react-router-dom"
 import { Button } from '@mui/material' 
 import { fontFamily, styleBtn, textStyle } from "../../css/common"
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import { CartContext } from "../context/cart-context"
+import * as React from 'react'
+import Snackbar from '@mui/material/Snackbar'
+import IconButton from '@mui/material/IconButton'
+import CloseIcon from '@mui/icons-material/Close'
 
 interface Props{}
 
 
 const ProductDetail: FC<Props> = (props) => {
+
+    const [open, setOpen] = React.useState(false);
+  
+    const handleClick = () => {
+      setOpen(true)
+    }
+  
+    const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false)
+    }
+  
+    const action = (
+      <React.Fragment>
+        <Button color="secondary" size="small" onClick={handleClose}>
+        </Button>
+        <IconButton
+          size="small"
+          aria-label="close"
+          color="inherit"
+          onClick={handleClose}
+        >
+          <CloseIcon fontSize="small" />
+        </IconButton>
+      </React.Fragment>
+    )
+
 
     function changeBackground(e) { 
         e.target.style.background = "#044778";
@@ -54,9 +88,17 @@ const ProductDetail: FC<Props> = (props) => {
 
                     <Button style={{...styleBtn, marginTop: "50px"}} variant="contained"
                     onMouseOver={changeBackground} 
-                        onClick={() => 
-                            addProductToCart(foundProduct)}>Lägg i varukorgen
-                    </Button>            
+                        onClick={() =>  {
+                            handleClick()
+                            addProductToCart(foundProduct)}} >Lägg i varukorgen
+                    </Button>         
+                    <Snackbar
+                        open={open}
+                        autoHideDuration={2000}
+                        onClose={handleClose}
+                        message="Produkten är tillagd i varukorgen"
+                        action={action}
+                    />   
                 </div>
             </div>
              </>

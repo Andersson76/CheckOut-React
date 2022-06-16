@@ -200,7 +200,7 @@ export const FormCard = () => {
            />
          </Grid> 
     </Grid>
-      <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">Fortsätt</Button>
+      <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">Fortsätt till betalning</Button>
     </Form> 
     </>
   )}
