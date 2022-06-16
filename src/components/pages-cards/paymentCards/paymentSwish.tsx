@@ -5,47 +5,30 @@ import { TextField } from 'formik-mui';
 import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
 import {styleBtn} from "../../../css/common"
+import FormLabel from '@mui/material/FormLabel';
 
 
 interface Props {}
 
 export interface PaymentSwish {
-    cardnumber: number,
-    fullname: string,
-    month: number,
-    year: number,
-    CVC: number
+    phonenumber: number,
+    /* bankId: number */
   }
   
   export const DefaultPaymentSwish: PaymentSwish = {
-    cardnumber: 0,
-    fullname: "",
-    month: 0,
-    year: 0,
-    CVC: 0
+    phonenumber: 0,
+    /* bankId: 0, */
   }
   
   const PaymentSchema = Yup.object().shape({
-       cardnumber: Yup.number()
+       phonenumber: Yup.number()
          .min(2, 'Too Short!')
          .max(50, 'Too Long!')
          .required('Required'),
-       fullname: Yup.string()
+   /*     fullname: Yup.string()
          .min(2, 'Too Short!')
          .max(50, 'Too Long!')
-         .required('Required'),
-        month: Yup.number()
-         .min(2, 'Too Short!')
-         .max(50, 'Too Long!')
-         .required('Required'),
-       year: Yup.string()
-         .min(2, 'Too Short!')
-         .max(5, 'Too Long!')
-         .required('Required'),
-        CVC: Yup.number()
-         .min(2, 'Too Short!')
-         .max(50, 'Too Long!')
-         .required('Required'),
+         .required('Required'), */
      })
 
 
@@ -56,11 +39,7 @@ const PaymentSwish: FC<Props> = (props) => {
     return (
     <Formik
     initialValues = {{
-       cardnumber: '', 
-       fullname: '', 
-       month: '', 
-       year: '', 
-       CVC: ''
+       phone: "",
      }}
 
 
@@ -74,56 +53,18 @@ const PaymentSwish: FC<Props> = (props) => {
 
     <div>
     <Form>
+    <FormLabel id="demo-radio-buttons-group-label">Swish</FormLabel>
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Field
           component={TextField}
-          name='Kortnummer'
+          name='Mobilnummer'
           type='number' 
-          label='Kortnummer' 
-          placeholder='0000111100001111'
+          label='Mobilnummer' 
+          placeholder='+46'
           fullWidth
         />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Field
-          component={TextField}
-          name='Giltighetsdatum' 
-          fluid 
-          options= 'monthOption' // monthOption - props
-          label='Månad' 
-          fullWidth
-        />
-      </Grid>
-      <Grid item xs={12}sm={6}>
-        <Field
-          component={TextField}
-          name='Giltighetsdatum' 
-          fluid 
-          options='yearOptions' /* {} */
-          label='År' 
-          fullWidth
-        />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Field
-          component={TextField}
-          name='cvc'
-          type='number'
-          label='CVC' 
-          placeholder='123'
-          fullWidth
-        />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Field
-          component={TextField}
-          name='Korthavare'
-          label='Korthavare' 
-          placeholder='Förnamn och Efternamn'
-          fullWidth
-        />
-      </Grid>
+    </Grid>
     </Grid>
     </Form>             
     </div>

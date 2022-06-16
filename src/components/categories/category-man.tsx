@@ -19,14 +19,13 @@ const Category: FC<Props> = (props) => {
 
      return (
          <>
-        {/*  <CategoryCard></CategoryCard> */}
          <div>
              <h2 style={{...fontFamily, ...styleHeader}}>Herr</h2>
         </div>
         <div style={{...imgCategory}}>
         {getCategory.map(product => {
             return (
-            <div key={product.id}>  {/* Istället för hela logiken nedan vill vi hämta CategoryCard */}
+            <div key={product.id}> 
             <div style={headText}>
                 <div style={{...fontFamily, paddingBottom: "2.5em"}}>
                     <NavLink to={`/${product.id}`}>
