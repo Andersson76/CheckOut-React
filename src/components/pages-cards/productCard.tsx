@@ -5,10 +5,10 @@ import { colors } from '../../data/colors'
 import { Product } from '../../data/productlist' 
 import { fontFamily, styleBtn } from "../../css/common"
 import { CartContext } from "../context/cart-context"
-import * as React from 'react';
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import * as React from 'react'
+import Snackbar from '@mui/material/Snackbar'
+import IconButton from '@mui/material/IconButton'
+import CloseIcon from '@mui/icons-material/Close'
 
 interface Props {
   product: Product
@@ -16,27 +16,19 @@ interface Props {
 
 const ProductCard: FC<Props> = (props) => {
 
-  // Popup state - cart
-/* const [countPopUp, setPopUp] = useState(0)
-  const PopUp = () => {
-    setPopUp(
-      countPopUp+1
-    )
-  } */
-
     const [open, setOpen] = React.useState(false);
   
     const handleClick = () => {
-      setOpen(true);
+      setOpen(true)
     };
   
     const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
       if (reason === 'clickaway') {
-        return;
+        return
       }
   
-      setOpen(false);
-    };
+      setOpen(false)
+    }
   
     const action = (
       <React.Fragment>
@@ -51,8 +43,7 @@ const ProductCard: FC<Props> = (props) => {
           <CloseIcon fontSize="small" />
         </IconButton>
       </React.Fragment>
-    );
-
+    )
 
   function changeBackground(e) { 
     e.target.style.background = "#044778";
