@@ -21,7 +21,7 @@ export const floatDiv: CSSProperties = {
   width: "60%",
   marginLeft: "auto",
   marginRight: "auto",
-  justifyContent: "space-between"
+  justifyContent: "flex-start"
 }
 
 

@@ -25,7 +25,7 @@ export const paymentList: Payment[] = [
     {
         id: 3,
         title: "Resurs Bank", 
-        desctiption: "Faktura",
+        desctiption: "Räntefri delbetalning i upp till 12 månader.",
         image: resurs 
     }
 ]

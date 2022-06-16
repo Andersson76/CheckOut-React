@@ -5,6 +5,7 @@ import { TextField } from 'formik-mui';
 import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
 import {styleBtn} from "../../../css/common"
+import FormLabel from '@mui/material/FormLabel';
 
 
 interface Props {}
@@ -76,6 +77,7 @@ const PaymentCard: FC<Props> = (props) => {
 
     <div>
     <Form>
+    <FormLabel id="demo-radio-buttons-group-label">Kortbetalning</FormLabel>
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Field
@@ -94,6 +96,7 @@ const PaymentCard: FC<Props> = (props) => {
           fluid 
           options= 'monthOption' // monthOption - props
           label='Månad' 
+          placeholder='12'
           fullWidth
         />
       </Grid>
@@ -104,6 +107,7 @@ const PaymentCard: FC<Props> = (props) => {
           fluid 
           options='yearOptions' /* {} */
           label='År' 
+          placeholder='22'
           fullWidth
         />
       </Grid>

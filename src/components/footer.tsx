@@ -3,7 +3,7 @@ import { colors } from "../data/colors"
 import { fontFamily } from "../css/common"
 import kort from "../assets/kort.jpg"
 import swish from "../assets/swish.png"
-import resurs from "../assets/bankid.png"
+import resurs from "../assets/resurs.png"
 
 interface Props {}
 

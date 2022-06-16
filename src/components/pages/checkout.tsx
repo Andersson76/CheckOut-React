@@ -8,7 +8,9 @@ import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import DefaultFormList from "../../data/form"
 import DefaultPaymentCard from "../pages-cards/paymentCards/paymentCard"
-
+import DefaultPaymentSwish from "../pages-cards/paymentCards/paymentSwish"
+import DefaultPaymentResurs from "../pages-cards/paymentCards/paymentResurs"
+import DefaultShippingData from "../context/checkout-context/shipping"
 import DefaultOptionPaymentData from "../context/checkout-context/optionPayments"
 
 interface Props {}
@@ -46,11 +48,11 @@ const CheckOut: FC<Props> = (props) => {
                         <CheckoutCard cartItem={cartItem} />
                     )}
                 
-                <div style={{...floatcontainer, ...fontFamily}}>
+                <div style={{...floatcontainer, ...fontFamily, borderTop: "1px solid #D0D0D0",}}>
                  <div style={textBoxItems}> 
-                        <div style={{...textStyle, ...fontFamily, paddingLeft: "25px"}}>
+                        <div style={{...textStyle, ...fontFamily}}>
                             <div style={{display: "flex", justifyContent: "space-between", marginTop: "40px"}}>
-                            
+                       
                             {itemInCart.length === 0 ? null :
                             <div>
                                 <h3>Kunduppgifter</h3>
@@ -65,18 +67,26 @@ const CheckOut: FC<Props> = (props) => {
                     <div style={{...textStyle, ...fontFamily}}>
                         {itemInCart.length == 0 ? null : 
                         <>
-                            <h3 style={{fontSize: "16px"}}>
-                                Totalsumma order:  
+                            <h3 style={{marginTop: "50px"}}>
+                                Totalsumma order: 
                                      {getTotalPrice()} kr
                             </h3>
-                            <h4>
-                                Frakt:
-                            </h4>
-                            <h4>
-                                <h3>Betalsätt:</h3>
-                               {/*  <DefaultOptionPaymentData/> */}
+                            <div>
+                                <DefaultShippingData/>
+                            </div>
+                            <div>
+                                <DefaultOptionPaymentData/>
+                            </div>
+                            <div>
                                 <DefaultPaymentCard/>
-                            </h4>
+                            </div>
+                            <div>
+                                <DefaultPaymentSwish/>
+                            </div>
+                            <div>
+                                <DefaultPaymentResurs/>
+                            </div>
+
                             <Button style={{...styleBtn, marginTop: "40px"}} 
                             onMouseOver={changeBackground} variant="contained" 
                                 onClick={() => console.log("clicked")}>Slutför köp
@@ -99,6 +109,22 @@ const navigationBack: CSSProperties = {
     textDecoration: "none",
     margin: "160px",
     fontSize: "12px"
+}
+
+const qtyStyle: CSSProperties = {
+  fontSize: "8px",
+  transform: "translate(150%, -220%)",
+  backgroundColor: "#044778",
+  color: "white",
+  borderRadius: "50%",
+  zIndex: "1",
+  width: "15px",
+  height: "15px",
+  position: "absolute",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  cursor: "pointer"
 }
 
 const textBoxItems: CSSProperties = {

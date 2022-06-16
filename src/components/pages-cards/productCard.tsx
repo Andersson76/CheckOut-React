@@ -1,10 +1,14 @@
 import { CSSProperties, FC, useContext, useState } from "react"
 import { NavLink } from 'react-router-dom'
-import { Button } from '@mui/material'
+import { Button, Checkbox } from '@mui/material'
 import { colors } from '../../data/colors'
 import { Product } from '../../data/productlist' 
 import { fontFamily, styleBtn } from "../../css/common"
 import { CartContext } from "../context/cart-context"
+import * as React from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface Props {
   product: Product
@@ -20,9 +24,40 @@ const ProductCard: FC<Props> = (props) => {
     )
   } */
 
+    const [open, setOpen] = React.useState(false);
+  
+    const handleClick = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
+  
+    const action = (
+      <React.Fragment>
+        <Button color="secondary" size="small" onClick={handleClose}>
+        </Button>
+        <IconButton
+          size="small"
+          aria-label="close"
+          color="inherit"
+          onClick={handleClose}
+        >
+          <CloseIcon fontSize="small" />
+        </IconButton>
+      </React.Fragment>
+    );
+
+
   function changeBackground(e) { 
     e.target.style.background = "#044778";
   }
+
 
   const { addProductToCart } = useContext(CartContext)
 
@@ -52,13 +87,17 @@ const ProductCard: FC<Props> = (props) => {
 
               <Button style={{...styleBtn, marginTop: "20px"}} variant="contained" 
                   onMouseOver={changeBackground}
-                  onClick={() => 
-                    addProductToCart(props.product)}>Lägg i varukorgen
+                  onClick={() => {
+                    handleClick()
+                    addProductToCart(props.product)}}>Lägg i varukorgen
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={2000}
+                    onClose={handleClose}
+                    message="Produkten är tillagd i varukorgen"
+                    action={action}
+                    />
               </Button>
-
-{/* Logiken för popup */}
- 
-
             </div>
         </div>
     ) 

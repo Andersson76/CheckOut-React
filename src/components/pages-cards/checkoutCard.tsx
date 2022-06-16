@@ -43,13 +43,12 @@ const CheckoutCard: FC<Props> = (props) => {
                     </ButtonGroup> 
                 </div>
 
-                  <div style={{...textStyle, ...fontFamily, paddingLeft: "90px"}}>
+                  <div style={{...textStyle, ...fontFamily, paddingLeft: "190px"}}>
                     <h4>
                         {props.cartItem.product.price*props.cartItem.qty} kr
                     </h4>
-                    <div style={{marginTop: "120px"}}>
-                        <span>Ta bort </span>
-                        <ClearIcon style={{cursor: "pointer", fontSize: "20px"}} 
+                    <div style={{marginTop: "125px"}}>
+                        <ClearIcon style={{cursor: "pointer"}} 
                             onClick={() => 
                                 removeProductFromCart(props.cartItem.product.id)}>
                         </ClearIcon>

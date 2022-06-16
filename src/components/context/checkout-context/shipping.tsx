@@ -2,13 +2,18 @@ import { FC, PropsWithChildren, CSSProperties, useContext, useState } from "reac
 import { Shipping, shippingList } from "../../../data/shippingList"
 import { Form} from 'formik';
 import React from "react"   
+import { useRadioGroup } from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 interface Props{}
 
 export interface ShippingData {
     shipping: Shipping[]
     /* funktion? */
-
 }
 
 const DefaultShippingData: ShippingData = {
@@ -33,32 +38,23 @@ const ShippingCard: FC<PropsWithChildren<Props>> = (props) => {
    // Mapar vår shippinhtList - för att få ut valen
 
    /* {
-    shippinhList.map((shippingList) => {
+    shippingList.map((shippingList) => {
     }
 } */
 
     return (
-
-    <Form>
-        <input
-            name='gateway' 
-            type='radio'
-            value='test_gateway'
-        />
-        <label htmlFor="test_gateway">Test Gateway</label>
-        <input
-            name='gateway' 
-            type='radio'
-            value='stripe'
-        />
-        <label htmlFor="stripe">Credit Card</label>
-        <input
-            name='gateway' 
-            type='radio'
-            value='stripe'
-        />
-        <label htmlFor="stripe">Credit Card</label>
-</Form>
+        <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Fraktsätt</FormLabel>
+            <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="female"
+                name="radio-buttons-group"
+            >
+            <FormControlLabel value="Postnord" control={<Radio />} label="Postnord" />
+            <FormControlLabel value="Instabox" control={<Radio />} label="Instabox" />
+            <FormControlLabel value="Hämta i butik" control={<Radio />} label="Hämta i butik" />
+            </RadioGroup>
+        </FormControl>
     )
 
     // Providern..
