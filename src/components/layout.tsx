@@ -20,11 +20,6 @@ const Layout: FC = () => {
             </div>
         </CartProvider>
     )
-}
-
-{/* <Form></Form> 
-<ShippingCard></ShippingCard>
-<PaymentCard></PaymentCard>*/}
-            
+}           
 
 export default Layout

@@ -1,5 +1,5 @@
-import { CSSProperties, FC } from 'react';
-import { colors } from '../data/colors';
+import { CSSProperties, FC } from 'react'
+import { colors } from '../data/colors'
 import { fontFamily } from "../css/common"
 
 const Banner: FC = () => {

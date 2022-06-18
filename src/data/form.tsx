@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import { Grid, Button } from '@mui/material';
-import { TextField } from 'formik-mui';
-import { Formik, Field, Form} from 'formik';
-import * as Yup from 'yup';
+import { FC } from 'react'
+import { Grid, Button } from '@mui/material'
+import { TextField } from 'formik-mui'
+import { Formik, Field, Form} from 'formik'
+import * as Yup from 'yup'
 import {styleBtn} from "../css/common"
 
 
@@ -30,54 +30,46 @@ export const DefaultFormList: FormData = {
   phone: 0
 }
 
-export interface FormProps {
-  firstname: string,
-  lastname: string,
-  address: string,
-  zipcode: string,
-  city: string,
-  country: string,
-  email: string,
-  phone: string
-}
-
 const FormSchema = Yup.object().shape({
      firstname: Yup.string()
-       .min(2, 'Too Short!')
-       .max(50, 'Too Long!')
-       .required('Required'),
+       .min(2, "Vänligen fyll i fältet")
+       .max(50, "Vänligen fyll i fältet")
+       .required('Vänligen fyll i fältet'),
      lastname: Yup.string()
-       .min(2, 'Too Short!')
-       .max(50, 'Too Long!')
-       .required('Required'),
+       .min(2, 'Vänligen fyll i fältet')
+       .max(50, 'Vänligen fyll i fältet')
+       .required('Vänligen fyll i fältet'),
       address: Yup.string()
-       .min(2, 'Too Short!')
-       .max(50, 'Too Long!')
-       .required('Required'),
+       .min(2, 'Vänligen fyll i fältet')
+       .max(50, 'Vänligen fyll i fältet')
+       .required('Vänligen fyll i fältet'),
      zipcode: Yup.string()
-       .min(2, 'Too Short!')
-       .max(5, 'Too Long!')
-       .required('Required'),
+       .min(5, 'Vänligen ange ett giltigt postnummer')
+       .max(5, 'Vänligen ange ett giltigt postnummer')
+       .required('Vänligen fyll i fältet'),
       city: Yup.string()
-       .min(2, 'Too Short!')
-       .max(50, 'Too Long!')
-       .required('Required'),
+       .min(2, 'Vänligen fyll i fältet')
+       .max(50, 'Vänligen fyll i fältet')
+       .required('Vänligen fyll i fältet'),
      country: Yup.string()
-       .min(2, 'Too Short!')
-       .max(50, 'Too Long!')
-       .required('Required'),
-     email: Yup.string().email('Invalid email').required('Required'),
+       .min(2, 'Vänligen fyll i fältet')
+       .max(50, 'Vänligen fyll i fältet')
+       .required('Vänligen fyll i fältet'),
+     email: Yup.string()
+      .email('Vänligen ange korrekt mejladress')
+      .required('Vänligen fyll i fältet'),
      phone: Yup.string()
-     .min(2, 'Too Short!')
-     .max(10, 'Too Long!')
-     .required('Required'),
-   });
+      .min(10, 'Vänligen fyll i fältet')
+      .max(10, 'Vänligen fyll i fältet')
+      .required('Vänligen fyll i fältet'),
+   })
 
 
 export const FormCard = () => {
   
   return (
-    <Formik
+    
+<Formik
     initialValues = {{
        firstname: '', 
        lastname: '', 
@@ -91,7 +83,6 @@ export const FormCard = () => {
 
 
     validationSchema={FormSchema}
-  //  initialValues={initialValues}
     onSubmit={(values, actions) => {
       alert(JSON.stringify(values, null, 2))
       actions.setSubmitting(false)
@@ -101,7 +92,7 @@ export const FormCard = () => {
 
 {({ errors, touched }) => (
   <>
-    <Form>
+  <Form>
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
         <Field
@@ -193,6 +184,7 @@ export const FormCard = () => {
              label="Telefonnummer"
              name="phone"
              variant="outlined"
+             placeholder='+46'
              fullWidth
              {...errors.phone && touched.phone ? (
               <div>{errors.phone}</div>
@@ -200,12 +192,16 @@ export const FormCard = () => {
            />
          </Grid> 
     </Grid>
-      <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">Fortsätt till betalning</Button>
-    </Form> 
-    </>
+        <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
+          Fortsätt till betalning
+        </Button>
+  </Form> 
+  </>
+  
   )}
-    </Formik>
-  );
+</Formik>
+
+  )
 }
 
 
