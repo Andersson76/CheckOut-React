@@ -11,8 +11,6 @@ export interface Shipping {
     image: string,
 }
 
-// Ska kunna räkna ut total med fraktkostnaden
-
 export const shippingList: Shipping[] = [
     {
         id: 1,

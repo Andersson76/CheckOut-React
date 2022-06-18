@@ -1,12 +1,12 @@
 
-import { CSSProperties, FC, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { colors } from '../data/colors';
+import { CSSProperties, FC, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { colors } from '../data/colors'
 import { fontLogo, fontFamily } from "../css/common"
 import logotext from "../assets/logotext.jpg"
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined'
+import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined'
 import { CartContext, CartItem } from "./context/cart-context" 
 
 interface Props {}

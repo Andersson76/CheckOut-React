@@ -12,11 +12,11 @@ const Footer: FC<Props> = (props) => {
 
     return (
         <>
-        <div>
+        <div> 
             <div style={{...footerStyle, ...fontFamily, paddingTop: "10px"}}>
-                <img src={kort} width="30" height="20" style={{padding: "10px"}}></img>
-                <img src={swish} width="30" height="20" style={{padding: "10px"}}></img>
-                <img src={resurs} width="30" height="20" style={{padding: "10px"}}></img>
+                <img src={kort}  style={{padding: "10px", maxWidth: "50px"}}></img>
+                <img src={swish} style={{padding: "10px",  maxWidth: "50px"}}></img>
+                <img src={resurs} style={{padding: "10px",  maxWidth: "50px"}}></img>
             </div>
             <p style={{...fontFamily, color: colors.secondary, margin: "0px"}}>© 2022</p>
         </div>
