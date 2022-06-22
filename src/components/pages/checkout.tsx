@@ -5,13 +5,15 @@ import { textStyle, fontFamily, styleBtn, floatcontainer } from "../../css/commo
 import {CartContext} from "../context/cart-context" 
 import CheckoutCard from "../pages-cards/checkoutCard"
 import { NavLink } from "react-router-dom"
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import DefaultFormList from "../../data/form"
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import DefaultFormList from "../../data/contactForm"
 import DefaultPaymentCard from "../pages-cards/paymentCards/paymentCard"
 import DefaultPaymentSwish from "../pages-cards/paymentCards/paymentSwish"
 import DefaultPaymentResurs from "../pages-cards/paymentCards/paymentResurs"
-import DefaultShippingData from "../context/checkout-context/shipping"
+import DefaultShippingData from "../context/checkout-context/shipping-context"
 import DefaultOptionPaymentData from "../context/checkout-context/optionPayments"
+import ShippingCard from "../pages-cards/shippingCard"
+import { shippingList } from "../../data/shippingList"
 
 interface Props {}
 
@@ -71,13 +73,14 @@ const CheckOut: FC<Props> = (props) => {
                                 Totalsumma order: 
                                      {getTotalPrice()} kr
                             </h3>
-                            <div>
+                             <div>
                                 <DefaultShippingData/>
-                            </div>
-                            <div>
+                          </div> 
+                           <div>
                                 <DefaultOptionPaymentData/>
                             </div>
-                            <div>
+                            
+                           {/*  <div>
                                 <DefaultPaymentCard/>
                             </div>
                             <div>
@@ -85,7 +88,7 @@ const CheckOut: FC<Props> = (props) => {
                             </div>
                             <div>
                                 <DefaultPaymentResurs/>
-                            </div>
+                            </div>  */}
 
                             <Button style={{...styleBtn, marginTop: "40px"}} 
                             onMouseOver={changeBackground} variant="contained" 

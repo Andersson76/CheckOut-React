@@ -1,4 +1,4 @@
-import { FC, CSSProperties, useContext, useState } from "react"
+import { FC, useState } from "react"
 import { Payment } from "../../../data/paymentList"
 import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
@@ -28,7 +28,7 @@ export interface PaymentSwish {
 
 const PaymentSwish: FC<Props> = (props) => {
 
-    const [paymentSwishstate, setPaymentSwishState] = useState<Payment[]>([])
+    const [paymentSwishstate, setPaymentSwishState] = useState<Payment>()
 
     return (
 
