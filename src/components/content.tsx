@@ -3,9 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home"
 import Products from "./pages/product"
 import CheckOut from "./pages/checkout"
-import Category from "./categories/category-man"
-import Category1 from "./categories/category-woman"
-import Category2 from "./categories/category-assec"
 import ProductDetail from "../components/pages-cards/productDetail"
 
 interface Props {}
@@ -19,9 +16,6 @@ const Content: FC<Props> = (props) => {
             <Route path="/product" element={<Products/>}></Route>   
             <Route path="/:productId" element={<ProductDetail/>}></Route>  
             <Route path="/checkout" element={<CheckOut/>}></Route> 
-            <Route path='/category' element={<Category/>}></Route> 
-            <Route path='/category1' element={<Category1/>}></Route> 
-            <Route path='/category2' element={<Category2/>}></Route> 
         </Routes>
         </>
     )

@@ -10,53 +10,57 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 
-interface Props{
-   /*  paymentOption: Payment */
-}
+interface Props{}
 
 export interface OptionPaymentData {
-    paymentOption: Payment[]
-    /* funktion? */
-
+  paymentOptionState: Payment | undefined,
+  setPaymentOption: React.Dispatch<React.SetStateAction<Payment | undefined>> 
 }
 
 const DefaultOptionPaymentData: OptionPaymentData = {
-    paymentOption: []
-     /* funktion som speglar optionpaymentData? */
+  paymentOptionState: undefined,
+  setPaymentOption: () => {}  
 }
 
-
 export const PaymentContext = React.createContext<OptionPaymentData>(DefaultOptionPaymentData)
-// sparar state i context för alla 3 valen och sen ett state för varje betalsätt 
+
 
 const OptionPayment: FC<PropsWithChildren<Props>> = (props) => {
 
-    const [optionPaymentState, setOptionPaymentState] = useState()
+    const [paymentOptionState, setPaymentOption] = useState<Payment | undefined>()
 
-   /*  function onchange som state som sparas i proverden */
+    return (
 
+        <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Betalsätt</FormLabel>
+                <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="female" 
+                    name="radio-buttons-group"
+                >
 
-   // Mapar vår paymentList - för att få ut valen
+                <>
 
-   /* {
-    paymentList.map((paymentList) => {
-    }
-} */
+                 {paymentList.map((paymentOption) => {
+                    return (
+                        <tr key={paymentOption.id}>
+                    <>
+                    <FormControlLabel 
+                        value={paymentOption.id} control={<Radio />} label={paymentOption.title}
+                        onChange={() => {setPaymentOption(paymentOptionState)}}
+                    />
+                    </>
+                    </tr>
+                )
+            })
+        }
+        </>
+          
+               
+            </RadioGroup>
+        </FormControl>
 
-return (
-    <FormControl>
-      <FormLabel id="demo-row-radio-buttons-group-label">Betalsätt</FormLabel>
-      <RadioGroup
-        row
-        aria-labelledby="demo-row-radio-buttons-group-label"
-        name="row-radio-buttons-group"
-      >
-        <FormControlLabel value="Kort" control={<Radio />} label="Kort" />
-        <FormControlLabel value="Swish" control={<Radio />} label="Swish" />
-        <FormControlLabel value="Resurs Bank" control={<Radio />} label="Resurs Bank" />
-      </RadioGroup>
-    </FormControl>
-  );
+    )
 }
 
     // Providern..

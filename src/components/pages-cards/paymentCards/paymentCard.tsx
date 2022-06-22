@@ -50,11 +50,10 @@ export interface PaymentCard {
      })
 
 
-     /* Optiopn med radio */
 
 const PaymentCard: FC<Props> = (props) => {
 
-    const [paymentCardstate, setPaymentCardState] = useState<Payment[]>([])
+    const [paymentCardState, setPaymentCardState] = useState<Payment>()
 
     return (
     
