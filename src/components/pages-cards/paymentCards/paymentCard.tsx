@@ -53,7 +53,7 @@ export interface PaymentCard {
 
 const PaymentCard: FC<Props> = (props) => {
 
-    const [paymentCardState, setPaymentCardState] = useState<Payment>()
+    const [cardState, setCardState] = useState<Payment>()
 
     return (
     

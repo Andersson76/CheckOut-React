@@ -64,3 +64,8 @@ export const imgContainer: CSSProperties = {
     fontSize: "18px",
     color: colors.third
 }
+
+export const smallImageStyle: CSSProperties = {
+  padding: "10px", 
+  maxWidth: "50px"
+}

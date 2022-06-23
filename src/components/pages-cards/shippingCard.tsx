@@ -44,7 +44,6 @@ const ShippingCard: FC<Props> = (props) => {
             })
         }
         </>
-          
                
             </RadioGroup>
         </FormControl>

@@ -76,9 +76,9 @@ const CheckOut: FC<Props> = (props) => {
                              <div>
                                 <DefaultShippingData/>
                           </div> 
-                           <div>
+                            <div>
                                 <DefaultOptionPaymentData/>
-                            </div>
+                            </div> 
                             
                            {/*  <div>
                                 <DefaultPaymentCard/>

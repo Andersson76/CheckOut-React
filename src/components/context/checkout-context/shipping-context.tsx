@@ -7,6 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import ShippingCard from "../../pages-cards/shippingCard"
+import { smallImageStyle } from "../../../css/common"
 
 interface Props {}
 
@@ -31,8 +32,10 @@ const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
 
 
     /* const [countDateState, setDateState] = useState() 
-    Skapa en funktion för korrekt leveranstid
+    
+        Skapa en funktion för korrekt leveranstid
     */
+
     return (
 
         <FormControl>
@@ -47,25 +50,29 @@ const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
 
                  {shippingList.map((shippingOption) => {
                     return (
-                        <tr key={shippingOption.id}>
+                
                     <>
+                    <tr key={shippingOption.id}>
+                
                     <FormControlLabel 
                         value={shippingOption.id} control={<Radio />} label={shippingOption.title}
-                        onChange={() => {setShippingState(shippingState)}}
-                    /> 
-        
+                            onChange={() => 
+                                {setShippingState(shippingState)}} 
+                            />
+                        
+                        <img style={smallImageStyle} src={shippingOption.image}/>
                         <p>{shippingOption.price} kr</p>
+
+                        {/* Rendera ut leveransdatum från funktionen */}
                       {/*   <p>{shippingOption.shippingDate}</p>  */}
-                  {/*  {shippingOption.image}  */}
-                  
-                    </>
+
                     </tr>
+
+                    </>
                 )
             })
         }
-        </>
-          
-               
+        </>    
             </RadioGroup>
         </FormControl>
 
