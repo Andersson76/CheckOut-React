@@ -1,17 +1,21 @@
 import React from "react"
 import { FC, PropsWithChildren, useState, useEffect } from "react"
 import { Product } from "../../data/productlist"
+import { FormData } from '../../data/contactForm'
 
 
 interface Props {}
 
 export interface ContextData {
     itemInCart: CartItem[], 
+    infoOfCustomer?: FormData,
     addProductToCart: (product: Product) => void,
     removeProductFromCart: (id: number) => void,
     updateProductInCart: (id: number) => void,
     getTotalPrice: () => number,
-    getTotalQty: () => number
+    getTotalQty: () => number,
+    setInfoOfCustomer: React.Dispatch<React.SetStateAction<FormData | undefined>>
+
 }
 
 const DefaultContextData: ContextData = {
@@ -20,7 +24,9 @@ const DefaultContextData: ContextData = {
     removeProductFromCart: () => {},
     updateProductInCart: () => {},
     getTotalPrice: () => 0,
-    getTotalQty: () => 0
+    getTotalQty: () => 0,
+    setInfoOfCustomer: () => {}
+
 }
 
 export interface CartItem {
@@ -35,8 +41,10 @@ export const CartContext = React.createContext<ContextData>(DefaultContextData)
 const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
-
-
+    const [infoOfCustomer, setInfoOfCustomer] = useState<FormData | undefined>()
+    //Behöver hämta shippin-context och payment-context här för att kunna använda dem till funktionen som beräknar slutsumman.
+    
+    
     const addProductToCart = (product: Product) => {
 
         let cartList = [...itemInCart]
@@ -127,7 +135,7 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     return (
         <CartContext.Provider 
-        value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty }}>
+        value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty, infoOfCustomer, setInfoOfCustomer }}>
             {props.children}
         </CartContext.Provider>
     )

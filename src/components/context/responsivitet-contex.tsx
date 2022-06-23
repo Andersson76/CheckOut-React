@@ -1,4 +1,15 @@
-/* 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+function MyComponent() {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
+  return <span>{`theme.breakpoints.up('sm') matches: ${matches}`}</span>;
+}
+
+/*
+
 import React, { useEffect, useRef, useState } from "react";
 import { FC, PropsWithChildren } from "react";
 
@@ -14,9 +25,9 @@ export interface Device {
 }
 
 const DefaultContextData: Device = {
-    isDesktop: true,
+    isDesktop: false,
     isTablet: false,
-    isMobile: false
+    isMobile: true
 }
 
 export const DeviceContext = React.createContext<DeviceContextData>({

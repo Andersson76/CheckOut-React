@@ -1,9 +1,10 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'
 import * as Yup from 'yup'
 import {styleBtn} from "../css/common"
+import {CartContext} from '../components/context/cart-context'
 
 
 interface Props {}
@@ -12,22 +13,22 @@ export interface FormData {
   firstname: string,
   lastname: string,
   address: string,
-  zipcode: number,
+  zipcode: string,
   city: string,
   country: string,
   email: string,
-  phone: number
+  phone: string
 }
 
 export const DefaultFormList: FormData = {
   firstname: "",
   lastname: "",
   address: "",
-  zipcode: 0,
+  zipcode: "",
   city: "",
   country: "",
   email: "",
-  phone: 0
+  phone: ""
 }
 
 const FormSchema = Yup.object().shape({
@@ -67,6 +68,8 @@ const FormSchema = Yup.object().shape({
 
 export const FormCard = () => {
   
+  const {setInfoOfCustomer} = useContext(CartContext)
+
   return (
     
 <Formik
@@ -83,9 +86,8 @@ export const FormCard = () => {
 
 
     validationSchema={FormSchema}
-    onSubmit={(values, actions) => {
-      alert(JSON.stringify(values, null, 2))
-      actions.setSubmitting(false)
+    onSubmit={values => {
+      setInfoOfCustomer(values as FormData)
     }}
     >
 
