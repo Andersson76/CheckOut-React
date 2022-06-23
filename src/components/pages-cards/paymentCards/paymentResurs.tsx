@@ -28,7 +28,7 @@ export interface PaymentResurs {
 
 const PaymentResurs: FC<Props> = (props) => {
 
-    const [paymentResursState, setPaymentResursState] = useState()
+    const [resursState, setResursState] = useState()
 
     return (
     

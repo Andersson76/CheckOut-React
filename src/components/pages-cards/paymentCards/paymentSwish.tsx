@@ -28,7 +28,7 @@ export interface PaymentSwish {
 
 const PaymentSwish: FC<Props> = (props) => {
 
-    const [paymentSwishstate, setPaymentSwishState] = useState<Payment>()
+    const [swishState, setSwishState] = useState<Payment>()
 
     return (
 
@@ -39,11 +39,13 @@ const PaymentSwish: FC<Props> = (props) => {
 
 
     validationSchema={PaymentSchema}
-    onSubmit={(values, actions) => {
+    onSubmit={(values, actions) => { 
       alert(JSON.stringify(values, null, 2))
       actions.setSubmitting(false)
     }}
     >
+
+      {/* paymentSwish */}
 
   {({ errors, touched }) => (
     <>

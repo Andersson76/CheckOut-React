@@ -4,11 +4,15 @@ import { fontFamily } from "../css/common"
 
 const Banner: FC = () => {
     return (
+    <>
+    <div className='visibility'>
         <div style={{...bannerStyle, ...fontFamily}}>
             <p style={bannerItem}>Fri frakt på beställningar över 500kr</p>
             <p style={bannerItem}>Snabb leverans 2-3 vardagar </p>
             <p style={bannerItem}>Fri retur 90 dagar</p>
         </div>
+    </div>
+    </>
     );
 }
 
@@ -23,14 +27,18 @@ const bannerStyle: CSSProperties = {
     margin: "0",
     padding: "0"
 
-};
+}
 
 const bannerItem: CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     fontSize: "12px",
     fontWeight: "bold"
-};
+}
 
+/* 
+media query 800..
+className visibilyty
+display: none */
 
 export default Banner

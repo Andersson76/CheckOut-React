@@ -103,6 +103,23 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     }
 
+    // tar in funktion totala priset produkter 
+
+    // ifsats i funktion om shipping är vald samt payment
+
+/*     const getTotalPrice = () => { 
+
+        let totalPrice = 0;
+
+        itemInCart.forEach(item  => {
+          totalPrice += item.product.price*item.qty
+        })
+
+        return totalPrice
+    } */
+
+
+
     const confirmeOrder = () => { 
 
     }
