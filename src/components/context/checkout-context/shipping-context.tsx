@@ -31,10 +31,12 @@ const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
     const [shippingState, setShippingState] = useState<Shipping | undefined>()/* ([]) */
 
 
-    /* const [countDateState, setDateState] = useState() 
-    
-        Skapa en funktion för korrekt leveranstid
-    */
+        const getShippingDate = (shippingOption: number | undefined) => {
+            let actualDate: Date = new Date()
+            actualDate = new Date(new Date().setHours(new Date().getHours() + shippingOption!))
+            let newShippingDate = actualDate.toLocaleDateString()
+            return newShippingDate
+        }
 
     return (
 
@@ -57,14 +59,16 @@ const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
                     <FormControlLabel 
                         value={shippingOption.id} control={<Radio />} label={shippingOption.title}
                             onChange={() => 
-                                {setShippingState(shippingState)}} 
+                                {setShippingState(shippingOption)}} 
                             />
                         
                         <img style={smallImageStyle} src={shippingOption.image}/>
                         <p>{shippingOption.price} kr</p>
+                        <p>{
+                            shippingState && (shippingState.id == shippingOption.id)?
+                            <h2>Beräknad leverans: {getShippingDate(shippingOption.shippingDate)}</h2>:undefined
+                            }</p>
 
-                        {/* Rendera ut leveransdatum från funktionen */}
-                      {/*   <p>{shippingOption.shippingDate}</p>  */}
 
                     </tr>
 

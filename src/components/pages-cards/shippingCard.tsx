@@ -7,12 +7,21 @@ import FormControl from '@mui/material/FormControl'
 import { ShippingContext } from "../context/checkout-context/shipping-context"
 import FormLabel from '@mui/material/FormLabel'
 
+
+
 interface Props {}
 
 const ShippingCard: FC<Props> = (props) => {
 
     const { shippingState, setShippingState } = useContext(ShippingContext) 
     
+    const getShippingDate = (shippingOption: number | undefined) => {
+        let actualDate: Date = new Date()
+        actualDate = new Date(new Date().setHours(new Date().getHours() + shippingOption!))
+        let newShippingDate = actualDate.toLocaleDateString()
+        return newShippingDate
+    }
+
     return (
 
         <FormControl>
@@ -31,12 +40,15 @@ const ShippingCard: FC<Props> = (props) => {
                     <>
                     <FormControlLabel 
                         value={shippingOption.id} control={<Radio />} label={shippingOption.title}
-                        onChange={() => {setShippingState(shippingState)}}
+                        onChange={() => {setShippingState(shippingOption)}}
                         /> 
         
                         <p>{shippingOption.price} kr</p>
-                      {/*   <p>{shippingOption.shippingDate}</p>  */}
-                  {/*  {shippingOption.image}  */}
+                        <p>{
+                            shippingState && (shippingState.id == shippingOption.id)?
+                            <h2>{getShippingDate(shippingOption.shippingDate)}</h2>:undefined
+                            }</p>
+                     
                   
                     </>
                     </tr>

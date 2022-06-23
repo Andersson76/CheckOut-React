@@ -17,7 +17,7 @@ export const shippingList: Shipping[] = [
         title: "Postnord",
         desctiption: "",
         price: 29,
-        shippingDate: 48,
+        shippingDate: 72,
         image: postnord
     }, 
     {
@@ -25,7 +25,7 @@ export const shippingList: Shipping[] = [
         title: "Instabox",
         desctiption: "",
         price: 19,
-        shippingDate: 24,
+        shippingDate: 48,
         image: instabox
     }, 
     {
@@ -33,7 +33,7 @@ export const shippingList: Shipping[] = [
         title: "Hämta i butik",
         desctiption: "",
         price: 0,
-        shippingDate: 48,
+        shippingDate: 24,
         image: logotext
     }
 ]
