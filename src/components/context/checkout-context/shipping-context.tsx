@@ -6,19 +6,18 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
-import ShippingCard from "../../pages-cards/shippingCard"
 import { smallImageStyle } from "../../../css/common"
 
 interface Props {}
 
 
 export interface ShippingData {
-    shippingState: Shipping | undefined,   
+    shippingState: Shipping | undefined
     setShippingState: React.Dispatch<React.SetStateAction<Shipping | undefined>> 
 }
 
 const DefaultShippingData: ShippingData = {
-    shippingState: undefined, 
+    shippingState: undefined,  
     setShippingState: () => {}  
 }
 
@@ -32,10 +31,13 @@ const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
 
 
         const getShippingDate = (shippingOption: number | undefined) => {
+           
             let actualDate: Date = new Date()
             actualDate = new Date(new Date().setHours(new Date().getHours() + shippingOption!))
             let newShippingDate = actualDate.toLocaleDateString()
+                
             return newShippingDate
+
         }
 
     return (
@@ -64,11 +66,10 @@ const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
                         
                         <img style={smallImageStyle} src={shippingOption.image}/>
                         <p>{shippingOption.price} kr</p>
-                        <p>{
-                            shippingState && (shippingState.id == shippingOption.id)?
-                            <h2>Beräknad leverans: {getShippingDate(shippingOption.shippingDate)}</h2>:undefined
-                            }</p>
 
+                        <p>{shippingState && (shippingState.id == shippingOption.id)?
+                            <p>Beräknad leverans: {getShippingDate(shippingOption.shippingDate)}</p> : undefined
+                            }</p>
 
                     </tr>
 
@@ -79,19 +80,18 @@ const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
         </>    
             </RadioGroup>
         </FormControl>
-
     )
 
+}
 
+/* 
           return (
             <ShippingContext.Provider 
                  value={{shippingState, setShippingState}}> 
                     {props.children}
             </ShippingContext.Provider>
-
-    ) 
-    
-  }
+            )
+ */
 
 
 export default ShippingProvider

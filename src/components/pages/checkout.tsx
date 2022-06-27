@@ -7,20 +7,18 @@ import CheckoutCard from "../pages-cards/checkoutCard"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import DefaultFormList from "../../data/contactForm"
-import DefaultPaymentCard from "../pages-cards/paymentCards/paymentCard"
-import DefaultPaymentSwish from "../pages-cards/paymentCards/paymentSwish"
-import DefaultPaymentResurs from "../pages-cards/paymentCards/paymentResurs"
 import DefaultShippingData from "../context/checkout-context/shipping-context"
 import DefaultOptionPaymentData from "../context/checkout-context/optionPayments"
-import ShippingCard from "../pages-cards/shippingCard"
-import { shippingList } from "../../data/shippingList"
+
 
 interface Props {}
 
 const CheckOut: FC<Props> = (props) => {
 
     const { itemInCart, 
-            getTotalPrice } = useContext(CartContext)
+            getTotalPrice,
+            getTotalOrder } = useContext(CartContext)
+
 
     function changeBackground(e) { // Typa upp e?
         e.target.style.background = "#044778";
@@ -70,26 +68,20 @@ const CheckOut: FC<Props> = (props) => {
                         {itemInCart.length == 0 ? null : 
                         <>
                             <h3 style={{marginTop: "50px"}}>
-                                Totalsumma order: 
-                                     {getTotalPrice()} kr
+                                Totalsumma order: {getTotalPrice()} kr
                             </h3>
-                             <div>
+
+                            <div>
                                 <DefaultShippingData/>
-                          </div> 
+                            </div> 
                             <div>
                                 <DefaultOptionPaymentData/>
                             </div> 
-                            
-                           {/*  <div>
-                                <DefaultPaymentCard/>
-                            </div>
-                            <div>
-                                <DefaultPaymentSwish/>
-                            </div>
-                            <div>
-                                <DefaultPaymentResurs/>
-                            </div>  */}
 
+                            <div>
+                                <h4>Totalt: {getTotalOrder()} kr</h4>
+                            </div>
+                        
                             <Button style={{...styleBtn, marginTop: "40px"}} 
                             onMouseOver={changeBackground} variant="contained" 
                                 onClick={() => console.log("clicked")}>Slutför köp
@@ -101,9 +93,10 @@ const CheckOut: FC<Props> = (props) => {
             </div>
             </div>
         </div>
-        
+
     )
 }
+
 
 export default CheckOut
 

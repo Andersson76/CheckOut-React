@@ -1,32 +1,40 @@
 import React from "react"
-import { FC, PropsWithChildren, useState, useEffect } from "react"
+import { FC, PropsWithChildren, useState, useContext } from "react"
 import { Product } from "../../data/productlist"
 import { FormData } from '../../data/contactForm'
-
+import { PaymentContext } from "../context/checkout-context/optionPayments"
+import { ShippingContext } from "../context/checkout-context/shipping-context"
+import { Shipping, shippingList } from "../../data/shippingList"
 
 interface Props {}
 
 export interface ContextData {
     itemInCart: CartItem[], 
-    infoOfCustomer?: FormData,
+    infoOfCustomer: FormData | undefined,
     addProductToCart: (product: Product) => void,
     removeProductFromCart: (id: number) => void,
     updateProductInCart: (id: number) => void,
     getTotalPrice: () => number,
     getTotalQty: () => number,
-    setInfoOfCustomer: React.Dispatch<React.SetStateAction<FormData | undefined>>
+    setInfoOfCustomer: React.Dispatch<React.SetStateAction<FormData | undefined>>,
+    getTotalOrder: () => number,
 
+    shippingState: Shipping | undefined
+    setShippingState: React.Dispatch<React.SetStateAction<Shipping | undefined>> 
 }
 
 const DefaultContextData: ContextData = {
     itemInCart: [],
+    shippingState: undefined,
+    setShippingState: () => {},
+    infoOfCustomer: undefined,
     addProductToCart: () => {},
     removeProductFromCart: () => {},
     updateProductInCart: () => {},
     getTotalPrice: () => 0,
     getTotalQty: () => 0,
-    setInfoOfCustomer: () => {}
-
+    setInfoOfCustomer: () => {},
+    getTotalOrder: () => 0
 }
 
 export interface CartItem {
@@ -42,7 +50,10 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
     const [infoOfCustomer, setInfoOfCustomer] = useState<FormData | undefined>()
-    //Behöver hämta shippin-context och payment-context här för att kunna använda dem till funktionen som beräknar slutsumman.
+    const [shippingState, setShippingState] = useState<Shipping | undefined>()/* ([]) */
+
+/*     const { shippingState } = useContext(ShippingContext) 
+    const { paymentOptionState } = useContext(PaymentContext) */
     
     
     const addProductToCart = (product: Product) => {
@@ -111,21 +122,30 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     }
 
-    // tar in funktion totala priset produkter 
 
-    // ifsats i funktion om shipping är vald samt payment
+    /* Fortsätt här - räknar dock bara ut getTotalPrice.. */
+  const getTotalOrder = () => { 
 
-/*     const getTotalPrice = () => { 
+        let totalSum = getTotalPrice()
+ 
+            if(infoOfCustomer) {
+            console.log(infoOfCustomer)
+            
 
-        let totalPrice = 0;
+                if(shippingState) {
+                    console.log(shippingState)
+ 
+                    totalSum += shippingState.price
+                    console.log(totalSum)
 
-        itemInCart.forEach(item  => {
-          totalPrice += item.product.price*item.qty
-        })
+                    /* if(paymentOptionState) 
+                    totalOrder += paymentOptionState.id */
 
-        return totalPrice
-    } */
+                }
+            }
 
+        return totalSum
+    }   
 
 
     const confirmeOrder = () => { 
@@ -135,7 +155,7 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     return (
         <CartContext.Provider 
-        value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty, infoOfCustomer, setInfoOfCustomer }}>
+            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty,     infoOfCustomer, setInfoOfCustomer, getTotalOrder, shippingState, setShippingState }}>
             {props.children}
         </CartContext.Provider>
     )
