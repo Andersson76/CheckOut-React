@@ -1,6 +1,6 @@
 import { CSSProperties, FC, useContext, useState } from "react"
 import { NavLink } from 'react-router-dom'
-import { Button, Checkbox } from '@mui/material'
+import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
 import { Product } from '../../data/productlist' 
 import { fontFamily, styleBtn } from "../../css/common"

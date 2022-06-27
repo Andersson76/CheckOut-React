@@ -1,6 +1,5 @@
 import { FC, useState, PropsWithChildren } from "react"
 import { Payment, paymentList } from "../../../data/paymentList"
-import { Form} from 'formik'
 import React from "react"    
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -8,7 +7,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { smallImageStyle } from "../../../css/common"
-
 import DefaultPaymentCard from "../../pages-cards/paymentCards/paymentCard"
 import DefaultPaymentSwish from "../../pages-cards/paymentCards/paymentSwish"
 import DefaultPaymentResurs from "../../pages-cards/paymentCards/paymentResurs"
