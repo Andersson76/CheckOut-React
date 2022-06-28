@@ -14,14 +14,14 @@ const Layout: FC = () => {
         <div>
             <PaymentProvider>
                 <ShippingProvider>  
-                <CartProvider>
-                    <Banner/>
-                    <Navmenu/>
-                    <Content/>
-                    <Footer/>
-                </CartProvider>
-            </ShippingProvider> 
-         </PaymentProvider>
+                    <CartProvider>
+                        <Banner/>
+                        <Navmenu/>
+                        <Content/>
+                        <Footer/>
+                    </CartProvider>
+                </ShippingProvider> 
+            </PaymentProvider>
         </div>
     )
 }           

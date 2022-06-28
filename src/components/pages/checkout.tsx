@@ -1,40 +1,30 @@
 import { CSSProperties, FC } from 'react'
 import { useContext } from "react"
-import { Button } from '@mui/material'
-import { textStyle, fontFamily, styleBtn, floatcontainer } from "../../css/common"
+import { textStyle, fontFamily, styleBtn } from "../../css/common"
 import {CartContext} from "../context/cart-provider" 
 import CheckoutCard from "../page-cards/checkout-card"
-import ShippingCard from "../checkout-cards/shipping"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-import DefaultFormList from "../../data/customerForm"
-import PaymentOptionCard from "../checkout-cards/payments"
-
+import VerticalLinearStepper from "../checkout-logic/stepper"
 
 interface Props {}
 
 const CheckOut: FC<Props> = (props) => {
 
-    const { itemInCart, 
-            getTotalPrice,
-            getTotalOrder } = useContext(CartContext)
-
-
-    function changeBackground(e) { // Typa upp e?
-        e.target.style.background = "#044778";
-    }
+    const { itemInCart, getTotalPrice } = useContext(CartContext)
 
     return (
         
+    <div>
         <div> 
-            <NavLink style={{...navigationBack, ...fontFamily}} 
+            <NavLink className="navLink" style={{...navigationBack, ...fontFamily}} 
                 to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>
-                    Fortsätt  handla
+                    Fortsätt handla
             </NavLink>
 
             <div>
                 {itemInCart.length == 0 ? null : 
-                    <h2 style={{fontSize:"16px",  marginLeft: "230px", marginTop: "40px", ...fontFamily}}>
+                    <h2 className="heading" style={{...heading, ...fontFamily}}>
                         Produkter</h2> 
                 }
                 <div style={{display: "flex", justifyContent: "center", alignItems: "center", ...fontFamily}}>
@@ -47,48 +37,28 @@ const CheckOut: FC<Props> = (props) => {
                     {itemInCart.map((cartItem) => 
                         <CheckoutCard cartItem={cartItem} />
                     )}
-                
-                <div style={{...floatcontainer, ...fontFamily, borderTop: "1px solid #D0D0D0",}}>
-                 <div style={textBoxItems}> 
+                    {itemInCart.length == 0 ? null : 
+                    <h4 style={{...totalSum, ...fontFamily}}>
+                        Totalsumma: {getTotalPrice()} kr
+                    </h4>
+                    }
+            </div>
+
+            <div>
+                {itemInCart.length === 0 ? null :
+                <div style={{ ...fontFamily, borderTop: "1px solid #D0D0D0",}}>
+                    <div style={textBoxItems}> 
                         <div style={{...textStyle, ...fontFamily}}>
                             <div style={{display: "flex", justifyContent: "space-between", marginTop: "40px"}}>
-                       
-                            {itemInCart.length === 0 ? null :
-                            <div>
-                                <h3>Kunduppgifter</h3>
-                                    <DefaultFormList/>
+                               
+                                <div>
+                                    <VerticalLinearStepper/>
+                                </div>
                             </div>
-                            }
-                                
                         </div>
                     </div>
                 </div>
-                <div style={textBox}> 
-                    <div style={{...textStyle, ...fontFamily}}>
-                        {itemInCart.length == 0 ? null : 
-                        <>
-                            <h3 style={{marginTop: "50px"}}>
-                                Totalsumma order: {getTotalPrice()} kr
-                            </h3>
-
-                            <div>
-                                <ShippingCard/>
-                            </div> 
-                            <div>
-                                <PaymentOptionCard/>
-                            </div> 
-                            <div>
-                                <h4>Totalt: {getTotalOrder()} kr</h4>
-                            </div>
-                        
-                            <Button style={{...styleBtn, marginTop: "40px"}} 
-                                onMouseOver={changeBackground} variant="contained" 
-                                    onClick={() => console.log("clicked")}>Slutför köp
-                            </Button> 
-                        </>
-                        }
-                    </div>
-                </div>
+                }
             </div>
             </div>
         </div>
@@ -106,30 +76,30 @@ const navigationBack: CSSProperties = {
     fontSize: "12px"
 }
 
-const qtyStyle: CSSProperties = {
-  fontSize: "8px",
-  transform: "translate(150%, -220%)",
-  backgroundColor: "#044778",
-  color: "white",
-  borderRadius: "50%",
-  zIndex: "1",
-  width: "15px",
-  height: "15px",
-  position: "absolute",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  cursor: "pointer"
-}
-
 const textBoxItems: CSSProperties = {
     display: "flex",
+    width: "70%",
     flex: "1",
-    marginLeft: "160px",
+    marginLeft: "auto",
+    marginRight: "auto"
 }  
 
-const textBox: CSSProperties = {
-    flex: "1",
-    marginRight: "50px", 
-    marginLeft: "50px",
-}  
+const heading: CSSProperties = {
+    fontSize: "16px", 
+    fontWeight: "lighter", 
+    marginTop: "40px",
+    display: "flex",
+    width: "60%",
+/*     justifyContent: "flex-start", */
+    marginLeft: "auto",
+    marginRight: "auto"
+}
+
+const totalSum: CSSProperties = {
+    fontSize:"16px", 
+    fontWeight: "ligther", 
+    marginTop: "40px",
+    display: "flex",
+    width: "60%",
+    justifyContent: "center" 
+}

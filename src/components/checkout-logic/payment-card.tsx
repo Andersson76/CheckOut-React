@@ -1,28 +1,28 @@
 import { FC, useState } from "react"
-import { Payment } from "../../data/paymentList"
-import { Grid } from '@mui/material'
+import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'
 import * as Yup from 'yup'
 import FormLabel from '@mui/material/FormLabel'
+import {styleBtn} from "../../css/common"
 
 
 interface Props {}
 
-export interface PaymentCard {
-    cardnumber: number,
+export interface PaymentCardData {
+    cardnumber: string,
     fullname: string,
-    month: number,
-    year: number,
-    CVC: number
+    month: string,
+    year: string,
+    CVC: string
   }
   
-  export const DefaultPaymentCard: PaymentCard = {
-    cardnumber: 0,
+  export const DefaultPaymentCard: PaymentCardData = {
+    cardnumber: "",
     fullname: "",
-    month: 0,
-    year: 0,
-    CVC: 0
+    month: "",
+    year: "",
+    CVC: ""
   }
   
   const PaymentSchema = Yup.object().shape({
@@ -38,12 +38,12 @@ export interface PaymentCard {
          .min(2, 'Vänligen fyll i fältet')
          .max(2, 'Vänligen fyll i fältet')
          .required('Required'),
-       year: Yup.string()
+       year: Yup.number()
          .min(2, 'Vänligen fyll i fältet')
          .max(2, 'Vänligen fyll i fältet')
          .required('Vänligen fyll i fältet'),
         CVC: Yup.number()
-         .min(3, 'Too Short!')
+         .min(3, 'Vänligen fyll i fältet')
          .max(3, 'Vänligen fyll i fältet')
          .required('Vänligen fyll i fältet'),
      })
@@ -52,7 +52,7 @@ export interface PaymentCard {
 
 const PaymentCard: FC<Props> = (props) => {
 
-    const [cardState, setCardState] = useState<Payment>()
+    const [cardState, setCardState] = useState<PaymentCardData | undefined>()
 
     return (
     
@@ -65,11 +65,9 @@ const PaymentCard: FC<Props> = (props) => {
        CVC: ''
      }}
 
-
     validationSchema={PaymentSchema}
-    onSubmit={(values, actions) => {
-      alert(JSON.stringify(values, null, 2))
-      actions.setSubmitting(false)
+    onSubmit={values => { 
+      setCardState(values as PaymentCardData)      
     }}
     >
 
@@ -83,7 +81,7 @@ const PaymentCard: FC<Props> = (props) => {
             name='Kortnummer'
             type='number' 
             label='Kortnummer' 
-            placeholder='0000111100001111'
+            placeholder='1234567890123456'
             fullWidth
             {...errors.cardnumber && touched.cardnumber ? (
               <div>{errors.cardnumber}</div>
@@ -95,9 +93,9 @@ const PaymentCard: FC<Props> = (props) => {
             component={TextField}
             name='Giltighetsdatum' 
             fluid 
-            options= 'monthOption' // monthOption - props
+            options= 'monthOption' 
             label='Månad' 
-            placeholder='12'
+            placeholder='MM'
             fullWidth
             {...errors.month && touched.month ? (
               <div>{errors.month}</div>
@@ -109,9 +107,9 @@ const PaymentCard: FC<Props> = (props) => {
             component={TextField}
             name='Giltighetsdatum' 
             fluid 
-            options='yearOptions' /* {} */
+            options='yearOptions' 
             label='År' 
-            placeholder='22'
+            placeholder='ÅR'
             fullWidth
             {...errors.year && touched.year ? (
               <div>{errors.year}</div>
@@ -144,6 +142,9 @@ const PaymentCard: FC<Props> = (props) => {
           />
         </Grid>
       </Grid>
+      <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
+          Spara
+        </Button>
     </Form>             
 )}
 

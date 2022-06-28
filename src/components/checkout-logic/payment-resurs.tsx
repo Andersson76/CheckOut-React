@@ -1,19 +1,20 @@
 import { FC, useState } from "react"
-import { Grid } from '@mui/material'
+import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'
 import * as Yup from 'yup'
 import FormLabel from '@mui/material/FormLabel'
+import {styleBtn} from "../../css/common"
 
 
 interface Props {}
 
 export interface PaymentResurs {
-  socialSecurityNumber: number
+  socialSecurityNumber: string
   }
   
   export const DefaultPaymentResurs: PaymentResurs = {
-    socialSecurityNumber: 0
+    socialSecurityNumber: ""
   }
   
   const PaymentSchema = Yup.object().shape({
@@ -26,9 +27,11 @@ export interface PaymentResurs {
 
 const PaymentResurs: FC<Props> = (props) => {
 
-    const [resursState, setResursState] = useState()
+    const [resursState, setResursState] = useState<PaymentResurs | undefined>()
 
     return (
+
+<div>
     
 <Formik
     initialValues = {{
@@ -37,9 +40,11 @@ const PaymentResurs: FC<Props> = (props) => {
 
 
     validationSchema={PaymentSchema}
-    onSubmit={(values, actions) => {
-      alert(JSON.stringify(values, null, 2))
-      actions.setSubmitting(false)
+      onSubmit={values => { 
+        setResursState(values as PaymentResurs)
+        console.log(values)
+      /* alert(JSON.stringify(values, null, 2))
+      actions.setSubmitting(false) */
     }}
     >
 
@@ -55,18 +60,26 @@ const PaymentResurs: FC<Props> = (props) => {
             label='Personnummer' 
             placeholder='000000-0000'
             fullWidth
+            
             {...errors.socialSecurityNumber && touched.socialSecurityNumber ? (
               <div>{errors.socialSecurityNumber}</div>
               ) : null}
           />
         </Grid>
       </Grid>
+      <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
+          Spara
+        </Button>
     </Form>             
 )}
 
 </Formik>
 
+</div>
+
     )
 }
 
 export default PaymentResurs
+
+

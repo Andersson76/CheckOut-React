@@ -10,16 +10,14 @@ interface Props{
 
 const CheckoutCard: FC<Props> = (props) => {
 
-    const { removeProductFromCart,
-            addProductToCart, 
-            updateProductInCart} = useContext(CartContext)
+    const { removeProductFromCart, addProductToCart, updateProductInCart} = useContext(CartContext)
   
         return (
             <>
-            <div style={{...floatDiv, ...fontFamily}}>         
+            <div className="container-box" style={{...floatDiv, ...fontFamily}}>         
                 <div>
-                    <img style={imgStyle} 
-                        src={props.cartItem.product.image} alt="" />
+                    <img className="checkout-img" style={imgStyle} 
+                        src={props.cartItem.product.image} />
                 </div> 
                 <div style={{...textStyle, ...fontFamily, paddingLeft: "40px"}}>
                     <h3>{props.cartItem.product.title} </h3>
@@ -43,7 +41,7 @@ const CheckoutCard: FC<Props> = (props) => {
                     </ButtonGroup> 
                 </div>
 
-                  <div style={{...textStyle, ...fontFamily, paddingLeft: "190px"}}>
+                  <div className="cheackout-box" style={{...textStyle, ...fontFamily, paddingLeft: "190px"}}>
                     <h4>
                         {props.cartItem.product.price*props.cartItem.qty} kr
                     </h4>

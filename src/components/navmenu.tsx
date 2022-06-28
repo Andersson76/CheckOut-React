@@ -16,7 +16,7 @@ const Navmenu: FC<Props> = (props) => {
   const { getTotalQty } = useContext(CartContext)
 
     return (
-        <div style={{position: "sticky"}}>
+        <div>
           <div style={{...styleNavmenu, ...fontFamily, paddingBottom: "30px"}}>
               <div>
                 <Link style={{color: "black", textDecoration: "none", ...fontLogo}} to={"/"}>
@@ -24,7 +24,7 @@ const Navmenu: FC<Props> = (props) => {
                 </Link>
               </div> 
               
-              <div>
+              <div className="nav">
                 <Link style={navLinks} to={"/"}>HEM</Link>
                 <Link style={navLinks} to={"/product"}>{}PRODUKTER</Link>
               </div>
@@ -77,9 +77,6 @@ const navLinks: CSSProperties = {
     color: colors.third,
   }
   
-  const styleLogo: CSSProperties = {
-    fontSize: "22px"
-  }
   
   const styleNavmenu: CSSProperties = {
     width: "100%",
