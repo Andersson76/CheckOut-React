@@ -1,7 +1,7 @@
 import { FC, CSSProperties, useContext } from "react"
 import { Button, ButtonGroup } from '@mui/material'
 import { fontFamily, textStyle, floatDiv } from "../../css/common"
-import { CartItem, CartContext } from "../context/cart-context"
+import { CartItem, CartContext } from "../context/cart-provider"
 import ClearIcon from '@mui/icons-material/Clear'
 
 interface Props{

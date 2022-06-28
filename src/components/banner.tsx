@@ -36,6 +36,7 @@ const bannerItem: CSSProperties = {
     fontWeight: "bold"
 }
 
+/* Egen CSS-fil */
 /* 
 media query 800..
 className visibilyty

@@ -1,25 +1,27 @@
 
 import { FC } from "react"
 import Navmenu from "./navmenu"
-import Home from "./pages/home"
 import Footer from "./footer"
 import Content from "./content"
-import CartProvider from "./context/cart-context" 
+import CartProvider from "./context/cart-provider" 
 import Banner from "./banner"
-import ShippingProvider from "./context/checkout-context/shipping-context"
+import ShippingProvider from "./context/shipping-provider"
+import PaymentProvider from "./context/payment-provider"
 
 
 const Layout: FC = () => {
     return (
         <div>
-            {/* <ShippingProvider>  */}
+            <PaymentProvider>
+                <ShippingProvider>  
                 <CartProvider>
                     <Banner/>
                     <Navmenu/>
                     <Content/>
                     <Footer/>
                 </CartProvider>
-         {/*    </ShippingProvider> */} 
+            </ShippingProvider> 
+         </PaymentProvider>
         </div>
     )
 }           

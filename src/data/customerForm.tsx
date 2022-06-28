@@ -4,7 +4,7 @@ import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'
 import * as Yup from 'yup'
 import {styleBtn} from "../css/common"
-import {CartContext} from '../components/context/cart-context'
+import {CartContext} from '../components/context/cart-provider'
 
 
 interface Props {}
@@ -66,7 +66,7 @@ const FormSchema = Yup.object().shape({
    })
 
 
-export const FormCard = () => {
+export const CustomerForm = () => {
   
   const {setInfoOfCustomer} = useContext(CartContext)
 
@@ -207,5 +207,4 @@ export const FormCard = () => {
 }
 
 
-
-export default FormCard
+export default CustomerForm

@@ -1,10 +1,9 @@
 import React from "react"
 import { FC, PropsWithChildren, useState, useContext } from "react"
 import { Product } from "../../data/productlist"
-import { FormData } from '../../data/contactForm'
-import { PaymentContext } from "../context/checkout-context/optionPayments"
-import { ShippingContext } from "../context/checkout-context/shipping-context"
-import { Shipping, shippingList } from "../../data/shippingList"
+import { FormData } from '../../data/customerForm'
+import { PaymentContext } from "./payment-provider"
+import { ShippingContext } from "./shipping-provider"
 
 interface Props {}
 
@@ -18,15 +17,10 @@ export interface ContextData {
     getTotalQty: () => number,
     setInfoOfCustomer: React.Dispatch<React.SetStateAction<FormData | undefined>>,
     getTotalOrder: () => number,
-
-    shippingState: Shipping | undefined
-    setShippingState: React.Dispatch<React.SetStateAction<Shipping | undefined>> 
 }
 
 const DefaultContextData: ContextData = {
     itemInCart: [],
-    shippingState: undefined,
-    setShippingState: () => {},
     infoOfCustomer: undefined,
     addProductToCart: () => {},
     removeProductFromCart: () => {},
@@ -50,10 +44,10 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
     const [infoOfCustomer, setInfoOfCustomer] = useState<FormData | undefined>()
-    const [shippingState, setShippingState] = useState<Shipping | undefined>()/* ([]) */
 
-/*     const { shippingState } = useContext(ShippingContext) 
-    const { paymentOptionState } = useContext(PaymentContext) */
+    
+    const { shippingState } = useContext(ShippingContext) 
+    const { paymentOptionState } = useContext(PaymentContext) 
     
     
     const addProductToCart = (product: Product) => {
@@ -123,20 +117,16 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
     }
 
 
-    /* Fortsätt här - räknar dock bara ut getTotalPrice.. */
-  const getTotalOrder = () => { 
+    /* Fortsätt här - med ifsats */
+
+    const getTotalOrder = () => {  
 
         let totalSum = getTotalPrice()
- 
-            if(infoOfCustomer) {
-            console.log(infoOfCustomer)
-            
 
+            if(infoOfCustomer) {            
                 if(shippingState) {
-                    console.log(shippingState)
  
                     totalSum += shippingState.price
-                    console.log(totalSum)
 
                     /* if(paymentOptionState) 
                     totalOrder += paymentOptionState.id */
@@ -155,7 +145,7 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     return (
         <CartContext.Provider 
-            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty,     infoOfCustomer, setInfoOfCustomer, getTotalOrder, shippingState, setShippingState }}>
+            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty,     infoOfCustomer, setInfoOfCustomer, getTotalOrder }}>
             {props.children}
         </CartContext.Provider>
     )

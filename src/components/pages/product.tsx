@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { productList } from '../../data/productlist' 
-import ProductCard from "../pages-cards/productCard"
+import ProductCard from "../page-cards/product-card"
 import { imgContainer} from "../../css/common"
 import { fontFamily, styleHeader } from "../../css/common"
 

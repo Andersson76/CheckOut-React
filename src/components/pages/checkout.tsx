@@ -2,13 +2,13 @@ import { CSSProperties, FC } from 'react'
 import { useContext } from "react"
 import { Button } from '@mui/material'
 import { textStyle, fontFamily, styleBtn, floatcontainer } from "../../css/common"
-import {CartContext} from "../context/cart-context" 
-import CheckoutCard from "../pages-cards/checkoutCard"
+import {CartContext} from "../context/cart-provider" 
+import CheckoutCard from "../page-cards/checkout-card"
+import ShippingCard from "../checkout-cards/shipping"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-import DefaultFormList from "../../data/contactForm"
-import DefaultShippingData from "../context/checkout-context/shipping-context"
-import DefaultOptionPaymentData from "../context/checkout-context/optionPayments"
+import DefaultFormList from "../../data/customerForm"
+import PaymentOptionCard from "../checkout-cards/payments"
 
 
 interface Props {}
@@ -72,19 +72,18 @@ const CheckOut: FC<Props> = (props) => {
                             </h3>
 
                             <div>
-                                <DefaultShippingData/>
+                                <ShippingCard/>
                             </div> 
                             <div>
-                                <DefaultOptionPaymentData/>
+                                <PaymentOptionCard/>
                             </div> 
-
                             <div>
                                 <h4>Totalt: {getTotalOrder()} kr</h4>
                             </div>
                         
                             <Button style={{...styleBtn, marginTop: "40px"}} 
-                            onMouseOver={changeBackground} variant="contained" 
-                                onClick={() => console.log("clicked")}>Slutför köp
+                                onMouseOver={changeBackground} variant="contained" 
+                                    onClick={() => console.log("clicked")}>Slutför köp
                             </Button> 
                         </>
                         }
