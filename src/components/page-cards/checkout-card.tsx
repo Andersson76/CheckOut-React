@@ -19,7 +19,7 @@ const CheckoutCard: FC<Props> = (props) => {
                     <img className="checkout-img" style={imgStyle} 
                         src={props.cartItem.product.image} />
                 </div> 
-                <div style={{...textStyle, ...fontFamily, paddingLeft: "40px"}}>
+                <div className="text-div" style={{...textStyle, ...fontFamily, paddingLeft: "40px"}}>
                     <h3>{props.cartItem.product.title} </h3>
                     <p>Färg: {props.cartItem.product.color}</p>
 

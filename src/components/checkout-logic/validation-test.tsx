@@ -2,6 +2,14 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
+
+/* Sidor som vi kan hitta problemet
+
+https://formik.org/docs/tutorial
+https://www.codegrepper.com/code-examples/whatever/yup+number+validation
+
+ */
+
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, 'Too Short!')

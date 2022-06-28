@@ -164,12 +164,10 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
     }
 
 
+    /* Töm  alla komponenter samt carten.. */
+
     const confirmeOrder = () => { 
 
-/*         
- Töm  alla komponenter samt carten..
-   
- - relode till startsidan */
 
     }
 
