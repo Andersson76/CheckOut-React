@@ -1,7 +1,7 @@
 import React from "react"
 import { FC, PropsWithChildren, useState, useContext } from "react"
 import { Product } from "../../data/productlist"
-import { FormData } from '../../data/customerForm'
+import { FormData } from '../checkout-logic/customer-form'
 import { PaymentContext } from "./payment-provider"
 import { ShippingContext } from "./shipping-provider"
 
@@ -17,6 +17,8 @@ export interface ContextData {
     getTotalQty: () => number,
     setInfoOfCustomer: React.Dispatch<React.SetStateAction<FormData | undefined>>,
     getTotalOrder: () => number,
+    totalShipping:  () => number,
+    totalPayment: () => number,
 }
 
 const DefaultContextData: ContextData = {
@@ -28,7 +30,9 @@ const DefaultContextData: ContextData = {
     getTotalPrice: () => 0,
     getTotalQty: () => 0,
     setInfoOfCustomer: () => {},
-    getTotalOrder: () => 0
+    getTotalOrder: () => 0,
+    totalShipping: () => 0,
+    totalPayment: () => 0
 }
 
 export interface CartItem {
@@ -44,11 +48,10 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
     const [infoOfCustomer, setInfoOfCustomer] = useState<FormData | undefined>()
-
     
     const { shippingState } = useContext(ShippingContext) 
     const { paymentOptionState } = useContext(PaymentContext) 
-    
+
     
     const addProductToCart = (product: Product) => {
 
@@ -117,8 +120,6 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
     }
 
 
-    /* Fortsätt här - med ifsats */
-
     const getTotalOrder = () => {  
 
         let totalSum = getTotalPrice()
@@ -127,9 +128,9 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
                 if(shippingState) {
  
                     totalSum += shippingState.price
-
-                    /* if(paymentOptionState) 
-                    totalOrder += paymentOptionState.id */
+                     
+                   if(paymentOptionState)    
+                    totalSum += paymentOptionState.price
 
                 }
             }
@@ -138,14 +139,44 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
     }   
 
 
+    const totalShipping = () => {
+
+        let totalShip = 0;
+            if(shippingState) {
+                
+                totalShip += shippingState.price
+    }
+
+    return totalShip
+
+}
+
+    const totalPayment = () => {
+
+        let totalPay = 0;
+            if(paymentOptionState) {
+                
+                totalPay += paymentOptionState.price
+    }
+
+    return totalPay
+        
+    }
+
+
     const confirmeOrder = () => { 
+
+/*         
+ Töm  alla komponenter samt carten..
+   
+ - relode till startsidan */
 
     }
 
 
     return (
         <CartContext.Provider 
-            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty,     infoOfCustomer, setInfoOfCustomer, getTotalOrder }}>
+            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty,     infoOfCustomer, setInfoOfCustomer, getTotalOrder, totalShipping, totalPayment }}>
             {props.children}
         </CartContext.Provider>
     )

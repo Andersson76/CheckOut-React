@@ -1,13 +1,11 @@
-import { FC, useContext } from 'react'
+import { useContext } from 'react'
 import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'
 import * as Yup from 'yup'
-import {styleBtn} from "../css/common"
-import {CartContext} from '../components/context/cart-provider'
+import { styleBtn } from "../../css/common"
+import { CartContext } from '../context/cart-provider'
 
-
-interface Props {}
 
 export interface FormData {
   firstname: string,
@@ -61,7 +59,8 @@ const FormSchema = Yup.object().shape({
       .required('Vänligen fyll i fältet'),
      phone: Yup.string()
       .min(10, 'Vänligen fyll i fältet')
-      .max(10, 'Vänligen fyll i fältet')
+      .max(10, 'Vänligen fyll i fältet') 
+ /*      .test("Nummer", phone => phone!.toString().length == 9) */ 
       .required('Vänligen fyll i fältet'),
    })
 
@@ -96,10 +95,10 @@ export const CustomerForm = () => {
   <>
   <Form>
     <Grid container spacing={2}>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12}>
         <Field
           component={TextField}
-          label="Förnamn"
+          label="Förnamn*"
           name="firstname"
           variant="outlined"
           fullWidth
@@ -108,10 +107,10 @@ export const CustomerForm = () => {
           ) : null}
         />
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12}>
         <Field
           component={TextField}
-          label="Efternamn"
+          label="Efternamn*"
           name="lastname"
           variant="outlined"
           fullWidth
@@ -123,7 +122,7 @@ export const CustomerForm = () => {
       <Grid item xs={12}>
         <Field
           component={TextField}
-          label="Adress"
+          label="Adress*"
           name="address"
           variant="outlined"
           fullWidth
@@ -135,7 +134,7 @@ export const CustomerForm = () => {
       <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
-          label="Postnummer"
+          label="Postnummer*"
           name="zipcode"
           variant="outlined"
           fullWidth
@@ -147,7 +146,7 @@ export const CustomerForm = () => {
       <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
-          label="Stad"
+          label="Stad*"
           name="city"
           variant="outlined"
           fullWidth
@@ -156,10 +155,10 @@ export const CustomerForm = () => {
             ) : null}
         />
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12}>
         <Field
           component={TextField}
-          label="Land"
+          label="Land*"
           name="country"
           variant="outlined"
           fullWidth
@@ -168,10 +167,10 @@ export const CustomerForm = () => {
             ) : null}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
-          label="Mejl"
+          label="Mejl*"
           name="email"
           variant="outlined"
           fullWidth
@@ -180,10 +179,10 @@ export const CustomerForm = () => {
             ) : null}
         />
       </Grid> 
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={6}>
            <Field
              component={TextField}
-             label="Telefonnummer"
+             label="Telefonnummer*"
              name="phone"
              variant="outlined"
              placeholder='+46'
@@ -195,7 +194,7 @@ export const CustomerForm = () => {
          </Grid> 
     </Grid>
         <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
-          Fortsätt till betalning
+          Spara
         </Button>
   </Form> 
   </>

@@ -1,20 +1,20 @@
 import { FC, useState } from "react"
-import { Payment } from "../../data/paymentList"
-import { Grid } from '@mui/material'
+import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'
 import * as Yup from 'yup'
 import FormLabel from '@mui/material/FormLabel'
+import {styleBtn} from "../../css/common"
 
 
 interface Props {}
 
 export interface PaymentSwish {
-    phonenumber: number,
+    phone: string, 
   }
   
   export const DefaultPaymentSwish: PaymentSwish = {
-    phonenumber: 0,
+    phone: "",
   }
   
   const PaymentSchema = Yup.object().shape({
@@ -25,9 +25,10 @@ export interface PaymentSwish {
      })
 
 
-const PaymentSwish: FC<Props> = (props) => {
+export const PaymentSwish = () => {
+/* const PaymentSwish: FC<Props> = (props) => { */
 
-    const [swishState, setSwishState] = useState<Payment>()
+    const [swishState, setSwishState] = useState<PaymentSwish | undefined>()
 
     return (
 
@@ -38,13 +39,12 @@ const PaymentSwish: FC<Props> = (props) => {
 
 
     validationSchema={PaymentSchema}
-    onSubmit={(values, actions) => { 
-      alert(JSON.stringify(values, null, 2))
-      actions.setSubmitting(false)
+    onSubmit={values => { 
+      setSwishState(values as PaymentSwish)
     }}
     >
 
-      {/* paymentSwish */}
+
 
   {({ errors, touched }) => (
     <>
@@ -65,6 +65,9 @@ const PaymentSwish: FC<Props> = (props) => {
             />
           </Grid>
         </Grid>
+        <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
+          Spara
+        </Button>
       </Form>             
   </>
 
