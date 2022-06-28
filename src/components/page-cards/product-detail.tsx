@@ -62,21 +62,21 @@ const ProductDetail: FC<Props> = (props) => {
     
         return (
             <>
-            <NavLink style={{...navigationBack, ...fontFamily}} 
+            <NavLink className="navLink" style={{...navigationBack, ...fontFamily}} 
                 to={"/"}><ArrowBackIosIcon style={{fontSize: "1em"}}/>
                     Fortsätt handla
             </NavLink>
             
-            <div style={{...floatcontainer, ...fontFamily}}>        
-                <div style={imgBox}>
-                    <img style={imgStyle} src={foundProduct!.image} alt="" />
+            <div className="product-box" style={{...floatcontainer, ...fontFamily}}>        
+                <div className="imgflex" style={imgBox}>
+                    <img className="img" style={imgStyle} src={foundProduct!.image} alt="" />
                 </div>
 
-                <div style={textBox}>
+                <div className="text-box" style={textBox}>
                     <h3 style={{fontSize: "14px"}}>
                         {foundProduct!.title}
                     </h3>
-                    <p style={{...textStyle, paddingRight: "100px"}}>
+                    <p className="text" style={{...textStyle, paddingRight: "100px"}}>
                         {foundProduct!.desctiption}
                     </p>
                     <p style={{fontSize: "12px"}}>
