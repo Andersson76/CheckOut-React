@@ -4,7 +4,7 @@ import { Button } from '@mui/material'
 import { colors } from '../../data/colors'
 import { Product } from '../../data/productlist' 
 import { fontFamily, styleBtn } from "../../css/common"
-import { CartContext } from "../context/cart-context"
+import { CartContext } from "../context/cart-provider"
 import * as React from 'react'
 import Snackbar from '@mui/material/Snackbar'
 import IconButton from '@mui/material/IconButton'
@@ -20,7 +20,7 @@ const ProductCard: FC<Props> = (props) => {
   
     const handleClick = () => {
       setOpen(true)
-    };
+    }
   
     const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
       if (reason === 'clickaway') {

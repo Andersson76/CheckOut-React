@@ -1,5 +1,5 @@
 import { FC, useState } from "react"
-import { Payment } from "../../../data/paymentList"
+import { Payment } from "../../data/paymentList"
 import { Grid } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'

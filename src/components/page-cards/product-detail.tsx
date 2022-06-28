@@ -4,7 +4,7 @@ import { useParams, Navigate, NavLink } from "react-router-dom"
 import { Button } from '@mui/material' 
 import { fontFamily, styleBtn, textStyle } from "../../css/common"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-import { CartContext } from "../context/cart-context"
+import { CartContext } from "../context/cart-provider"
 import * as React from 'react'
 import Snackbar from '@mui/material/Snackbar'
 import IconButton from '@mui/material/IconButton'

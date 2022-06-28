@@ -1,37 +1,25 @@
-import { FC, useState, PropsWithChildren } from "react"
-import { Payment, paymentList } from "../../../data/paymentList"
-import React from "react"    
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import { smallImageStyle } from "../../../css/common"
-import DefaultPaymentCard from "../../pages-cards/paymentCards/paymentCard"
-import DefaultPaymentSwish from "../../pages-cards/paymentCards/paymentSwish"
-import DefaultPaymentResurs from "../../pages-cards/paymentCards/paymentResurs"
+import { FC, useContext } from "react" 
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import { PaymentContext } from "../context/payment-provider"
+import FormLabel from '@mui/material/FormLabel'
+import { smallImageStyle } from "../../css/common"
+import { paymentList } from "../../data/paymentList"
+import DefaultPaymentCard from "../checkout-cards/payment-card"
+import DefaultPaymentSwish from "../checkout-cards/payment-swish"
+import DefaultPaymentResurs from "../checkout-cards/payment-resurs"
 
 
-interface Props{}
-
-export interface OptionPaymentData {
-  paymentOptionState: Payment | undefined,
-  setPaymentOption: React.Dispatch<React.SetStateAction<Payment | undefined>> 
-}
-
-const DefaultOptionPaymentData: OptionPaymentData = {
-  paymentOptionState: undefined,
-  setPaymentOption: () => {}  
-}
+interface Props {}
 
 
-export const PaymentContext = React.createContext<OptionPaymentData>(DefaultOptionPaymentData)
+const  PaymentOptionCard: FC<Props> = (props) => {
 
-
-const OptionPayment: FC<PropsWithChildren<Props>> = (props) => {
-
-    const [paymentOptionState, setPaymentOption] = useState<Payment | undefined>()
-
+    
+    const { paymentOptionState, setPaymentOption } = useContext(PaymentContext)
+   
     return (
 
         <FormControl>
@@ -71,16 +59,6 @@ const OptionPayment: FC<PropsWithChildren<Props>> = (props) => {
         </FormControl>
 
     )
-
-  return (
-        <PaymentContext.Provider 
-            value={{paymentOptionState, setPaymentOption}}> 
-                {props.children}
-        </PaymentContext.Provider>
-
-    ) 
 }
-  
-    
 
-export default OptionPayment
+export default PaymentOptionCard
