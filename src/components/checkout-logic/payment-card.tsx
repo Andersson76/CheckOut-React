@@ -1,10 +1,11 @@
-import { FC, useState } from "react"
+import { FC, useState, useContext } from "react"
 import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'
 import * as Yup from 'yup'
 import FormLabel from '@mui/material/FormLabel'
 import {styleBtn} from "../../css/common"
+import PaymentContext from "../context/payment-provider"
 
 
 interface Props {}
@@ -52,7 +53,9 @@ export interface PaymentCardData {
 
 const PaymentCard: FC<Props> = (props) => {
 
-    const [cardState, setCardState] = useState<PaymentCardData | undefined>()
+    const [cardState, setCardState] = useState<PaymentCardData | undefined>() 
+
+    /* const { setCardState } = useContext(PaymentContext) */
 
     return (
     
