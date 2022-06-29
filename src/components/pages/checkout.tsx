@@ -5,7 +5,7 @@ import {CartContext} from "../context/cart-provider"
 import CheckoutCard from "../page-cards/checkout-card"
 import { NavLink } from "react-router-dom"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-import VerticalLinearStepper from "../checkout-logic/stepper"
+import VerticalLinearStepper from "../stepper"
 
 interface Props {}
 
