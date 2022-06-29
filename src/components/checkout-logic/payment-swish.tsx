@@ -1,13 +1,12 @@
-import { FC, useState } from "react"
+import { FC, useState, useContext } from "react"
 import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form} from 'formik'
 import * as Yup from 'yup'
 import FormLabel from '@mui/material/FormLabel'
 import {styleBtn} from "../../css/common"
+import PaymentContext from "../context/payment-provider"
 
-
-interface Props {}
 
 export interface PaymentSwish {
     phone: string, 
@@ -26,11 +25,13 @@ export interface PaymentSwish {
 
 
 export const PaymentSwish = () => {
-/* const PaymentSwish: FC<Props> = (props) => { */
 
-    const [swishState, setSwishState] = useState<PaymentSwish | undefined>()
+  
+/*   const { setSwishState } = useContext(PaymentContext) */
 
-    return (
+  const [swishState, setSwishState] = useState<PaymentSwish | undefined>() 
+   
+   return (
 
 <Formik
     initialValues = {{
