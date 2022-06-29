@@ -8,11 +8,16 @@ import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import { useContext } from "react"
-import { CartContext } from "../context/cart-provider"
-import DefaultFormList from "./customer-form"
-import ShippingCard from "./shipping"
-import PaymentOptionCard from "./payments"
-import { styleBtn, fontFamily } from "../../css/common"
+import { CartContext } from "./context/cart-provider"
+import DefaultFormList from "./checkout-logic/customer-form"
+import ShippingCard from "./checkout-logic/shipping"
+import PaymentOptionCard from "./checkout-logic/payments"
+import { styleBtn, fontFamily } from "../css/common"
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 
 const steps = [
@@ -33,9 +38,20 @@ const steps = [
 
 
 function VerticalLinearStepper() {
+
   const [activeStep, setActiveStep] = React.useState(0)
 
   const { itemInCart, getTotalOrder, getTotalPrice, totalShipping, totalPayment } = useContext(CartContext)
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
 function changeBackground(e) { 
     e.target.style.background = "#044778";
@@ -106,14 +122,39 @@ function changeBackground(e) {
                     <p>Betalning: {totalPayment()} kr</p>
                 
                     <div>
-                        <h3>Totalt: {getTotalOrder()} kr</h3>
+                        <h3>Totalt: {getTotalOrder()} kr</h3> {/* Funkar inte av någon anledning? */}
                     </div>
                 </div>
-                        
-                     <Button style={{...styleBtn, marginTop: "40px"}} 
-                        onMouseOver={changeBackground} type="submit" variant="contained" 
-                             onClick={() => console.log("clicked")}>Slutför köp 
-                    </Button> 
+
+                <div>
+                    <Button style={{...styleBtn, marginTop: "40px"}}       
+                      variant="outlined" type="submit" 
+                          onMouseOver={changeBackground} 
+                          /* Lägg till Funktionen som tömmer allt */
+                          onClick={handleClickOpen}>
+                          Slutför köp 
+                    </Button>
+                    
+                    <Dialog
+                        open={open}
+                          onClose={handleClose}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Tack för din beställning!"}
+                    </DialogTitle>
+                
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description">
+                          Vi hoppas du haft en trevlig köpupplevelse!
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Stäng</Button>   
+                      </DialogActions>
+                    </Dialog>
+                  </div>
                 </>
              }           
                     <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
