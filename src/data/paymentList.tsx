@@ -2,6 +2,7 @@
 import swish from "/src/assets/swish.png"
 import resurs from "/src/assets/resurs.png"
  */
+
 export interface Payment {
     id: number,
     title: string,

@@ -2,25 +2,23 @@ import { FC, useState, PropsWithChildren } from "react"
 import { Payment } from "../../data/paymentList"
 import React from "react"    
 import { PaymentCardData } from "../checkout-logic/payment-card"
-import { PaymentResurs } from "../checkout-logic/payment-resurs"
-import { PaymentSwish } from "../checkout-logic/payment-swish"
 
 interface Props{}
 
 export interface OptionPaymentData {
   paymentOptionState: Payment | undefined,
   setPaymentOption: React.Dispatch<React.SetStateAction<Payment | undefined>> 
-  setCardState: React.Dispatch<React.SetStateAction<PaymentCardData | undefined>> 
+/*   setCardState: React.Dispatch<React.SetStateAction<PaymentCardData | undefined>> 
   setResursState: React.Dispatch<React.SetStateAction<PaymentResurs | undefined>> 
-  setSwishState: React.Dispatch<React.SetStateAction<PaymentSwish | undefined>> 
+  setSwishState: React.Dispatch<React.SetStateAction<PaymentSwish | undefined>>  */
 }
 
 const DefaultOptionPaymentData: OptionPaymentData = {
   paymentOptionState: undefined,
   setPaymentOption: () => {},
-  setCardState: () => {},
+/*   setCardState: () => {},
   setResursState: () => {},
-  setSwishState: () => {},
+  setSwishState: () => {}, */
 }
 
 
@@ -30,14 +28,14 @@ export const PaymentContext = React.createContext<OptionPaymentData>(DefaultOpti
 const PaymentProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [paymentOptionState, setPaymentOption] = useState<Payment | undefined>()
-    const [cardState, setCardState] = useState<PaymentCardData | undefined>()
+/*     const [cardState, setCardState] = useState<PaymentCardData | undefined>()
     const [resursState, setResursState] = useState<PaymentResurs | undefined>()
-    const [swishState, setSwishState] = useState<PaymentSwish | undefined>()
+    const [swishState, setSwishState] = useState<PaymentSwish | undefined>() */
 
 
     return (
         <PaymentContext.Provider 
-            value={{paymentOptionState, setPaymentOption, setCardState, setResursState, setSwishState}}> 
+            value={{paymentOptionState, setPaymentOption,/*  setCardState, setResursState, setSwishState */}}> 
                 {props.children}
         </PaymentContext.Provider>
 

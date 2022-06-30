@@ -29,14 +29,14 @@ const ShippingCard: FC<Props> = (props) => {
                 <RadioGroup 
                    
                     aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female" // Hitta ett sätt att inte kunna gå vidare på om inget är valt
                     name="radio-buttons-group"
+              /*       defaultValue={shippingList[0]}  */
                 >
                 <>
                  {shippingList.map((shippingOption) => {
                     return (
                     <>
-                    <tr key={shippingOption.id} style={{ marginRight: "100px"}}>
+                    <tr key={shippingOption.id}>
                 
                         <FormControlLabel 
                             value={shippingOption.id} control={<Radio />} label={shippingOption.title} /* { <p>

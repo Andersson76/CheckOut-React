@@ -34,12 +34,12 @@ const FormSchema = Yup.object().shape({
        .min(2, "Vänligen fyll i fältet")
        .max(50, "Vänligen fyll i fältet")
        .required('Vänligen fyll i fältet')
-       /* .matches(/^[aA-zZ\s]+$/) */,
+       .matches(/^[aA-zZ\s]+$/, "Accepterar endast bokstäver"),
      lastname: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
        .max(50, 'Vänligen fyll i fältet')
        .required('Vänligen fyll i fältet')
-       /* .matches(/^[aA-zZ\s]+$/) */,
+       .matches(/^[aA-öÖ\s]+$/, "Accepterar endast bokstäver"),
       address: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
        .max(50, 'Vänligen fyll i fältet')
@@ -53,21 +53,28 @@ const FormSchema = Yup.object().shape({
        .min(2, 'Vänligen fyll i fältet')
        .max(50, 'Vänligen fyll i fältet')
        .required('Vänligen fyll i fältet')
-       /* .matches(/^[aA-zZ\s]+$/) */,
+       .matches(/^[aA-öÖ\s]+$/, "Accepterar endast bokstäver"),
      country: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
        .max(50, 'Vänligen fyll i fältet')
        .required('Vänligen fyll i fältet')
-       /* .matches(/^[aA-zZ\s]+$/) */,
+       .matches(/^[aA-öÖ\s]+$/, "Accepterar endast bokstäver"),
      email: Yup.string()
-      .email('Vänligen ange korrekt mejladress')
-      .required('Vänligen fyll i fältet'),
+      .email('Vänligen ange korrekt mejladress. Ex: lkms@live.com')
+      .min(10, 'Vänligen fyll i fältet')
+      .max(50, 'Vänligen fyll i fältet')
+      .required('Vänligen fyll i fältet')
+      .matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
       phonenumber: Yup.string()
       .min(10, 'Telefonnumret måste innehålla 10 nummer')
       .max(10, 'Telefonnumret måste innehålla 10 nummer') 
       .test((phonenumber => String(phonenumber).length <= 10)) 
       .required('Vänligen fyll i fältet')
 
+      // Exempel 1
+    /*   yup.number().test('len', 'Max 10 numbers', (phonenumber) => phonenumber.toString().length <= 10) */
+
+    // Exempel 2
      /*  .matches(
         /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, */
    })

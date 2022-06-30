@@ -3,7 +3,7 @@ import { CSSProperties, FC, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { colors } from '../data/colors'
 import { fontLogo, fontFamily } from "../css/common"
-import logotext from "../assets/logotext.jpg"
+/* import logotext from "../../src/assets/logotext.jpg" */
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined'
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined'
@@ -20,7 +20,7 @@ const Navmenu: FC<Props> = (props) => {
           <div style={{...styleNavmenu, ...fontFamily, paddingBottom: "30px"}}>
               <div>
                 <Link style={{color: "black", textDecoration: "none", ...fontLogo}} to={"/"}>
-                  <img src={logotext} width="40" height="25"></img>
+                   {/*  {<img src={logotext} width="40" height="25"></img>} */}
                 </Link>
               </div> 
               
