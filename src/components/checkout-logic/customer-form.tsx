@@ -15,7 +15,8 @@ export interface FormData {
   city: string,
   country: string,
   email: string,
-  phone: string
+  phone: string,
+  phonenumber: string
 }
 
 export const DefaultFormList: FormData = {
@@ -26,7 +27,8 @@ export const DefaultFormList: FormData = {
   city: "",
   country: "",
   email: "",
-  phone: ""
+  phone: "",
+  phonenumber: ""
 }
 
 const FormSchema = Yup.object().shape({
@@ -43,8 +45,9 @@ const FormSchema = Yup.object().shape({
        .max(50, 'Vänligen fyll i fältet')
        .required('Vänligen fyll i fältet'),
      zipcode: Yup.string()
-       .min(5, 'Vänligen ange ett giltigt postnummer')
-       .max(5, 'Vänligen ange ett giltigt postnummer')
+       .min(5, 'Postnumret måste innehålla 5 nummer')
+       .max(5, 'Postnumret måste innehålla 5 nummer')
+       .test((zipcode => String(zipcode).length <= 5)) 
        .required('Vänligen fyll i fältet'),
       city: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
@@ -57,12 +60,13 @@ const FormSchema = Yup.object().shape({
      email: Yup.string()
       .email('Vänligen ange korrekt mejladress')
       .required('Vänligen fyll i fältet'),
-     phone: Yup.string()
-      .min(10, 'Vänligen fyll i fältet')
-      .max(10, 'Vänligen fyll i fältet') 
- /*      .test("Nummer", phone => phone!.toString().length == 9) */ 
-      .required('Vänligen fyll i fältet'),
+      phonenumber: Yup.string()
+      .min(10, 'Telefonnumret måste innehålla 10 nummer')
+      .max(10, 'Telefonnumret måste innehålla 10 nummer') 
+      .test((phonenumber => String(phonenumber).length <= 10)) 
+      .required('Vänligen fyll i fältet')
    })
+
 
 
 export const CustomerForm = () => {
@@ -81,8 +85,8 @@ export const CustomerForm = () => {
        country: '', 
        email: '', 
        phone: '',
+       phonenumber:"",
      }}
-
 
     validationSchema={FormSchema}
     onSubmit={values => {
@@ -189,6 +193,19 @@ export const CustomerForm = () => {
              fullWidth
              {...errors.phone && touched.phone ? (
               <div>{errors.phone}</div>
+              ) : null}
+           />
+         </Grid> 
+         <Grid item xs={12} >
+           <Field
+             component={TextField}
+             label="Telefonnummer*"
+             name="phonenumber"
+             variant="outlined"
+             placeholder='+46'
+             fullWidth
+             {...errors.phonenumber && touched.phonenumber ? (
+              <div>{errors.phonenumber}</div>
               ) : null}
            />
          </Grid> 
