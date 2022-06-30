@@ -24,6 +24,8 @@ export interface ContextData {
     getTotalPrice: () => number,
     getTotalQty: () => number,
     setInfoOfCustomer: React.Dispatch<React.SetStateAction<FormData | undefined>>,
+
+    /* Flytta dessa */
     setSwish: React.Dispatch<React.SetStateAction<Swish | undefined>>,
     setResurs: React.Dispatch<React.SetStateAction<Resurs | undefined>>,
     setCardState: React.Dispatch<React.SetStateAction<PaymentCardData | undefined>>,
@@ -71,8 +73,9 @@ export const CartContext = React.createContext<ContextData>(DefaultContextData)
 const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
-
     const [infoOfCustomer, setInfoOfCustomer] = useState<FormData | undefined>()
+
+    /* Flytta dessa */
     const [ swishState, setSwish ] = useState<Swish | undefined>()
     const [ resursState, setResurs ] = useState<Resurs | undefined>()
     const [ cardState, setCardState] = useState<PaymentCardData | undefined>() 

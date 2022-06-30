@@ -30,7 +30,6 @@ const ShippingCard: FC<Props> = (props) => {
                    
                     aria-labelledby="demo-radio-buttons-group-label"
                     name="radio-buttons-group"
-              /*       defaultValue={shippingList[0]}  */
                 >
                 <>
                  {shippingList.map((shippingOption) => {
@@ -39,9 +38,7 @@ const ShippingCard: FC<Props> = (props) => {
                     <tr key={shippingOption.id}>
                 
                         <FormControlLabel 
-                            value={shippingOption.id} control={<Radio />} label={shippingOption.title} /* { <p>
-                                <img style={smallImageStyle} src={shippingOption.image}/> </p>*/
-                            
+                            value={shippingOption.id} control={<Radio />} label={shippingOption.title} 
                                 onChange={() => 
                                     {setShippingState(shippingOption)}} 
                         />

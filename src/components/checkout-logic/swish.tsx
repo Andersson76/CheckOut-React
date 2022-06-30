@@ -52,7 +52,7 @@ const Swish = () => {
                label="Telefonnummer*"
                name="phone"
                variant="outlined"
-               placeholder='+46'
+               placeholder='070XXXXXXX'
                fullWidth
                {...errors.phone && touched.phone ? (
                 <div>{errors.phone}</div>

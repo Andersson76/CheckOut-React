@@ -29,7 +29,7 @@ const CheckOut: FC<Props> = (props) => {
                 }
                 <div style={{display: "flex", justifyContent: "center", alignItems: "center", ...fontFamily}}>
                     {itemInCart.length === 0 ? 
-                        <h2>Din varukorg är tom</h2> 
+                        <h2>Din varukorg är tom</h2>  
                         : null}
                 </div>
             </div>

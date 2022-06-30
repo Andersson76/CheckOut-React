@@ -1,9 +1,9 @@
 import { CSSProperties, FC} from "react"
 import { colors } from "../data/colors"
 import { fontFamily, smallImageStyle } from "../css/common"
-import kort from "../assets/kort.jpg"
-import swish from "../assets/swish.png"
-import resurs from "../assets/resurs.png"
+import kort from "../assets/logos/kort.jpg"
+import swish from "../assets/logos/swish.png"
+import resurs from "../assets/logos/resurs.png"
 
 interface Props {}
 
