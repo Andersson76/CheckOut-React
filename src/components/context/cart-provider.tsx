@@ -13,6 +13,11 @@ interface Props {}
 export interface ContextData {
     itemInCart: CartItem[], 
     infoOfCustomer: FormData | undefined,
+    swishState: Swish | undefined,
+    resursState: Resurs | undefined,
+    cardState: PaymentCardData | undefined,
+
+
     addProductToCart: (product: Product) => void,
     removeProductFromCart: (id: number) => void,
     updateProductInCart: (id: number) => void,
@@ -26,11 +31,17 @@ export interface ContextData {
     getTotalOrder: () => number,
     totalShipping:  () => number,
     totalPayment: () => number,
+    confirmOrder: () => void,
 }
 
 const DefaultContextData: ContextData = {
     itemInCart: [],
     infoOfCustomer: undefined,
+    swishState: undefined,
+    resursState: undefined,
+    cardState: undefined,
+
+
     addProductToCart: () => {},
     removeProductFromCart: () => {},
     updateProductInCart: () => {},
@@ -43,8 +54,10 @@ const DefaultContextData: ContextData = {
 
     getTotalOrder: () => 0,
     totalShipping: () => 0,
-    totalPayment: () => 0
+    totalPayment: () => 0,
+    confirmOrder: () => {}, 
 }
+
 
 export interface CartItem {
     product: Product,
@@ -58,13 +71,14 @@ export const CartContext = React.createContext<ContextData>(DefaultContextData)
 const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
+
     const [infoOfCustomer, setInfoOfCustomer] = useState<FormData | undefined>()
-    const [ setStateSwish, setSwish ] = useState<Swish | undefined>()
-    const [ setStateResurs, setResurs ] = useState<Resurs | undefined>()
-    const [cardState, setCardState] = useState<PaymentCardData | undefined>() 
+    const [ swishState, setSwish ] = useState<Swish | undefined>()
+    const [ resursState, setResurs ] = useState<Resurs | undefined>()
+    const [ cardState, setCardState] = useState<PaymentCardData | undefined>() 
     
-    const { shippingState } = useContext(ShippingContext) 
-    const { paymentOptionState } = useContext(PaymentContext) 
+    const { shippingState, setShippingState } = useContext(ShippingContext) 
+    const { paymentOptionState, setPaymentOption} = useContext(PaymentContext) 
 
     
     const addProductToCart = (product: Product) => {
@@ -143,9 +157,9 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
  
                     totalSum += shippingState.price
                      
-                   if(paymentOptionState)    
-                    totalSum += paymentOptionState.price
-
+                   if(paymentOptionState) 
+                        totalSum += paymentOptionState.price   
+                
                 }
             }
 
@@ -177,40 +191,28 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
         
     }
 
-    /* Töm  alla komponenter samt carten.. */
 
-/*     const confirmOrder = () => {  
+ const confirmOrder = () => {  
 
-    // ifsats som gör att man ej kan slutföra köp om allt inte är valt (kunduppgifter, frakt och betalsätt)
-    // Tömmer carten.. ej färdigt
-    let resetCart = []
-    [...itemInCart] 
+    if(infoOfCustomer && shippingState && paymentOptionState) {
+                    
+        let resetCart = [...itemInCart]        
+        resetCart = [] 
 
-
- 
-
-        setCart()
-        setShippingOption()
-        setPaymentOption()
-        setInfoOfCustomer()
-        
- }  */
+        setCart(resetCart)
+        setShippingState(undefined)
+        setPaymentOption(undefined)
+        setInfoOfCustomer(undefined)
+    }
+    
+}
 
     return (
         <CartContext.Provider 
-            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty, infoOfCustomer, setInfoOfCustomer, getTotalOrder, totalShipping, totalPayment, setSwish, setResurs, setCardState }}>
+            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty, infoOfCustomer, setInfoOfCustomer, getTotalOrder, totalShipping, totalPayment, swishState, setSwish, resursState, setResurs, cardState, setCardState, confirmOrder }}>
             {props.children}
         </CartContext.Provider>
     )
 }
 
-
 export default CartProvider
-
-
-
-
-/* I useEffect om vi vill göra en funktion inom useEffecten gör vi det i useEffekt */
-/* useEffect(() => { /* Körs en gång (2 ggr med StrickMode i main)
-
- }, []*/

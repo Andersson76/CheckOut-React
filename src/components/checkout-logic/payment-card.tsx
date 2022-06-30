@@ -37,7 +37,8 @@ export interface PaymentCardData {
          .min(2, 'Vänligen fyll i fältet')
          .max(50, 'Vänligen fyll i fältet')
          .required('Vänligen fyll i fältet')
-         /* .matches(/^[aA-zZ\s]+$/) */,
+         .typeError('Accepterar endast bokstäver')
+         .matches(/^[aA-öÖ\s]+$/, "Accepterar endast bokstäver"),  
         month: Yup.string()
          .min(2, 'Månad måste innehålla 2 nummer')
          .max(2, 'Månad måste innehålla 2 nummer')

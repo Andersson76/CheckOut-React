@@ -39,7 +39,7 @@ const steps = [
 
 function VerticalLinearStepper() {
 
-  const { itemInCart, getTotalOrder, getTotalPrice, totalShipping, totalPayment } = useContext(CartContext)
+  const { itemInCart, getTotalOrder, getTotalPrice, totalShipping, totalPayment, confirmOrder, infoOfCustomer, shippingState, paymentOptionState } = useContext(CartContext)
 
   
   const [activeStep, setActiveStep] = React.useState(0)
@@ -95,6 +95,9 @@ function changeBackground(e) {
                     sx={{ mt: 1, mr: 1 }}
                   >
                     {index === steps.length - 1 ? 'Fortsätt till betalning' : 'Fortsätt'}
+
+                  {}
+
                   </Button>
                   <Button type="submit"
                     disabled={index === 0}
@@ -122,18 +125,18 @@ function changeBackground(e) {
                     <p>Betalning: {totalPayment()} kr</p>
                 
                     <div>
-                        <h3>Totalt: {getTotalOrder()} kr</h3> {/* Funkar inte av någon anledning? */}
+                        <h3>Totalt: {getTotalOrder()} kr</h3>
                     </div>
                 </div>
 
                 <div>
-                    <Button style={{...styleBtn, marginTop: "40px"}}       
+                  { infoOfCustomer && shippingState && paymentOptionState ? <Button style={{...styleBtn, marginTop: "40px"}}       
                       variant="outlined" type="submit" 
                           onMouseOver={changeBackground} 
-                          /* Lägg till Funktionen som tömmer allt */
-                          onClick={handleClickOpen}>
+                          onClick={()=> {handleClickOpen(), confirmOrder()}}>
                           Slutför köp 
-                    </Button>
+                    </Button> : undefined // FÅ ut en alert
+                  }
                     
                     <Dialog
                         open={open}
@@ -151,10 +154,13 @@ function changeBackground(e) {
                       </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Stäng</Button>   
-                      </DialogActions>
-                    </Dialog>
-                  </div>
+                      <Button 
+                        onClick={()=> {handleClose()
+                        confirmOrder()}}>Stäng
+                      </Button>   
+                    </DialogActions>
+                  </Dialog>
+                </div>
                 </>
              }           
                     <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>

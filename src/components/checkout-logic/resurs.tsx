@@ -14,7 +14,7 @@ export const DefaultResurs: Resurs = {
     socialSecurityNumber: ""
 }
 
-const SignupSchema = Yup.object().shape({
+const ResursSchema = Yup.object().shape({
     socialSecurityNumber: Yup.string()
       .min(10, 'Personnumret måste innehålla 10 nummer')
       .max(10, 'Personnumret måste innehålla 10 nummer') 
@@ -35,7 +35,7 @@ const Resurs = () => {
             socialSecurityNumber: '',
         }}
 
-        validationSchema={SignupSchema}
+        validationSchema={ResursSchema}
         onSubmit={values => {
             setResurs(values as Resurs)
         }}

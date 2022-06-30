@@ -17,21 +17,16 @@ interface Props {}
 const  PaymentOptionCard: FC<Props> = (props) => {
     
     const { paymentOptionState, setPaymentOption } = useContext(PaymentContext)
-    const [choice, setChoice] = useState() /* Listan?? */
+
+    const [choice, setChoice] = useState() // Nödvändigt??
 
     return (
 
         <FormControl>
                 <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
-                   /*  name="radio-buttons-group" */
-                   /*  defaultValue="In progress" {...paymentList[0]} */
-
-                 /* Du kan använda ett attribut defaultValue för att ställa in standardvärdet i Välj-menyn. Om inget alternativ är integrerat med detta attribut är det första alternativet valt som standard. Du kan skapa en Array av objektet där du lagrar alla alternativ som ska visas och vilket enskilt objekt som helst skickas i defaultValue- attributet. */
-
-                 /* value={choice} */
-                /*  options={options} */
-                 /* defaultValue={paymentList[0]} */
+                    name="radio-buttons-group"
+               /*   defaultValue={paymentList[0]}  */
                 
                 >
 
@@ -42,8 +37,7 @@ const  PaymentOptionCard: FC<Props> = (props) => {
                         <tr key={paymentOption.id}>
                     
                     <FormControlLabel 
-                        value={paymentOption.id} name="radio-buttons-group" checked={choice===paymentOption} // Påbörjat checked
-                        control={<Radio />} label={paymentOption.title}
+                        value={paymentOption.id} name="radio-buttons-group" control={<Radio />} label={paymentOption.title}
                             onChange={() => 
                                 {setPaymentOption(paymentOption)
                                 }}

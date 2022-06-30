@@ -14,7 +14,7 @@ export const DefaultSwish: Swish = {
     phone: ""
 }
 
-const SignupSchema = Yup.object().shape({
+const SwishSchema = Yup.object().shape({
     phone: Yup.string()
       .min(10, 'Telefonnumret måste innehålla 10 nummer')
       .max(10, 'Telefonnumret måste innehålla 10 nummer') 
@@ -36,7 +36,7 @@ const Swish = () => {
             phone: '',
         }}
 
-        validationSchema={SignupSchema}
+        validationSchema={SwishSchema}
         onSubmit={values => {
             setSwish(values as Swish)
         }}
