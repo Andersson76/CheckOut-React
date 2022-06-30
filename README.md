@@ -11,12 +11,14 @@ Från både startsidan och produktsidan ska det vara möjligt att lägga till pr
 Utcheckningsflödet skall ligga på en egen sida och innehålla delarna Kundvagn, Dina uppgifter, Fraktsätt & Betalsätt. ✅ 
 
 
-Hur projektet startas och körs:https://vitejs.dev/guide/ ✅ 
-Kör Vite
-Npm install
-npm run dev
+Hur projektet startas och körs: ✅ 
+För att köra igång Vite-projektet i VS behöver du installera Vite, detta gör du genom att först och främst öppna terminalen i VS. Därefter matar du in "npm create vite@latest my-vue-app --template vue". "My-vue-app" representerar mappens namn och där ställer du in var din mapps namn och var projektet skall ligga. Efter att du klickat på enter får du flera alternativ att välja på, där väljer du vanilla & nästa steg väljer du vanilla.ts. Därefter skall du skriva in "cd & projektets namn". Efter att du klickat på enter skriver du in "npm install" som installerar de grundläggande mallar för ramverk till ditt projekt. Slutligen skriver du in "npm run dev" som ger dig URLen där projektet körs. För att köra om projektet behöver du skriva "npm run dev" varje gång. 
 
-Github länk:
+En bra guid hur du installerar Vite:
+https://vitejs.dev/guide/#scaffolding-your-first-vite-project
+
+
+Länk tll Github-repot:
 https://github.com/Andersson76/CheckOut-React/
 
 Utcheckningsflödet(G):
