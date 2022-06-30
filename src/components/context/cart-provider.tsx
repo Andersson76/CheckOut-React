@@ -181,8 +181,12 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
 /*     const confirmOrder = () => {  
 
+    // ifsats som gör att man ej kan slutföra köp om allt inte är valt (kunduppgifter, frakt och betalsätt)
+    // Tömmer carten.. ej färdigt
     let resetCart = []
     [...itemInCart] 
+
+
  
 
         setCart()

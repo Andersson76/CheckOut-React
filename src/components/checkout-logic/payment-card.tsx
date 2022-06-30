@@ -36,7 +36,8 @@ export interface PaymentCardData {
        fullname: Yup.string()
          .min(2, 'Vänligen fyll i fältet')
          .max(50, 'Vänligen fyll i fältet')
-         .required('Vänligen fyll i fältet'),
+         .required('Vänligen fyll i fältet')
+         /* .matches(/^[aA-zZ\s]+$/) */,
         month: Yup.string()
          .min(2, 'Månad måste innehålla 2 nummer')
          .max(2, 'Månad måste innehålla 2 nummer')
