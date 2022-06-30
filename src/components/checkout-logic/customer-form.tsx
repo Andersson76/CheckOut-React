@@ -200,7 +200,7 @@ export const CustomerForm = () => {
              label="Telefonnummer*"
              name="phonenumber"
              variant="outlined"
-             placeholder='+46'
+             placeholder='070XXXXXXX'
              fullWidth
              {...errors.phonenumber && touched.phonenumber ? (
               <div>{errors.phonenumber}</div>

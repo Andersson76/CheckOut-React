@@ -1,14 +1,9 @@
-import postnord from "/src/assets/postnord.png"
-import instabox from "/src/assets/instabox.jpg"
-import logotext from "/src/assets/logotext.jpg"
-
 export interface Shipping {
     id: number,
     title: string,
     desctiption: string,
     price: number,
     shippingDate: number,
-    image: string,
 }
 
 export const shippingList: Shipping[] = [
@@ -18,7 +13,6 @@ export const shippingList: Shipping[] = [
         desctiption: "",
         price: 29,
         shippingDate: 72,
-        image: postnord
     }, 
     {
         id: 2,
@@ -26,7 +20,6 @@ export const shippingList: Shipping[] = [
         desctiption: "",
         price: 19,
         shippingDate: 48,
-        image: instabox
     }, 
     {
         id: 3,
@@ -34,6 +27,5 @@ export const shippingList: Shipping[] = [
         desctiption: "",
         price: 0,
         shippingDate: 24,
-        image: logotext
     }
 ]

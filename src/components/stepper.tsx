@@ -18,6 +18,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { PaymentContext } from "../components/context/payment-provider"
+import { ShippingContext } from "../components/context/shipping-provider"
+import Alert from '@mui/material/Alert';
 
 
 const steps = [
@@ -39,7 +42,12 @@ const steps = [
 
 function VerticalLinearStepper() {
 
-  const { itemInCart, getTotalOrder, getTotalPrice, totalShipping, totalPayment, confirmOrder, infoOfCustomer, shippingState, paymentOptionState } = useContext(CartContext)
+  const { itemInCart, getTotalOrder, getTotalPrice, totalShipping, totalPayment, confirmOrder, infoOfCustomer } = useContext(CartContext)
+
+  const { paymentOptionState } = useContext(PaymentContext)
+  const { shippingState } = useContext(ShippingContext)
+
+  
 
   
   const [activeStep, setActiveStep] = React.useState(0)
@@ -89,22 +97,12 @@ function changeBackground(e) {
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button style={{...styleBtn}}
-                   type="submit"
-                    onMouseOver={changeBackground} variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 1, mr: 1 }}
-                  >
+                    type="submit"
+                      onMouseOver={changeBackground} variant="contained"
+                      onClick={handleNext}
+                      sx={{ mt: 1, mr: 1 }}
+                    >
                     {index === steps.length - 1 ? 'Fortsätt till betalning' : 'Fortsätt'}
-
-                  {}
-
-                  </Button>
-                  <Button type="submit"
-                    disabled={index === 0}
-                    onClick={handleBack}
-                    sx={{ mt: 1, mr: 1 }}
-                  >
-                    Tillbaka
                   </Button>
                 </div>
               </Box>
@@ -133,9 +131,13 @@ function changeBackground(e) {
                   { infoOfCustomer && shippingState && paymentOptionState ? <Button style={{...styleBtn, marginTop: "40px"}}       
                       variant="outlined" type="submit" 
                           onMouseOver={changeBackground} 
-                          onClick={()=> {handleClickOpen(), confirmOrder()}}>
+                          onClick={handleClickOpen}>
                           Slutför köp 
-                    </Button> : undefined // FÅ ut en alert
+                    </Button> : 
+                    <><br></br>
+                      <Alert severity="warning">Var vänlig och fyll i korrekt information för att slutföra ditt köp!</Alert>
+                    </>
+                  
                   }
                     
                     <Dialog

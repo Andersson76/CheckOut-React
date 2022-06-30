@@ -18,16 +18,12 @@ const  PaymentOptionCard: FC<Props> = (props) => {
     
     const { paymentOptionState, setPaymentOption } = useContext(PaymentContext)
 
-    const [choice, setChoice] = useState() // Nödvändigt??
-
     return (
 
         <FormControl>
                 <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
                     name="radio-buttons-group"
-               /*   defaultValue={paymentList[0]}  */
-                
                 >
 
                 <>
@@ -43,7 +39,6 @@ const  PaymentOptionCard: FC<Props> = (props) => {
                                 }}
 
                     />
-                {/*       <img style={smallImageStyle} src={paymentOption.image}/> */}
 
                     </tr>
 
