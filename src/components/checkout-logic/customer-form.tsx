@@ -15,7 +15,6 @@ export interface FormData {
   city: string,
   country: string,
   email: string,
-  phone: string,
   phonenumber: string
 }
 
@@ -27,7 +26,6 @@ export const DefaultFormList: FormData = {
   city: "",
   country: "",
   email: "",
-  phone: "",
   phonenumber: ""
 }
 
@@ -35,11 +33,13 @@ const FormSchema = Yup.object().shape({
      firstname: Yup.string()
        .min(2, "Vänligen fyll i fältet")
        .max(50, "Vänligen fyll i fältet")
-       .required('Vänligen fyll i fältet'),
+       .required('Vänligen fyll i fältet')
+       /* .matches(/^[aA-zZ\s]+$/) */,
      lastname: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
        .max(50, 'Vänligen fyll i fältet')
-       .required('Vänligen fyll i fältet'),
+       .required('Vänligen fyll i fältet')
+       /* .matches(/^[aA-zZ\s]+$/) */,
       address: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
        .max(50, 'Vänligen fyll i fältet')
@@ -52,11 +52,13 @@ const FormSchema = Yup.object().shape({
       city: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
        .max(50, 'Vänligen fyll i fältet')
-       .required('Vänligen fyll i fältet'),
+       .required('Vänligen fyll i fältet')
+       /* .matches(/^[aA-zZ\s]+$/) */,
      country: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
        .max(50, 'Vänligen fyll i fältet')
-       .required('Vänligen fyll i fältet'),
+       .required('Vänligen fyll i fältet')
+       /* .matches(/^[aA-zZ\s]+$/) */,
      email: Yup.string()
       .email('Vänligen ange korrekt mejladress')
       .required('Vänligen fyll i fältet'),
@@ -65,6 +67,9 @@ const FormSchema = Yup.object().shape({
       .max(10, 'Telefonnumret måste innehålla 10 nummer') 
       .test((phonenumber => String(phonenumber).length <= 10)) 
       .required('Vänligen fyll i fältet')
+
+     /*  .matches(
+        /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, */
    })
 
 
@@ -84,7 +89,6 @@ export const CustomerForm = () => {
        city: '', 
        country: '', 
        email: '', 
-       phone: '',
        phonenumber:"",
      }}
 
@@ -99,7 +103,7 @@ export const CustomerForm = () => {
   <>
   <Form>
     <Grid container spacing={2}>
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           label="Förnamn*"
@@ -111,7 +115,7 @@ export const CustomerForm = () => {
           ) : null}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           label="Efternamn*"
@@ -171,7 +175,7 @@ export const CustomerForm = () => {
             ) : null}
         />
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12}>
         <Field
           component={TextField}
           label="Mejl*"
@@ -183,19 +187,6 @@ export const CustomerForm = () => {
             ) : null}
         />
       </Grid> 
-      <Grid item xs={12} sm={6}>
-           <Field
-             component={TextField}
-             label="Telefonnummer*"
-             name="phone"
-             variant="outlined"
-             placeholder='+46'
-             fullWidth
-             {...errors.phone && touched.phone ? (
-              <div>{errors.phone}</div>
-              ) : null}
-           />
-         </Grid> 
          <Grid item xs={12} >
            <Field
              component={TextField}

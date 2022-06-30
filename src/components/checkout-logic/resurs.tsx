@@ -16,14 +16,13 @@ export const DefaultResurs: Resurs = {
 
 const SignupSchema = Yup.object().shape({
     socialSecurityNumber: Yup.string()
-      .min(12, 'Personnumret måste innehålla 10 nummer')
-      .max(12, 'Personnumret måste innehålla 10 nummer') 
+      .min(10, 'Personnumret måste innehålla 10 nummer')
+      .max(10, 'Personnumret måste innehålla 10 nummer') 
       .required('Vänligen fyll i fältet')
-      .test((socialSecurityNumber => String(socialSecurityNumber).length <= 12)) 
-      ,
+      .test((socialSecurityNumber => String(socialSecurityNumber).length <= 10)),
   })
 
-  
+
 const Resurs = () => {
 
     const {setResurs} = useContext(CartContext)
