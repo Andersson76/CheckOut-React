@@ -37,12 +37,7 @@ const CheckOut: FC<Props> = (props) => {
                     {itemInCart.map((cartItem) => 
                         <CheckoutCard cartItem={cartItem} />
                     )}
-                  {/*   {itemInCart.length == 0 ? null : 
-                    <h4 style={{...totalSum, ...fontFamily}}>
-                        Totalsumma: {getTotalPrice()} kr
-                    </h4>
-                    } */}
-            </div>
+                </div>
 
             <div>
                 {itemInCart.length === 0 ? null :
@@ -94,12 +89,3 @@ const heading: CSSProperties = {
     marginLeft: "auto",
     marginRight: "auto"
 }
-
-/* const totalSum: CSSProperties = {
-    fontSize: "14px", 
-    fontWeight: "ligther", 
-    marginTop: "40px",
-    display: "flex",
-    width: "60%",
-    justifyContent: "center" 
-} */

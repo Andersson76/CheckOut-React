@@ -12,7 +12,6 @@ interface Props {}
 
 const ShippingCard: FC<Props> = (props) => {
 
-
     const { setShippingState, shippingState } = useContext(ShippingContext)
 
 

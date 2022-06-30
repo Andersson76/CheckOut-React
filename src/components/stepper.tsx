@@ -39,10 +39,10 @@ const steps = [
 
 function VerticalLinearStepper() {
 
-  const [activeStep, setActiveStep] = React.useState(0)
-
   const { itemInCart, getTotalOrder, getTotalPrice, totalShipping, totalPayment } = useContext(CartContext)
 
+  
+  const [activeStep, setActiveStep] = React.useState(0)
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

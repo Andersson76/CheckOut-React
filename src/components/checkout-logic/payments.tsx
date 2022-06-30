@@ -7,8 +7,9 @@ import { PaymentContext } from "../context/payment-provider"
 import { smallImageStyle } from "../../css/common"
 import { paymentList } from "../../data/paymentList"
 import DefaultPaymentCard from "./payment-card"
-import DefaultPaymentSwish from "./payment-swish"
-import DefaultPaymentResurs from "./payment-resurs"
+
+import DefaultSwish from "./swish"
+import DefaultResurs from "./resurs"
 
 
 interface Props {}
@@ -43,11 +44,11 @@ const  PaymentOptionCard: FC<Props> = (props) => {
 
                     <div> 
                         { paymentOptionState && (paymentOption.id == paymentOptionState.id && paymentOptionState.id) == 1 ? 
-                            <DefaultPaymentSwish/> : undefined } 
+                            <DefaultSwish/> : undefined } 
                         { paymentOptionState && (paymentOption.id == paymentOptionState.id && paymentOptionState.id) == 2 ?
                             <DefaultPaymentCard/> : undefined } 
                         { paymentOptionState && (paymentOption.id == paymentOptionState.id && paymentOptionState.id) == 3 ?
-                            <DefaultPaymentResurs/> : undefined } 
+                            <DefaultResurs/> : undefined } 
                     </div>
 
                 </>

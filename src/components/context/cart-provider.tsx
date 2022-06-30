@@ -4,6 +4,9 @@ import { Product } from "../../data/productlist"
 import { FormData } from '../checkout-logic/customer-form'
 import { PaymentContext } from "./payment-provider"
 import { ShippingContext } from "./shipping-provider"
+import { Swish } from "../checkout-logic/swish"
+import { Resurs } from "../checkout-logic/resurs"
+import { PaymentCardData } from "../checkout-logic/payment-card"
 
 interface Props {}
 
@@ -16,6 +19,10 @@ export interface ContextData {
     getTotalPrice: () => number,
     getTotalQty: () => number,
     setInfoOfCustomer: React.Dispatch<React.SetStateAction<FormData | undefined>>,
+    setSwish: React.Dispatch<React.SetStateAction<Swish | undefined>>,
+    setResurs: React.Dispatch<React.SetStateAction<Resurs | undefined>>,
+    setCardState: React.Dispatch<React.SetStateAction<PaymentCardData | undefined>>,
+
     getTotalOrder: () => number,
     totalShipping:  () => number,
     totalPayment: () => number,
@@ -30,6 +37,10 @@ const DefaultContextData: ContextData = {
     getTotalPrice: () => 0,
     getTotalQty: () => 0,
     setInfoOfCustomer: () => {},
+    setSwish: () => {},
+    setResurs: () => {},
+    setCardState: () => {},
+
     getTotalOrder: () => 0,
     totalShipping: () => 0,
     totalPayment: () => 0
@@ -48,6 +59,9 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
     const [infoOfCustomer, setInfoOfCustomer] = useState<FormData | undefined>()
+    const [ setStateSwish, setSwish ] = useState<Swish | undefined>()
+    const [ setStateResurs, setResurs ] = useState<Resurs | undefined>()
+    const [cardState, setCardState] = useState<PaymentCardData | undefined>() 
     
     const { shippingState } = useContext(ShippingContext) 
     const { paymentOptionState } = useContext(PaymentContext) 
@@ -163,22 +177,27 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
         
     }
 
-
     /* Töm  alla komponenter samt carten.. */
 
-    const confirmeOrder = () => { 
+/*     const confirmOrder = () => {  
 
+    let resetCart = []
+    [...itemInCart] 
+ 
 
-    }
-
+        setCart()
+        setShippingOption()
+        setPaymentOption()
+        setInfoOfCustomer()
+        
+ }  */
 
     return (
         <CartContext.Provider 
-            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty,     infoOfCustomer, setInfoOfCustomer, getTotalOrder, totalShipping, totalPayment }}>
+            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty, infoOfCustomer, setInfoOfCustomer, getTotalOrder, totalShipping, totalPayment, setSwish, setResurs, setCardState }}>
             {props.children}
         </CartContext.Provider>
     )
-
 }
 
 
