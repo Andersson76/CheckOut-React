@@ -21,7 +21,6 @@ export interface Product {
     color: string
 }
 
-
 export const productList: Product[] = [
     {
         id: 1,

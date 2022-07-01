@@ -5,6 +5,8 @@ import { CartContext } from '../context/cart-provider'
 import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { styleBtn } from "../../css/common"
+import { PaymentContext } from "../context/payment-provider"
+
 
 export interface Resurs {
     socialSecurityNumber: string
@@ -19,13 +21,14 @@ const ResursSchema = Yup.object().shape({
       .min(10, 'Personnumret måste innehålla 10 nummer')
       .max(10, 'Personnumret måste innehålla 10 nummer') 
       .required('Vänligen fyll i fältet')
+      .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Accepterar endast nummer") 
       .test((socialSecurityNumber => String(socialSecurityNumber).length <= 10)),
   })
 
 
 const Resurs = () => {
 
-    const {setResurs} = useContext(CartContext)
+    const { setResurs } = useContext(PaymentContext)
 
     return (
     <div>
@@ -59,7 +62,7 @@ const Resurs = () => {
              />
            </Grid> 
            </Grid>
-           <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
+           <Button style={{...styleBtn, marginTop: "20px", marginBottom: "20px"}} type="submit" variant="contained">
             Spara
             </Button>
            </Form>

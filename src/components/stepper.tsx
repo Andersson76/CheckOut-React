@@ -40,18 +40,16 @@ const steps = [
 ]
 
 
-function VerticalLinearStepper() {
+function Steppers() {
 
   const { itemInCart, getTotalOrder, getTotalPrice, totalShipping, totalPayment, confirmOrder, infoOfCustomer } = useContext(CartContext)
-
   const { paymentOptionState } = useContext(PaymentContext)
   const { shippingState } = useContext(ShippingContext)
 
   
-
-  
   const [activeStep, setActiveStep] = React.useState(0)
   const [open, setOpen] = React.useState(false);
+  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -113,7 +111,6 @@ function changeBackground(e) {
       {activeStep === steps.length && (
 
         <Paper square elevation={0} sx={{ p: 3 }}>
-
              {itemInCart.length == 0 ? null : 
                  <>
                  <h2>Totalsumma order</h2>
@@ -135,11 +132,11 @@ function changeBackground(e) {
                           Slutför köp 
                     </Button> : 
                     <><br></br>
-                      <Alert severity="warning">Var vänlig och fyll i korrekt information för att slutföra ditt köp!</Alert>
+                      <Alert 
+                        severity="warning">Var vänlig och fyll i korrekt information för att slutföra ditt köp!
+                      </Alert>
                     </>
-                  
                   }
-                    
                     <Dialog
                         open={open}
                           onClose={handleClose}
@@ -165,9 +162,9 @@ function changeBackground(e) {
                 </div>
                 </>
              }           
-                    <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-                        Tillbaka
-                    </Button> 
+                <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
+                  Tillbaka
+                </Button> 
         </Paper>
       )}
     </Box>
@@ -175,4 +172,4 @@ function changeBackground(e) {
   );
 }
 
-export default VerticalLinearStepper
+export default Steppers

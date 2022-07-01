@@ -1,10 +1,8 @@
-import { FC, PropsWithChildren, useEffect, useState } from "react" 
+import { FC, PropsWithChildren, useState } from "react" 
 import { Shipping } from "../../data/shippingList"
 import React from "react"   
 
-
 interface Props {}
-
 
 export interface ShippingData {
     shippingState: Shipping | undefined
@@ -22,9 +20,7 @@ export const ShippingContext = React.createContext<ShippingData>(DefaultShipping
 
 const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
 
-
     const [shippingState, setShippingState] = useState<Shipping | undefined>()
-
 
         return (
             <ShippingContext.Provider 
@@ -34,7 +30,6 @@ const ShippingProvider: FC<PropsWithChildren<Props>> = (props) => {
             )
 
 }
-
 
 export default ShippingProvider
 

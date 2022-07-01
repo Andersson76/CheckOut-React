@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import { styleBtn } from "../../css/common"
 import { CartContext } from '../context/cart-provider'
 
-
 export interface FormData {
   firstname: string,
   lastname: string,
@@ -48,6 +47,7 @@ const FormSchema = Yup.object().shape({
        .min(5, 'Postnumret måste innehålla 5 nummer')
        .max(5, 'Postnumret måste innehålla 5 nummer')
        .test((zipcode => String(zipcode).length <= 5)) 
+       .matches(/^\d+$/, "Accepterar endast nummer") 
        .required('Vänligen fyll i fältet'),
       city: Yup.string()
        .min(2, 'Vänligen fyll i fältet')
@@ -67,16 +67,14 @@ const FormSchema = Yup.object().shape({
       .matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
       phonenumber: Yup.string()
       .min(10, 'Telefonnumret måste innehålla 10 nummer')
-      .max(10, 'Telefonnumret måste innehålla 10 nummer') 
+      .max(10, 'Telefonnumret måste innehålla 10 nummer')
       .test((phonenumber => String(phonenumber).length <= 10)) 
+      .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Accepterar endast nummer") 
       .required('Vänligen fyll i fältet')
 
-      // Exempel 1
-    /*   yup.number().test('len', 'Max 10 numbers', (phonenumber) => phonenumber.toString().length <= 10) */
-
-    // Exempel 2
-     /*  .matches(
-        /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, */
+      // Exempel 2
+      /* yup.number()
+      .test('len', 'Telefonnumret måste innehålla 10 nummer', (phonenumber) => phonenumber.toString().length <= 10) */
    })
 
 
@@ -208,7 +206,7 @@ export const CustomerForm = () => {
            />
          </Grid> 
     </Grid>
-        <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
+        <Button style={{...styleBtn, marginTop: "20px", marginBottom: "20px"}} type="submit" variant="contained">
           Spara
         </Button>
   </Form> 

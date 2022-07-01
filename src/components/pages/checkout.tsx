@@ -11,7 +11,7 @@ interface Props {}
 
 const CheckOut: FC<Props> = (props) => {
 
-    const { itemInCart, getTotalPrice } = useContext(CartContext)
+    const { itemInCart } = useContext(CartContext)
 
     return (
         

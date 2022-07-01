@@ -5,6 +5,7 @@ import { CartContext } from '../context/cart-provider';
 import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { styleBtn } from "../../css/common"
+import { PaymentContext } from "../context/payment-provider"
 
 export interface Swish {
     phone: string
@@ -19,14 +20,14 @@ const SwishSchema = Yup.object().shape({
       .min(10, 'Telefonnumret måste innehålla 10 nummer')
       .max(10, 'Telefonnumret måste innehålla 10 nummer') 
       .required('Vänligen fyll i fältet')
-      .test((phone => String(phone).length <= 10)) 
-      ,
+      .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Accepterar endast nummer") 
+      .test((phone => String(phone).length <= 10)),
   })
 
   
 const Swish = () => {
 
-    const {setSwish} = useContext(CartContext)
+    const { setSwish } = useContext(PaymentContext)
 
     return (
     <div>
@@ -60,7 +61,7 @@ const Swish = () => {
              />
            </Grid> 
            </Grid>
-           <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
+           <Button style={{...styleBtn, marginTop: "20px", marginBottom: "20px"}} type="submit" variant="contained">
             Spara
             </Button>
            </Form>

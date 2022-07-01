@@ -1,10 +1,9 @@
-import { FC, useContext, useState } from "react" 
+import { FC, useContext } from "react" 
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import { PaymentContext } from "../context/payment-provider"
-import { smallImageStyle } from "../../css/common"
 import { paymentList } from "../../data/paymentList"
 import DefaultPaymentCard from "./payment-card"
 import DefaultSwish from "./swish"
@@ -12,7 +11,6 @@ import DefaultResurs from "./resurs"
 
 
 interface Props {}
-
 
 const  PaymentOptionCard: FC<Props> = (props) => {
     
@@ -30,18 +28,14 @@ const  PaymentOptionCard: FC<Props> = (props) => {
                  {paymentList.map((paymentOption) => {
                     return (
                     <>
-                        <tr key={paymentOption.id}>
-                    
-                    <FormControlLabel 
-                        value={paymentOption.id} name="radio-buttons-group" control={<Radio />} label={paymentOption.title}
-                            onChange={() => 
-                                {setPaymentOption(paymentOption)
-                                }}
-
-                    />
-
+                    <tr key={paymentOption.id}>
+                        <FormControlLabel 
+                            value={paymentOption.id} name="radio-buttons-group" control={<Radio />} label={paymentOption.title}
+                                onChange={() => 
+                                    {setPaymentOption(paymentOption)
+                                    }}
+                        />
                     </tr>
-
                     <div> 
                         { paymentOptionState && (paymentOption.id == paymentOptionState.id && paymentOptionState.id) == 1 ? 
                             <DefaultSwish/> : undefined } 
