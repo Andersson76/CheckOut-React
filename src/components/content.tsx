@@ -21,5 +21,4 @@ const Content: FC<Props> = (props) => {
     )
 }
 
-
 export default Content

@@ -5,7 +5,6 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import { ShippingContext } from "../context/shipping-provider"
-import { smallImageStyle } from "../../css/common"
 
 
 interface Props {}
@@ -46,7 +45,8 @@ const ShippingCard: FC<Props> = (props) => {
                         <p> {shippingOption.price} kr</p>
 
                         <p>{shippingState && (shippingState.id == shippingOption.id) ?
-                            <p>Beräknad leverans: {getShippingDate(shippingOption.shippingDate)}</p> : undefined
+                            <p>Beräknad leverans: {getShippingDate(shippingOption.shippingDate)}</p> 
+                                : undefined
                          }</p>
                             
                     </tr>

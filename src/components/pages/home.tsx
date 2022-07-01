@@ -1,4 +1,3 @@
-import React from "react"
 import { FC } from "react"
 import { productList } from '../../data/productlist' 
 import { imgContainer} from "../../css/common"

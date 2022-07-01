@@ -1,12 +1,11 @@
-import { FC, useState, useContext } from "react"
+import { FC, useContext } from "react"
 import { Grid, Button } from '@mui/material'
 import { TextField } from 'formik-mui'
 import { Formik, Field, Form } from 'formik'
 import * as Yup from 'yup'
 import FormLabel from '@mui/material/FormLabel'
 import {styleBtn} from "../../css/common"
-import PaymentContext from "../context/payment-provider"
-import { CartContext } from '../context/cart-provider'
+import { PaymentContext } from "../context/payment-provider"
 
 
 interface Props {}
@@ -26,12 +25,15 @@ export interface PaymentCardData {
     CVC: "",
     fullname: "",
   }
+
+  /* Hitta ett valideringsätt som endast accepterar nummer */
   
   const PaymentSchema = Yup.object().shape({
        cardnumber: Yup.string()
          .min(16, 'Kortnumret måste innehålla 16 nummer')
          .max(16, 'Kortnumret måste innehålla 16 nummer')
          .required('Vänligen fyll i fältet')
+         .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Accepterar endast nummer") 
          .test((cardnumber => String(cardnumber).length <= 16)) ,
        fullname: Yup.string()
          .min(2, 'Vänligen fyll i fältet')
@@ -43,24 +45,26 @@ export interface PaymentCardData {
          .min(2, 'Månad måste innehålla 2 nummer')
          .max(2, 'Månad måste innehålla 2 nummer')
          .required('Vänligen fyll i fältet')
+        .matches(/^\d+$/, "Accepterar endast nummer")  
          .test((month => String(month).length <= 2)),
        year: Yup.string()
          .min(2, 'År måste innehålla 2 nummer')
          .max(2, 'År måste innehålla 2 nummer')
          .required('Vänligen fyll i fältet')
+          .matches(/^\d+$/, "Accepterar endast nummer")  
          .test((year => String(year).length <= 2)),
         CVC: Yup.string()
          .min(3, 'CVC måste innehålla 3 nummer')
          .max(3, 'CVC måste innehålla 3 nummer')
          .required('Vänligen fyll i fältet')
+         .matches(/^\d+$/, "Accepterar endast nummer") 
          .test((CVC => String(CVC).length <= 3)),
      })
 
 
-
 const PaymentCard: FC<Props> = (props) => {
 
-     const { setCardState } = useContext(CartContext) 
+     const { setCardState } = useContext(PaymentContext) 
 
     return (
     
@@ -148,12 +152,11 @@ const PaymentCard: FC<Props> = (props) => {
           />
         </Grid>
       </Grid>
-      <Button style={{...styleBtn, marginTop: "50px"}} type="submit" variant="contained">
+      <Button style={{...styleBtn, marginTop: "20px", marginBottom: "20px"}} type="submit" variant="contained">
           Spara
         </Button>
     </Form>             
-)}
-
+  )}
 </Formik>
 
     )

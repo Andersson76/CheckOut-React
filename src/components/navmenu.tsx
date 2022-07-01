@@ -7,7 +7,7 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined'
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined'
 import { CartContext } from "./context/cart-provider" 
-import logotext from "../logo/logotext.jpg"
+import logotext from "../assets/logo/logotext.jpg"
 
 interface Props {}
 

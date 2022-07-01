@@ -4,19 +4,12 @@ import { Product } from "../../data/productlist"
 import { FormData } from '../checkout-logic/customer-form'
 import { PaymentContext } from "./payment-provider"
 import { ShippingContext } from "./shipping-provider"
-import { Swish } from "../checkout-logic/swish"
-import { Resurs } from "../checkout-logic/resurs"
-import { PaymentCardData } from "../checkout-logic/payment-card"
 
 interface Props {}
 
 export interface ContextData {
     itemInCart: CartItem[], 
     infoOfCustomer: FormData | undefined,
-    swishState: Swish | undefined,
-    resursState: Resurs | undefined,
-    cardState: PaymentCardData | undefined,
-
 
     addProductToCart: (product: Product) => void,
     removeProductFromCart: (id: number) => void,
@@ -24,11 +17,6 @@ export interface ContextData {
     getTotalPrice: () => number,
     getTotalQty: () => number,
     setInfoOfCustomer: React.Dispatch<React.SetStateAction<FormData | undefined>>,
-
-    /* Flytta dessa */
-    setSwish: React.Dispatch<React.SetStateAction<Swish | undefined>>,
-    setResurs: React.Dispatch<React.SetStateAction<Resurs | undefined>>,
-    setCardState: React.Dispatch<React.SetStateAction<PaymentCardData | undefined>>,
 
     getTotalOrder: () => number,
     totalShipping:  () => number,
@@ -39,10 +27,6 @@ export interface ContextData {
 const DefaultContextData: ContextData = {
     itemInCart: [],
     infoOfCustomer: undefined,
-    swishState: undefined,
-    resursState: undefined,
-    cardState: undefined,
-
 
     addProductToCart: () => {},
     removeProductFromCart: () => {},
@@ -50,16 +34,12 @@ const DefaultContextData: ContextData = {
     getTotalPrice: () => 0,
     getTotalQty: () => 0,
     setInfoOfCustomer: () => {},
-    setSwish: () => {},
-    setResurs: () => {},
-    setCardState: () => {},
 
     getTotalOrder: () => 0,
     totalShipping: () => 0,
     totalPayment: () => 0,
     confirmOrder: () => {}, 
 }
-
 
 export interface CartItem {
     product: Product,
@@ -74,14 +54,9 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     const [itemInCart, setCart] = useState<CartItem[]>([])
     const [infoOfCustomer, setInfoOfCustomer] = useState<FormData | undefined>()
-
-    /* Flytta dessa */
-    const [ swishState, setSwish ] = useState<Swish | undefined>()
-    const [ resursState, setResurs ] = useState<Resurs | undefined>()
-    const [ cardState, setCardState] = useState<PaymentCardData | undefined>() 
     
-    const { shippingState, setShippingState } = useContext(ShippingContext) 
-    const { paymentOptionState, setPaymentOption} = useContext(PaymentContext) 
+    const { shippingState, setShippingState } = useContext(ShippingContext)
+    const { paymentOptionState, setPaymentOption } = useContext(PaymentContext) 
 
     
     const addProductToCart = (product: Product) => {
@@ -212,7 +187,7 @@ const CartProvider: FC<PropsWithChildren<Props>> = (props) => {
 
     return (
         <CartContext.Provider 
-            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty, infoOfCustomer, setInfoOfCustomer, getTotalOrder, totalShipping, totalPayment, swishState, setSwish, resursState, setResurs, cardState, setCardState, confirmOrder }}>
+            value={{ itemInCart, addProductToCart, removeProductFromCart, getTotalPrice, updateProductInCart, getTotalQty, infoOfCustomer, setInfoOfCustomer, getTotalOrder, totalShipping, totalPayment, confirmOrder }}>
             {props.children}
         </CartContext.Provider>
     )
