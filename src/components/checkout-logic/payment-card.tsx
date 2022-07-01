@@ -45,8 +45,8 @@ export interface PaymentCardData {
          .min(2, 'Månad måste innehålla 2 nummer')
          .max(2, 'Månad måste innehålla 2 nummer')
          .required('Vänligen fyll i fältet')
-        .matches(/^\d+$/, "Accepterar endast nummer")  
-         .test((month => String(month).length <= 2)),
+         .matches(/^(0[1-9]|1[012])$/, "Oglitig månad") 
+         .test((month => String(month).length <= 2)), 
        year: Yup.string()
          .min(2, 'År måste innehålla 2 nummer')
          .max(2, 'År måste innehålla 2 nummer')
